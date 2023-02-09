@@ -10,7 +10,7 @@
 
 * Argel Bezerra Matos - arbezerra14@outlook.com
 
-* Ilana Thaisa Brochardt Pereira Simões - beltrano@abc.com
+* Ilana Thaisa Brochardt Pereira Simões - ilanabrochardtps@gmail.com
 
 * João Lucas Pinto de Santana - joaolucas.psantana@gmail.com
 
@@ -37,7 +37,7 @@ Os usuários que queiram guardar textos importantes, ou até que buscam guardar 
 
 * **REQ4** - O sistema deve permitir que o usuário ative ou desative a quebra automática de linha.
 
-* **REQ5** - O sistema deve permitir que o usuário controle o zoom.
+* **REQ5** - O sistema deve permitir o login de usuários.
 
 * **REQ6** - O sistema deve permitir atribuir categoria a nota criada pelo usuário.
 
