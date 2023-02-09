@@ -42,4 +42,3 @@ Os usuários que queiram guardar textos importantes, ou até que buscam guardar 
 * **REQ6** - O sistema deve permitir atribuir categoria a nota criada pelo usuário.
 
 * **REQ7** - O sistema deve permitir que o usuário visualize todas notas criadas. Podendo filtra-las por categoria.
-.
