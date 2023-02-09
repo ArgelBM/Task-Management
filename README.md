@@ -1,4 +1,4 @@
-. 
+
 # Projeto Notepad
 
 [Notepad]
