@@ -16,12 +16,12 @@
 
 * José Alexandre Lourenço Gonçalves - alexandrelourenco951@gmail.com
 
-  
-
 ## Descrição geral do projeto
+O projeto em questão é um gerenciador de tarefas (task manager) implementado seguindo o padrão de arquitetura Model-View-Controller (MVC).
 
-O Sistema deve permitir marcar se uma nota já foi feita ou não. O Usuário pode gerar um relatório de quantas tarefas concluiu no mês. O usuario deve conseguir salvar as tarefas. Outro usuario deve conseguir abrir uma tarefa de outra pessoa. O sistema conta com um pomodoro e o sistema deve gerar um relatorio de quantos pomodoros o usuario concluiu aquela tarefa
+O sistema permite o cadastro de usuários, criação e edição de tarefas, bem como a associação de categorias e pomodoros a cada tarefa. Além disso, é possível gerar relatórios de tarefas concluídas, ordená-las por prioridade e cor, e gerar relatórios de pomodoros completados por tarefa.
 
+O projeto é dividido em quatro pastas: "dados", "gui", "enums" e "negocios". A pasta "dados" contém as classes responsáveis por gerenciar o armazenamento e acesso aos dados da aplicação. 
 
 ## Requisitos do projeto
 
