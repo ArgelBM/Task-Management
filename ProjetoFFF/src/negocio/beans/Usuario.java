@@ -1,4 +1,4 @@
 package negocio.beans;
 
-public class Usuario {
+public class Usuario extends Pessoa{
 }
