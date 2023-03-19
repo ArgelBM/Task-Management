@@ -1,7 +1,7 @@
 
-# Projeto Notepad
+# Projeto task management
 
-[Notepad]
+[gerenciador de atividade]
 
 
 ## Integrantes do grupo
@@ -20,11 +20,7 @@
 
 ## Descrição geral do projeto
 
-A principal função do programa será armazenar e categorizar as notas criadas pelo usuário.
-
-<p align="justify">
-Os usuários que queiram guardar textos importantes, ou até que buscam guardar ideias que surgem e desaparecem rapidamente. Podem utilizar o programa para armazenar as notas e categorizá-las. Com isso, o programa guardará as notas, sendo possivel filtra-las por categorias definidas pelo próprio usuário para separar notas daquele assunto em questão. 
-</p>
+O Sistema deve permitir marcar se uma nota já foi feita ou não. O Usuário pode gerar um relatório de quantas tarefas concluiu no mês. O usuario deve conseguir salvar as tarefas. Outro usuario deve conseguir abrir uma tarefa de outra pessoa. O sistema conta com um pomodoro e o sistema deve gerar um relatorio de quantos pomodoros o usuario concluiu aquela tarefa
 
 
 ## Requisitos do projeto
