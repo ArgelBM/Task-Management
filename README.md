@@ -21,8 +21,6 @@ O projeto em questão é um gerenciador de tarefas (task manager) implementado s
 
 O sistema permite o cadastro de usuários, criação e edição de tarefas, bem como a associação de categorias e pomodoros a cada tarefa. Além disso, é possível gerar relatórios de tarefas concluídas, ordená-las por prioridade e cor, e gerar relatórios de pomodoros completados por tarefa.
 
-O projeto é dividido em quatro pastas: "dados", "gui", "enums" e "negocios". A pasta "dados" contém as classes responsáveis por gerenciar o armazenamento e acesso aos dados da aplicação. 
-
 ## Requisitos do projeto
 
 * **REQ1** - O sistema deve permitir que o usuário crie, visualize, edite e exclua tarefas.
