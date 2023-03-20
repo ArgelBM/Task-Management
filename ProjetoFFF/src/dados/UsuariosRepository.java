@@ -1,4 +1,4 @@
 package dados;
 
-public class UsuariosRepository {
+public class UsuariosRepository implements IRepository {
 }

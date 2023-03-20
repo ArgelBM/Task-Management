@@ -1,4 +1,4 @@
 package dados;
 
-public class TaskRepository {
+public class TaskRepository implements IRepository {
 }
