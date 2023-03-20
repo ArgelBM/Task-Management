@@ -11,15 +11,15 @@ public interface IRepository <T> {
     T listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    listarPorNome(String nome): retorna uma lista com os itens que possuem o nome especificado.
-    List<T> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
+    Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    adicionar(T item): adiciona um novo item à lista.
-    void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;
+    void adicionar(Object a) throws ElementoJaExisteException, ArgumentoInvalidoException;
 
 //    atualizar(T item): atualiza os dados de um item já existente na lista.
     void atualizar(T item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    remover(T item): remove um item da lista.
-    void remover(T item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
+    void remover(Object a) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 }
