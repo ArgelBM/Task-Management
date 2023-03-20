@@ -1,4 +1,7 @@
 package ENUM;
 
-public class Status {
+public enum Status {
+    CONCLUIDA,
+    PENDENTE,
+    FAZENDO
 }
