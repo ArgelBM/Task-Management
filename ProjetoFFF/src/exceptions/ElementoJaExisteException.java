@@ -1,6 +1,6 @@
 package exceptions;
 
-public class ElementoJaExisteException extends RuntimeException {
+public class ElementoJaExisteException extends Exception {
     private Object elemento;
 
     public ElementoJaExisteException(Object obj){

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class DeletarFalhouException extends RuntimeException {
+public class DeletarFalhouException extends Exception {
     private Object elemento;
 
     public DeletarFalhouException(Object obj){

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class ElementoNaoEncontradoException extends RuntimeException {
+public class ElementoNaoEncontradoException extends Exception {
     private Object elemento;
 
     public ElementoNaoEncontradoException(Object obj){

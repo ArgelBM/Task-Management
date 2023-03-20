@@ -1,6 +1,6 @@
 package exceptions;
 
-public class AtualizacaoFalhouException extends RuntimeException {
+public class AtualizacaoFalhouException extends Exception {
     private Object elemento;
 
     public AtualizacaoFalhouException(Object obj){

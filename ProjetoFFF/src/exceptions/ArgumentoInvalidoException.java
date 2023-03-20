@@ -1,6 +1,6 @@
 package exceptions;
 
-public class ArgumentoInvalidoException extends IllegalArgumentException {
+public class ArgumentoInvalidoException extends Exception {
     private Object elemento;
 
     public ArgumentoInvalidoException(Object obj){
