@@ -3,10 +3,7 @@ package dados;
 import exceptions.*;
 import negocio.beans.Categoria;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CategoriasRepository implements IRepository {
 
@@ -38,39 +35,42 @@ public class CategoriasRepository implements IRepository {
     @Override
     public void adicionar(Object item) throws ElementoJaExisteException, ArgumentoInvalidoException {
 
+        if(item == null){
+            throw new ArgumentoInvalidoException("Item vazio");
+        }
+        else {
+            try {
+                categorias.add((Categoria) item);
+            } catch (InputMismatchException e) {
+                throw new ArgumentoInvalidoException("Falha ao deletar item: " + e.getMessage());
+            } catch (NoSuchElementException e) {
+                throw new ArgumentoInvalidoException("Elemento não encontrado: " + e.getMessage());
+            }
+        }
+
     }
 
     @Override
     public void atualizar(Object item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
-        try{
-            categorias.add((Categoria) item);
-
-        }
-        catch (InputMismatchException a){
-
-            System.out.println("ERROR : " +  a.getMessage());
-
-        }
     }
 
     @Override
     public void remover(Object item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
         if(item == null){
-            System.out.println("item vazio");
-
+            throw new ArgumentoInvalidoException("Item vazio");
         }
         else {
             try {
                 categorias.remove((Categoria) item);
-
-            } catch (InputMismatchException a) {
-
-                System.out.println("ERROR : " + a.getMessage());
-
+            } catch (InputMismatchException e) {
+                throw new DeletarFalhouException("Falha ao deletar item: " + e.getMessage());
+            } catch (NoSuchElementException e) {
+                throw new ElementoNaoEncontradoException("Elemento não encontrado: " + e.getMessage());
             }
         }
+
     }
 
     @Override
