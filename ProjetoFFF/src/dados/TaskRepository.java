@@ -40,11 +40,9 @@ public class TaskRepository implements IRepository {
         if (a instanceof Task) {
             Task task = (Task) a;
 
-
             if (ListasDeTask.stream().anyMatch(t -> t.getNome().equals(task.getNome()))) {
                 throw new ElementoJaExisteException(task);
             }
-
 
             ListasDeTask.add(task);
         } else {
