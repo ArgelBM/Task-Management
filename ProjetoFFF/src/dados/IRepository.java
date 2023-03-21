@@ -14,12 +14,12 @@ public interface IRepository <T> {
     Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    adicionar(T item): adiciona um novo item à lista.
-    void adicionar(Object a) throws ElementoJaExisteException, ArgumentoInvalidoException;
+    void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;
 
 //    atualizar(T item): atualiza os dados de um item já existente na lista.
     void atualizar(T item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    remover(T item): remove um item da lista.
-    void remover(Object a) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
+    void remover(T item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 }
