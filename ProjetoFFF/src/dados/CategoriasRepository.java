@@ -4,30 +4,29 @@ import exceptions.*;
 import negocio.beans.Categoria;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Objects;
 
 public class CategoriasRepository implements IRepository {
 
-    ArrayList<Categoria> categorias = new ArrayList<>();
+    List<Categoria> categorias = new ArrayList<>();
 
-
-    //    listarTodos(): retorna uma lista com todos os itens cadastrados
+    @Override
     public List listarTodos() {
-
         return categorias;
     }
 
-    //    listarPorId(int id): retorna o item com o id especificado.
-    public Categoria listarPorId(int id)throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-
+    @Override
+    public Object listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
-    //    listarPorNome(String nome): retorna uma lista com os itens que possuem o nome especificado.
-    public Categoria listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
+    @Override
+    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         Categoria b = null;
         for( Categoria a: categorias) {
-            if (a.getNome() == nome) {
+            if (a.getNome().equals(nome)) {
 
                 b = a;
 
@@ -36,20 +35,50 @@ public class CategoriasRepository implements IRepository {
         return b;
     }
 
-    //    adicionar(T item): adiciona um novo item à lista.
-    public void adicionar(Categoria a) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        categorias.add(a);
-    }
-
-    //    atualizar(T item): atualiza os dados de um item já existente na lista.
-    public void atualizar(Categoria a) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
+    @Override
+    public void adicionar(Object item) throws ElementoJaExisteException, ArgumentoInvalidoException {
 
     }
 
-    //    remover(T item): remove um item da lista.
-    public void remover(Categoria a) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
+    @Override
+    public void atualizar(Object item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
-                categorias.remove(a);
+        try{
+            categorias.add((Categoria) item);
 
+        }
+        catch (InputMismatchException a){
+
+            System.out.println("ERROR : " +  a.getMessage());
+
+        }
     }
+
+    @Override
+    public void remover(Object item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+
+        if(item == null){
+            System.out.println("item vazio");
+
+        }
+        else {
+            try {
+                categorias.remove((Categoria) item);
+
+            } catch (InputMismatchException a) {
+
+                System.out.println("ERROR : " + a.getMessage());
+
+            }
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CategoriasRepository that)) return false;
+        return Objects.equals(categorias, that.categorias);
+    }
+
+
 }
