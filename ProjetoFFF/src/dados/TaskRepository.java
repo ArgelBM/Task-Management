@@ -37,7 +37,19 @@ public class TaskRepository implements IRepository {
 
     @Override
     public void adicionar(Object a) throws ElementoJaExisteException, ArgumentoInvalidoException {
+        if (a instanceof Task) {
+            Task task = (Task) a;
 
+
+            if (ListasDeTask.stream().anyMatch(t -> t.getNome().equals(task.getNome()))) {
+                throw new ElementoJaExisteException(task);
+            }
+
+
+            ListasDeTask.add(task);
+        } else {
+            throw new ArgumentoInvalidoException(a);
+        }
     }
 
     @Override
