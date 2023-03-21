@@ -5,17 +5,17 @@ import negocio.beans.Categoria;
 
 import java.util.*;
 
-public class CategoriasRepository implements IRepository {
+public class CategoriasRepository implements IRepository<Categoria> {
 
     List<Categoria> categorias = new ArrayList<>();
 
     @Override
-    public List listarTodos() {
+    public List<Categoria> listarTodos() {
         return categorias;
     }
 
     @Override
-    public Object listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Categoria listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
 
@@ -33,8 +33,7 @@ public class CategoriasRepository implements IRepository {
     }
 
     @Override
-    public void adicionar(Object item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-
+    public void adicionar(Categoria item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if(item == null){
             throw new ArgumentoInvalidoException("Item vazio");
         }
@@ -47,17 +46,15 @@ public class CategoriasRepository implements IRepository {
                 throw new ArgumentoInvalidoException("Elemento não encontrado: " + e.getMessage());
             }
         }
+    }
+
+    @Override
+    public void atualizar(Categoria item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
     }
 
     @Override
-    public void atualizar(Object item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-
-    }
-
-    @Override
-    public void remover(Object item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-
+    public void remover(Categoria item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
         if(item == null){
             throw new ArgumentoInvalidoException("Item vazio");
         }
@@ -70,15 +67,11 @@ public class CategoriasRepository implements IRepository {
                 throw new ElementoNaoEncontradoException("Elemento não encontrado: " + e.getMessage());
             }
         }
-
     }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CategoriasRepository that)) return false;
         return Objects.equals(categorias, that.categorias);
     }
-
 
 }

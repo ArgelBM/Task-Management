@@ -6,21 +6,21 @@ import negocio.beans.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskRepository implements IRepository {
+public class TaskRepository implements IRepository<Task> {
+    List<Task> listasDeTask = new ArrayList<>();
 
-    private List<Task> ListasDeTask = new ArrayList<>();
     @Override
-    public List listarTodos() {
-        return ListasDeTask;
+    public List<Task> listarTodos() {
+        return listasDeTask;
     }
 
     @Override
-    public Object listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Task listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
 
     @Override
-    public static Task listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         if (nome == null || nome.isEmpty()) {
             throw new ArgumentoInvalidoException(nome);
         }
@@ -33,10 +33,10 @@ public class TaskRepository implements IRepository {
 
         throw new ElementoNaoEncontradoException(nome);
     }
-}
+
 
     @Override
-    public void adicionar(Object a) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if (a instanceof Task) {
             Task task = (Task) a;
 
@@ -45,18 +45,17 @@ public class TaskRepository implements IRepository {
             }
 
             ListasDeTask.add(task);
-        } else {
+        } else
             throw new ArgumentoInvalidoException(a);
-        }
     }
 
     @Override
-    public void atualizar(Object item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void atualizar(Task item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
     }
 
     @Override
-    public void remover(Object a) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
     }
 }
