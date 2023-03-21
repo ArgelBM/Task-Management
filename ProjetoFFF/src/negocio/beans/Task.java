@@ -13,15 +13,13 @@ public class Task {
     private Status status;
     private LocalDate dataCriada;
     private Prioridades prioridades;
-    private List<Pomodoro> pomodoros = new ArrayList<>();
 
-    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades, List<Pomodoro> pomodoros) {
+    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.status = status;
         this.dataCriada = dataCriada;
         this.prioridades = prioridades;
-        this.pomodoros = pomodoros;
     }
 
     public String getNome() {
@@ -63,14 +61,5 @@ public class Task {
     public void setPrioridades(Prioridades prioridades) {
         this.prioridades = prioridades;
     }
-
-    public List<Pomodoro> getPomodoros() {
-        return pomodoros;
-    }
-
-    public void setPomodoros(List<Pomodoro> pomodoros) {
-        this.pomodoros = pomodoros;
-    }
-
 
 }

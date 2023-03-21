@@ -25,7 +25,7 @@ public class TaskRepository implements IRepository<Task> {
             throw new ArgumentoInvalidoException(nome);
         }
 
-        for (Task task : ListasDeTask) {
+        for (Task task : listasDeTask) {
             if (task.getNome().equals(nome)) {
                 return task;
             }
@@ -37,16 +37,25 @@ public class TaskRepository implements IRepository<Task> {
 
     @Override
     public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if (a instanceof Task) {
-            Task task = (Task) a;
-
-            if (ListasDeTask.stream().anyMatch(t -> t.getNome().equals(task.getNome()))) {
-                throw new ElementoJaExisteException(task);
-            }
-
-            ListasDeTask.add(task);
-        } else
-            throw new ArgumentoInvalidoException(a);
+        if (item == null){
+            throw new ArgumentoInvalidoException(item);
+        }
+        if(item.getNome() == null || item.getNome().trim().isEmpty()){
+            throw new ArgumentoInvalidoException(item);
+        }
+        if(item.getConteudo() == null || item.getConteudo().trim().isEmpty()){
+            throw new ArgumentoInvalidoException(item);
+        }
+        if(item.getStatus() == null){
+            throw new ArgumentoInvalidoException(item);
+        }
+        if(item.getPrioridades() == null){
+            throw new ArgumentoInvalidoException(item);
+        }
+        if (listasDeTask.contains(item)) {
+            throw new ElementoJaExisteException(item);
+        }
+        listasDeTask.add(item);
     }
 
     @Override
