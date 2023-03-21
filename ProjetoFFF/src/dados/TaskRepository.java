@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository implements IRepository<Task> {
-    List<Task> listasDeTask = new ArrayList<>();
+    static List<Task> listasDeTask = new ArrayList<>();
 
     @Override
     public List<Task> listarTodos() {
@@ -34,9 +34,7 @@ public class TaskRepository implements IRepository<Task> {
         throw new ElementoNaoEncontradoException(nome);
     }
 
-
-    @Override
-    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public static void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if (item == null){
             throw new ArgumentoInvalidoException(item);
         }
