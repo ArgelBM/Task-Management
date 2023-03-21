@@ -1,13 +1,17 @@
 package dados;
 
 import exceptions.*;
+import negocio.beans.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository implements IRepository {
+
+    private List<Task> ListasDeTask = new ArrayList<>();
     @Override
     public List listarTodos() {
-        return null;
+        return ListasDeTask;
     }
 
     @Override
@@ -16,9 +20,20 @@ public class TaskRepository implements IRepository {
     }
 
     @Override
-    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        return null;
+    public Task listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        if (nome == null || nome.isEmpty()) {
+            throw new ArgumentoInvalidoException(nome);
+        }
+
+        for (Task task : ListasDeTask) {
+            if (task.getNome().equals(nome)) {
+                return task;
+            }
+        }
+
+        throw new ElementoNaoEncontradoException(nome);
     }
+}
 
     @Override
     public void adicionar(Object a) throws ElementoJaExisteException, ArgumentoInvalidoException {

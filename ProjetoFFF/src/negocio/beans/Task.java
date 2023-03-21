@@ -4,17 +4,19 @@ import enums.Prioridades;
 import enums.Status;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task {
-    private String titulo;
+    private String nome;
     private String conteudo;
     private Status status;
     private LocalDate dataCriada;
     private Prioridades prioridades;
-    private List<Pomodoro> pomodoros;
+    private List<Pomodoro> pomodoros = new ArrayList<>();
 
-    public Task(String titulo, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades, List<Pomodoro> pomodoros) {
-        this.titulo = titulo;
+    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades, List<Pomodoro> pomodoros) {
+        this.nome = nome;
         this.conteudo = conteudo;
         this.status = status;
         this.dataCriada = dataCriada;
@@ -22,12 +24,12 @@ public class Task {
         this.pomodoros = pomodoros;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getConteudo() {
