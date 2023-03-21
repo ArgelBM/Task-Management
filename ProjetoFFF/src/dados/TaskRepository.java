@@ -20,7 +20,7 @@ public class TaskRepository implements IRepository {
     }
 
     @Override
-    public Task listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public static Task listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         if (nome == null || nome.isEmpty()) {
             throw new ArgumentoInvalidoException(nome);
         }

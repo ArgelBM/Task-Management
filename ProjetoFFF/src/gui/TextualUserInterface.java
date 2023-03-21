@@ -1,28 +1,27 @@
 package gui;
 
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.ControladorPomodoro;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
+import negocio.Fachada;
 import negocio.beans.Task;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TextualUserInterface {
     private final Scanner scanner;
-    private final ControladorTasks controladorTasks;
-    private final ControladorUsuarios controladorUsuarios;
-    private final ControladorPomodoro controladorPomodoro;
+    private final Fachada fachada;
 
-    public TextualUserInterface(ControladorTasks controladorTasks,
-                                ControladorUsuarios controladorUsuarios,
-                                ControladorPomodoro controladorPomodoro){
+    public TextualUserInterface(){
         this.scanner = new Scanner(System.in);
-        this.controladorTasks = controladorTasks;
-        this.controladorUsuarios = controladorUsuarios;
-        this.controladorPomodoro = controladorPomodoro;
+        this.fachada = new Fachada();
     }
 
     public void exibirMenuPrincipal(){
@@ -34,7 +33,7 @@ public class TextualUserInterface {
             System.out.println("3. Gerar Relatórios");
             System.out.println("4. Iniciar Pomodoro");
             System.out.println("0. Sair");
-            System.out.printf("Opção: ");
+            System.out.println("Opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -49,7 +48,7 @@ public class TextualUserInterface {
         }while (opcao != 0);
     }
 
-    private void exibirMenuTarefas{
+    private void exibirMenuTarefas(){
         int opcao;
         do{
             System.out.println("== Gerenciar Tarefas ==");
@@ -79,40 +78,52 @@ public class TextualUserInterface {
 
     private void listarTarefas(){
         System.out.println("== Listar Tarefas ==");
-        for(Task task : controladorTasks.listarTodasTarefas()){
-            System.out.println(task);
-        }
+        this.fachada.listarTodasTarefas();
     }
 
-    private void adicionarTarefa() throws {
-        System.out.println("== Adicionar Tarefa ==");
+    public void adicionarTarefa() {
+        System.out.println("=== Adicionar Tarefa ===");
+
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+
+        System.out.print("Descrição: ");
+        String descricao = scanner.nextLine();
+
+        LocalDate dataLimite = null;
+        while (dataLimite == null) {
+            System.out.print("Data limite (formato dd/mm/aaaa): ");
+            String dataLimiteStr = scanner.nextLine();
+            try {
+                dataLimite = LocalDate.parse(dataLimiteStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            } catch (DateTimeParseException e) {
+                System.out.println("Data inválida. Tente novamente.");
+            }
+        }
+
+        int prioridade = -1;
+        while (prioridade < 0 || prioridade > 5) {
+            System.out.print("Prioridade (0-5): ");
+            try {
+                prioridade = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Valor inválido. Tente novamente.");
+                scanner.nextLine();
+            }
+        }
 
         try {
-            System.out.println("Digite o título da tarefa:");
-            String titulo = scanner.nextLine();
-
-            System.out.println("Digite a descrição da tarefa:");
-            String descricao = scanner.nextLine();
-
-            System.out.println("Digite a categoria da tarefa:");
-            String categoria = scanner.nextLine();
-
-            System.out.println("Digite a data de início da tarefa (no formato DD/MM/AAAA):");
-            LocalDate dataInicio = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-            System.out.println("Digite a data de término da tarefa (no formato DD/MM/AAAA):");
-            LocalDate dataFim = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-            Task task = new Task(titulo, descricao, categoria, dataInicio, dataFim);
-            controladorTasks.adicionarTarefa(task);
-
+            ControladorTasks.adicionarTarefa(titulo, descricao, dataLimite, prioridade);
             System.out.println("Tarefa adicionada com sucesso!");
-        } catch (DateTimeParseException e) {
-            System.out.println("Data inválida! Certifique-se de digitar a data no formato DD/MM/AAAA.");
-        } catch (ElementoJaExisteException | ArgumentoInvalidoException e) {
-            System.out.println(e.getMessage());
+        } catch (ElementoJaExisteException e) {
+            System.out.println("Erro: a tarefa já existe.");
+        } catch (ArgumentoInvalidoException e) {
+            System.out.println("Erro: argumento inválido.");
         }
     }
+
+
 
     private void editarTarefa() {
         System.out.println("Editar Tarefa");
