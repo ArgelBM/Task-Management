@@ -11,7 +11,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public List<Usuario> listarTodos() {
-        return usuarios;
+        return null;
     }
 
     @Override
@@ -22,6 +22,11 @@ public class UsuariosRepository implements IRepository<Usuario> {
     @Override
     public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
+    }
+
+    @Override
+    public void adicionar(Usuario item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+
     }
 
     @Override
