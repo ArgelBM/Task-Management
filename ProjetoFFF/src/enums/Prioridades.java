@@ -3,20 +3,21 @@ package enums;
 import exceptions.ArgumentoInvalidoException;
 
 public enum Prioridades {
-        IMPORTANTE("Importante"),
-        IRRELEVANTE("Irrelevante"),
-        FAZ_SE_DER_TEMPO("Faz se der tempo");
+        IMPORTANTE("Importante","vermelho"),
+        IRRELEVANTE("Irrelevante","amarelo"),
+        FAZ_SE_DER_TEMPO("Faz se der tempo","azul");
 
         private final String prioridade;
+        private final String cor;
 
-        Prioridades(String prioridade) {
-            this.prioridade = prioridade;
-        }
+        Prioridades(String prioridade, String cor) {this.prioridade = prioridade; this.cor = cor;}
+
 
         @Override
         public String toString() {
             return prioridade;
         }
+        public String getCor() { return cor;}
 
         public static Prioridades fromString(String text) throws ArgumentoInvalidoException {
             for (Prioridades p : Prioridades.values()) {

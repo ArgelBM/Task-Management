@@ -71,7 +71,7 @@ public class Fachada {
 
 
     public List<Task> listarTask(){
-        return ControladorTasks.listarPorTodos();
+        return ControladorTasks.listarTodos();
     }
     public List<Task> listarTaskPorNome(String nome){
         return ControladorTasks.listarPornome(nome);

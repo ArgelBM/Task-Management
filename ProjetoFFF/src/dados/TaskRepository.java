@@ -51,7 +51,7 @@ public class TaskRepository implements IRepository<Task> {
     @Override
     public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if (item == null){
-            throw new ArgumentoInvalidoException(item);
+            throw new ArgumentoInvalidoException(null);
         }
         if(item.getNome() == null || item.getNome().trim().isEmpty()){
             throw new ArgumentoInvalidoException(item);
@@ -72,7 +72,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     @Override
-    public void atualizar(Task item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void atualizar(Task item) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         if (item == null) {
             throw new ArgumentoInvalidoException(null);
         }
@@ -114,7 +114,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     public List<Task> listarPorStatus(Status status) throws ElementoNaoEncontradoException {
-        List<Task> tasksComStatus = new ArrayList<Task>();
+        List<Task> tasksComStatus = new ArrayList<>();
 
         for(Task task : listasDeTask){
             if(task.getStatus() == status){
@@ -130,7 +130,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     public List<Task> listarPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException {
-        List<Task> tasksComPrioridade = new ArrayList<Task>();
+        List<Task> tasksComPrioridade = new ArrayList<>();
 
         for(Task task : listasDeTask){
             if(task.getPrioridades() == prioridade){
@@ -146,7 +146,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     public List<Task> listarPorCor(String cor) throws ElementoNaoEncontradoException {
-        List<Task> tasksComCor = new ArrayList<Task>();
+        List<Task> tasksComCor = new ArrayList<>();
 
         for(Task task : listasDeTask){
             if(task.getCor().equals(cor)){
@@ -162,7 +162,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     public List<Task> listarPorUsuario(String usuario) throws ElementoNaoEncontradoException {
-        List<Task> tasksDoUsuario = new ArrayList<Task>();
+        List<Task> tasksDoUsuario = new ArrayList<>();
 
         for(Task task : listasDeTask){
             if(task.getUsuario().equals(usuario)){
@@ -207,27 +207,26 @@ public class TaskRepository implements IRepository<Task> {
             }
             fileWriter.close();
         }
-
-        public List<Task> carregarTarefas() throws IOException {
-            List<Task> tasks = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] fields = line.split(FIELD_SEPARATOR);
-                String nome = fields[0];
-                String conteudo = fields[1];
-                Status status = Status.valueOf(fields[2]);
-                Prioridades prioridade = Prioridades.valueOf(fields[3]);
-                String cor = fields[4];
-                String usuario = fields[5];
-                Task task = new Task(nome, conteudo, status, prioridade, cor, usuario);
-                tasks.add(task);
-                line = reader.readLine();
-            }
-            reader.close();
-            return tasks;
+    public List<Task> carregarTarefas() throws IOException {
+        List<Task> tasks = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] fields = line.split(FIELD_SEPARATOR);
+            String nome = fields[0];
+            String conteudo = fields[1];
+            Status status = Status.valueOf(fields[2]);
+            Prioridades prioridade = Prioridades.valueOf(fields[3]);
+            String cor = fields[4];
+            Usuario usuario = Usuario.valueOf(fields[5]);
+            Task task = new Task(nome, conteudo, status, null,null,prioridade,null, cor,usuario);
+            tasks.add(task);
+            line = reader.readLine();
         }
+        reader.close();
+        return tasks;
     }
 
 }
+
 

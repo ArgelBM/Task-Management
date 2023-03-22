@@ -29,7 +29,7 @@ public class ControladorTasks {
         System.out.println("Esse método será implementado com file posteriormente");
     }
 
-    public static List<Task> listarPorTodos() { //chamar a função do repositorio que retorna a lista
+    public static List<Task> listarTodos() {
     }
 
     public static List<Task> listarPornome(String nome) { //chamar a função do repositorio
