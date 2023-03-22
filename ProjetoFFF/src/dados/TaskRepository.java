@@ -14,14 +14,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaskRepository implements IRepository<Task> {
 
     private static final String FILE_NAME = "tasks.txt";
     private static final String FIELD_SEPARATOR = ";";
-    static List<Task> listasDeTask = new ArrayList<>();
+    List<Task> listasDeTask = new ArrayList<>();
 
     @Override
     public List<Task> listarTodos() {
@@ -35,17 +33,7 @@ public class TaskRepository implements IRepository<Task> {
 
     @Override
     public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if (nome == null || nome.isEmpty()) {
-            throw new ArgumentoInvalidoException(nome);
-        }
-
-        for (Task task : listasDeTask) {
-            if (task.getNome().equals(nome)) {
-                return task;
-            }
-        }
-
-        throw new ElementoNaoEncontradoException(nome);
+        return null;
     }
 
     @Override
