@@ -10,7 +10,17 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class TaskRepository implements IRepository<Task> {
+
+    private static final String FILE_NAME = "tasks.txt";
+    private static final String FIELD_SEPARATOR = ";";
     static List<Task> listasDeTask = new ArrayList<>();
 
     @Override
@@ -168,10 +178,56 @@ public class TaskRepository implements IRepository<Task> {
     }
 
 
-    public void gerarRelatorioPorMes(Month){ }
+    public List<Task> gerarRelatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
+        List<Task> tarefasConcluidasNoMes = new ArrayList<>();
 
-    public void  salvarTarefas(){ }
+        for (Task task : listasDeTask) {
+            if (task.getStatus() == Status.CONCLUIDA && task.getDataConclusao().getMonth() == mes) {
+                tarefasConcluidasNoMes.add(task);
+            }
+        }
 
-    public void carregarTarefas(){ }
+        if (tarefasConcluidasNoMes.isEmpty()) {
+            throw new ElementoNaoEncontradoException("Nenhuma tarefa concluída encontrada no mês " + mes);
+        }
+
+        return tarefasConcluidasNoMes;
+    }
+
+
+    public void salvarTarefas(List<Task> tasks) throws IOException {
+            FileWriter fileWriter = new FileWriter(FILE_NAME);
+            for (Task task : tasks) {
+                fileWriter.write(task.getNome() + FIELD_SEPARATOR
+                        + task.getConteudo() + FIELD_SEPARATOR
+                        + task.getStatus() + FIELD_SEPARATOR
+                        + task.getPrioridades() + FIELD_SEPARATOR
+                        + task.getCor() + FIELD_SEPARATOR
+                        + task.getUsuario() + "\n");
+            }
+            fileWriter.close();
+        }
+
+        public List<Task> carregarTarefas() throws IOException {
+            List<Task> tasks = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] fields = line.split(FIELD_SEPARATOR);
+                String nome = fields[0];
+                String conteudo = fields[1];
+                Status status = Status.valueOf(fields[2]);
+                Prioridades prioridade = Prioridades.valueOf(fields[3]);
+                String cor = fields[4];
+                String usuario = fields[5];
+                Task task = new Task(nome, conteudo, status, prioridade, cor, usuario);
+                tasks.add(task);
+                line = reader.readLine();
+            }
+            reader.close();
+            return tasks;
+        }
+    }
+
 }
 

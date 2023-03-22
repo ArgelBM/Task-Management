@@ -12,14 +12,34 @@ public class Task {
     private String conteudo;
     private Status status;
     private LocalDate dataCriada;
+    private LocalDate dataConclusao;
     private Prioridades prioridades;
+    private List<Pomodoro> pomodoros = new ArrayList<>();
 
-    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades) {
+    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, Prioridades prioridades, List<Pomodoro> pomodoros) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.status = status;
         this.dataCriada = dataCriada;
+        this.dataConclusao = dataConclusao;
         this.prioridades = prioridades;
+        this.pomodoros = pomodoros;
+    }
+
+    public LocalDate getDataConclusao() {
+        return dataConclusao;
+    }
+
+    public void setDataConclusao(LocalDate dataConclusao) {
+        this.dataConclusao = dataConclusao;
+    }
+
+    public List<Pomodoro> getPomodoros() {
+        return pomodoros;
+    }
+
+    public void setPomodoros(List<Pomodoro> pomodoros) {
+        this.pomodoros = pomodoros;
     }
 
     public String getNome() {
