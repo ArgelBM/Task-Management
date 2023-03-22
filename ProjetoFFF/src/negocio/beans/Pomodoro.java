@@ -6,17 +6,18 @@ public class Pomodoro {
     private int pomodoro;
     private int ciclo;
     private LocalDateTime tempo;
-    private Task tarefa;
-    private boolean concluido;
+    private Task task;
 
-    public Pomodoro(int pomodoro, int ciclo, LocalDateTime tempo, Task tarefa, boolean concluido) {
+    public Pomodoro(int pomodoro, int ciclo, LocalDateTime tempo, Task task) {
         this.pomodoro = pomodoro;
         this.ciclo = ciclo;
         this.tempo = tempo;
-        this.tarefa = tarefa;
-        this.concluido = concluido;
+        this.task = task;
     }
 
+    public void adicionarPomodoro(){
+        this.pomodoro++;
+    }
     public int getPomodoro() {
         return pomodoro;
     }
@@ -41,19 +42,23 @@ public class Pomodoro {
         this.tempo = tempo;
     }
 
-    public Task getTarefa() {
-        return tarefa;
+    public Task getTask() {
+        return task;
     }
 
-    public void setTarefa(Task tarefa) {
-        this.tarefa = tarefa;
+    public void setTarefa(Task task) {
+        this.task = task;
     }
 
-    public boolean isConcluido() {
-        return concluido;
+    public static int getTempoPomodoro() {
+        return 25;
     }
 
-    public void setConcluido(boolean concluido) {
-        this.concluido = concluido;
+    public static int getTempoDescanso() {
+        return 5;
+    }
+
+    public static int getTempoDescansoLongo() {
+        return 25;
     }
 }

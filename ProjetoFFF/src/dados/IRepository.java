@@ -14,7 +14,7 @@ public interface IRepository <T> {
     Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    adicionar(T item): adiciona um novo item à lista.
-static void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;
+    void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;
 
 //    atualizar(T item): atualiza os dados de um item já existente na lista.
     void atualizar(T item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;

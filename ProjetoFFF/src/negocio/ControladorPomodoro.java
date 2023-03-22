@@ -1,6 +1,5 @@
 package negocio;
 
-import negocio.beans.Categoria;
 import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 
@@ -19,7 +18,7 @@ public class ControladorPomodoro {
     public static void adicionar(Pomodoro obj) {
     }
 
-    public static void remover(Categoria obj) {
+    public static void remover(Pomodoro obj) {
     }
 
     public static List<Pomodoro> listarPorTarefa(Task obj) {

@@ -49,7 +49,7 @@ public class Fachada {
     public void adicionarPomodoro(Pomodoro obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
         ControladorPomodoro.adicionar(obj);
     }
-    public void removerCategoria(Categoria obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
+    public void removerPomodoro(Pomodoro obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
         ControladorPomodoro.remover(obj);
     }
     public List<Pomodoro> pomodoroPorTarefa(Task obj){

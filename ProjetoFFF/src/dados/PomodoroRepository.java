@@ -26,12 +26,28 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
 
     @Override
     public void adicionar(Pomodoro item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-
+        this.pomodoros.add(item);
     }
 
     @Override
     public void atualizar(Pomodoro item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        if (item == null) {
+            throw new ArgumentoInvalidoException(item);
+        }
 
+        boolean atualizado = false;
+
+        for (Pomodoro p : this.pomodoros) {
+            if (p.getTempo().equals(item.getTempo())) {
+                this.pomodoros.set(this.pomodoros.indexOf(p), item);
+                atualizado = true;
+                break;
+            }
+        }
+
+        if (!atualizado) {
+            throw new ElementoNaoEncontradoException(item);
+        }
     }
 
     @Override
