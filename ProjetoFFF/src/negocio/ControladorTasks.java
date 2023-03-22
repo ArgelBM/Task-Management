@@ -26,21 +26,23 @@ public class ControladorTasks {
     }
 
     public static void carregar(Task obj) {
+        System.out.println("Esse método será implementado com file posteriormente");
     }
 
-    public static List<Task> listarPorTodos() {
+    public static List<Task> listarPorTodos() { //chamar a função do repositorio que retorna a lista
     }
 
-    public static List<Task> listarPornome(String nome) {
+    public static List<Task> listarPornome(String nome) { //chamar a função do repositorio
     }
 
-    public static void adicionar(Task obj) {
+    public static void adicionar(Task obj) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        TaskRepository.adicionar(obj);
     }
 
-    public static void atualizar(Task obj, Categoria elemento) {
+    public static void atualizar(Task obj, Categoria elemento) { //modificar a categoria da tarefa (cor e prioridade, isso ta em beans)
     }
 
-    public static void remover(Task obj) {
+    public static void remover(Task obj) { //depois de fazer em repositorio chamar aqui. tenho que ver qual é a categoria, ver exemplo em atualizar.
     }
 
     public static List<Task> listarPorStatus(Status status) {
@@ -62,11 +64,7 @@ public class ControladorTasks {
     }
 
     public static void salvar(Task obj) {
-    }
-
-    public void adicionarTarefa(String nome, String conteudo, Status status, LocalDate datacriada, Prioridades prioridade) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        Task task = new Task(nome, conteudo, status, datacriada, prioridade);
-        TaskRepository.adicionar(task);
+        System.out.println("Esse método será implementado com file posteriormente");
     }
 
 }
