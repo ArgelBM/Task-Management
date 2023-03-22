@@ -59,9 +59,6 @@ public class ControladorTasks {
         return repo.listarPorCor(cor);
     }
 
-    public static List<Task> listarConcluidas() {
-    }
-
     public static List<Task> listarPorUsuario(String usuario) throws ElementoNaoEncontradoException {
         TaskRepository repo = new TaskRepository();
         return repo.listarPorUsuario(usuario);
