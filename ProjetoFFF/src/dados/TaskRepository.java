@@ -39,7 +39,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     @Override
-    public static void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if (item == null){
             throw new ArgumentoInvalidoException(item);
         }

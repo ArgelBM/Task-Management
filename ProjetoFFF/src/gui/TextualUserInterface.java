@@ -23,6 +23,7 @@ public class TextualUserInterface {
     private final Scanner scanner;
     private final Fachada fachada;
 
+
     public TextualUserInterface(){
         this.scanner = new Scanner(System.in);
         this.fachada = new Fachada();

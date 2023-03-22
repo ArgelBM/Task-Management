@@ -35,8 +35,9 @@ public class ControladorTasks {
     public static List<Task> listarPornome(String nome) { //chamar a função do repositorio
     }
 
-    public static void adicionar(Task obj) throws ArgumentoInvalidoException, ElementoJaExisteException {
-        TaskRepository.adicionar(obj);
+    public static void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        TaskRepository repo = new TaskRepository();
+        repo.adicionar(task);
     }
 
     public static void atualizar(Task obj, Categoria elemento) { //modificar a categoria da tarefa (cor e prioridade, isso ta em beans)
