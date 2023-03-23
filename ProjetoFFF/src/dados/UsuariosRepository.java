@@ -1,17 +1,18 @@
 package dados;
 
 import exceptions.*;
+import negocio.beans.Task;
 import negocio.beans.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuariosRepository implements IRepository<Usuario> {
     List<Usuario> usuarios = new ArrayList<>();
 
+
     @Override
     public List<Usuario> listarTodos() {
-        return null;
+        return usuarios;
     }
 
     @Override

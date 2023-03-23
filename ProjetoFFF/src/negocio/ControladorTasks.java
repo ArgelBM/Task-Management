@@ -52,7 +52,7 @@ public class ControladorTasks {
         return repo.listarPor(Filtro.STATUS, status);
     }
 
-    public static List<Task> listarPorPrioridade(Prioridades prioridades) throws ElementoNaoEncontradoException {
+    public static List<Task> listarPorPrioridade(Prioridades prioridades) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         TaskRepository repo = new TaskRepository();
         return repo.listarPor(Filtro.PRIORIDADE, prioridades);
     }
