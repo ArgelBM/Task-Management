@@ -20,7 +20,7 @@ public class CategoriasRepository implements IRepository<Categoria> {
     }
 
     @Override
-    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Categoria listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         Categoria b = null;
         for( Categoria a: categorias) {
             if (a.getNome().equals(nome)) {
