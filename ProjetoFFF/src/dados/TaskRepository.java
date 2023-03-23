@@ -1,5 +1,6 @@
 package dados;
 
+import enums.Filtro;
 import enums.Prioridades;
 import enums.Status;
 import exceptions.*;
@@ -101,68 +102,41 @@ public class TaskRepository implements IRepository<Task> {
         }
     }
 
-    public List<Task> listarPorStatus(Status status) throws ElementoNaoEncontradoException {
-        List<Task> tasksComStatus = new ArrayList<>();
+    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        List<Task> tasksFiltradas = new ArrayList<>();
 
-        for(Task task : listasDeTask){
-            if(task.getStatus() == status){
-                tasksComStatus.add(task);
+        for(Task task : listasDeTask) {
+            switch(filtro) {
+                case STATUS:
+                    if(task.getStatus() == (Status) valor) {
+                        tasksFiltradas.add(task);
+                    }
+                    break;
+                case PRIORIDADE:
+                    if(task.getPrioridades() == (Prioridades) valor) {
+                        tasksFiltradas.add(task);
+                    }
+                    break;
+                case COR:
+                    if(task.getCor().equals((String) valor)) {
+                        tasksFiltradas.add(task);
+                    }
+                    break;
+                case USUARIO:
+                    if(task.getUsuario().equals((String) valor)) {
+                        tasksFiltradas.add(task);
+                    }
+                    break;
+                default:
+                    throw new ArgumentoInvalidoException(valor);
             }
         }
 
-        if(tasksComStatus.isEmpty()){
-            throw new ElementoNaoEncontradoException("Nenhuma tarefa encontrada com o status " + status);
+        if(tasksFiltradas.isEmpty()){
+            throw new ElementoNaoEncontradoException(valor);
         }
 
-        return tasksComStatus;
-    }
-
-    public List<Task> listarPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException {
-        List<Task> tasksComPrioridade = new ArrayList<>();
-
-        for(Task task : listasDeTask){
-            if(task.getPrioridades() == prioridade){
-                tasksComPrioridade.add(task);
-            }
-        }
-
-        if(tasksComPrioridade.isEmpty()){
-            throw new ElementoNaoEncontradoException("Nenhuma tarefa encontrada com a prioridade " + prioridade);
-        }
-
-        return tasksComPrioridade;
-    }
-
-    public List<Task> listarPorCor(String cor) throws ElementoNaoEncontradoException {
-        List<Task> tasksComCor = new ArrayList<>();
-
-        for(Task task : listasDeTask){
-            if(task.getCor().equals(cor)){
-                tasksComCor.add(task);
-            }
-        }
-
-        if(tasksComCor.isEmpty()){
-            throw new ElementoNaoEncontradoException("Nenhuma tarefa encontrada com a cor " + cor);
-        }
-
-        return tasksComCor;
-    }
-
-    public List<Task> listarPorUsuario(String usuario) throws ElementoNaoEncontradoException {
-        List<Task> tasksDoUsuario = new ArrayList<>();
-
-        for(Task task : listasDeTask){
-            if(task.getUsuario().equals(usuario)){
-                tasksDoUsuario.add(task);
-            }
-        }
-
-        if(tasksDoUsuario.isEmpty()){
-            throw new ElementoNaoEncontradoException("Nenhuma tarefa encontrada para o usuário " + usuario);
-        }
-
-        return tasksDoUsuario;
+        return tasksFiltradas;
     }
 
 
@@ -176,7 +150,7 @@ public class TaskRepository implements IRepository<Task> {
         }
 
         if (tarefasConcluidasNoMes.isEmpty()) {
-            throw new ElementoNaoEncontradoException("Nenhuma tarefa concluída encontrada no mês " + mes);
+            throw new ElementoNaoEncontradoException(mes);
         }
 
         return tarefasConcluidasNoMes;

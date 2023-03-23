@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.TaskRepository;
+import enums.Filtro;
 import enums.Prioridades;
 import enums.Status;
 import exceptions.ArgumentoInvalidoException;
@@ -8,6 +9,8 @@ import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;
+import negocio.beans.Usuario;
+
 import java.io.IOException;
 import java.time.Month;
 import java.util.List;
@@ -44,24 +47,24 @@ public class ControladorTasks {
         repo.remover(task);
     }
 
-    public static List<Task> listarPorStatus(Status status) throws ElementoNaoEncontradoException {
+    public static List<Task> listarPorStatus(Status status) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         TaskRepository repo = new TaskRepository();
-        return repo.listarPorStatus(status);
+        return repo.listarPor(Filtro.STATUS, status);
     }
 
-    public static List<Task> listarPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException {
+    public static List<Task> listarPorPrioridade(Prioridades prioridades) throws ElementoNaoEncontradoException {
         TaskRepository repo = new TaskRepository();
-        return repo.listarPorPrioridade(prioridade);
+        return repo.listarPor(Filtro.PRIORIDADE, prioridades);
     }
 
-    public static List<Task> listarPorCor(String cor) throws ElementoNaoEncontradoException {
+    public static List<Task> listarPorCor(String cor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         TaskRepository repo = new TaskRepository();
-        return repo.listarPorCor(cor);
+        return repo.listarPor(Filtro.COR, cor);
     }
 
-    public static List<Task> listarPorUsuario(String usuario) throws ElementoNaoEncontradoException {
+    public static List<Task> listarPorUsuario(Usuario usuario) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         TaskRepository repo = new TaskRepository();
-        return repo.listarPorUsuario(usuario);
+        return repo.listarPor(Filtro.USUARIO,usuario);
     }
 
     public static void relatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
@@ -72,12 +75,10 @@ public class ControladorTasks {
     public static void salvar(List<Task> tasks) throws IOException {
         TaskRepository repo = new TaskRepository();
         repo.salvarTarefas(tasks);
-        System.out.println("Esse método será implementado com file posteriormente");
     }
 
     public static void carregar() throws IOException {
         TaskRepository repo = new TaskRepository();
         repo.carregarTarefas();
-        System.out.println("Esse método será implementado com file posteriormente");
     }
 }
