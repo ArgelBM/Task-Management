@@ -62,11 +62,6 @@ public class ControladorTasks {
         return repo.listarPor(Filtro.COR, cor);
     }
 
-    public static List<Task> listarPorUsuario(Usuario usuario) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        TaskRepository repo = new TaskRepository();
-        return repo.listarPor(Filtro.USUARIO,usuario);
-    }
-
     public static void relatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
         TaskRepository repo = new TaskRepository();
         repo.gerarRelatorioPorMes(mes);
