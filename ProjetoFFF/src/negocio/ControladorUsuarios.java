@@ -43,4 +43,9 @@ public class ControladorUsuarios {
         return repo.listarPorId(id);
     }
 
+    public static void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        UsuariosRepository repo = new UsuariosRepository();
+        repo.atualizar(usuario);
+    }
+
 }

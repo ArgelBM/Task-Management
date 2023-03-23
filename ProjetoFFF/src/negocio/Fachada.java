@@ -107,20 +107,17 @@ public class Fachada {
     public List<Usuario> listarUsuario(){
         return ControladorUsuarios.listarPorTodos();
     }
-    public List<Usuario> listarUsuarioPorId(int id){
+    public Usuario listarUsuarioPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorUsuarios.listarPorId(id);
-    }
-    public List<Usuario> listarUsuarioPorNome(String nome){
-        return ControladorUsuarios.listarPornome(nome);
-    }
-    public List<Usuario> listarUsuarioPorTask(Task nome){
-        return ControladorUsuarios.listarPorTask(nome);
     }
     public void adicionarUsuario(Usuario obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
         ControladorUsuarios.adicionar(obj);
     }
-    public void removerUsuario(Usuario obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
+    public void removerUsuario(Usuario obj) throws ElementoNaoEncontradoException, ArgumentoInvalidoException{
         ControladorUsuarios.remover(obj);
+    }
+    public void atualizarUsuario(Usuario obj) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        ControladorUsuarios.atualizar(obj);
     }
 
 }
