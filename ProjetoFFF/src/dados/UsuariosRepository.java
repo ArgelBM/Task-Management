@@ -1,7 +1,6 @@
 package dados;
 
 import exceptions.*;
-import negocio.beans.Task;
 import negocio.beans.Usuario;
 import java.util.ArrayList;
 import java.util.List;
