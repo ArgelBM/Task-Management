@@ -5,17 +5,18 @@ import negocio.beans.Task;
 import negocio.beans.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UsuariosRepository implements IRepository<Usuario> {
     List<Usuario> usuarios = new ArrayList<>();
 
-    public Usuario fazerLogin(String login, String senha) throws CredenciaisInvalidasException {
+    public Usuario fazerLogin(String login, String senha) throws ArgumentoInvalidoException {
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
                 return usuario;
             }
         }
-        throw new CredenciaisInvalidasException();
+        throw new ArgumentoInvalidoException("Usuario ou senha incorretos");
     }
 
     @Override
@@ -25,8 +26,13 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public Usuario listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        return null;
-    }
+            for (Usuario usuario : usuarios) {
+                if (usuario.getId() == id) {
+                    return usuario;
+                }
+            }
+            throw new ArgumentoInvalidoException("Credenciais inválidas");
+        }
 
     @Override
     public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
@@ -81,7 +87,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
     }
 
      @Override
-     public void remover(Usuario item) throws ElementoNaoEncontradoException, DeletarUsuarioException, ArgumentoInvalidoException {
+     public void remover(Usuario item) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
          if (item == null) {
              throw new ArgumentoInvalidoException(null);
          }
@@ -90,7 +96,16 @@ public class UsuariosRepository implements IRepository<Usuario> {
              throw new ElementoNaoEncontradoException(item);
          }
          if (!usuarios.remove(item)) {
-             throw new DeletarUsuarioException(item);
+             throw new ArgumentoInvalidoException(item);
          }
      }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UsuariosRepository that)) return false;
+        return Objects.equals(usuarios, that.usuarios);
+    }
+
+
 }
