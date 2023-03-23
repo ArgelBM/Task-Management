@@ -32,6 +32,7 @@ public class Fachada {
         }
         return instance;
     }
+    //Categorias
     public List<Categoria> listarCategorias(){
         return ControladorCategorias.listarPorTodos();
     }
@@ -46,7 +47,7 @@ public class Fachada {
     }
 
 
-
+    //Pomodoro
     public void adicionarPomodoro(Pomodoro obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
         ControladorPomodoro.adicionar(obj);
     }
@@ -70,7 +71,7 @@ public class Fachada {
     }
 
 
-
+    //Task
     public List<Task> listarTask(){
         return ControladorTasks.listarTodos();
     }
