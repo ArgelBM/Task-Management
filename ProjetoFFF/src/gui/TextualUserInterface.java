@@ -5,18 +5,12 @@ import enums.Status;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
-import negocio.ControladorPomodoro;
-import negocio.ControladorTasks;
-import negocio.ControladorUsuarios;
 import negocio.Fachada;
-import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextualUserInterface {
@@ -62,7 +56,11 @@ public class TextualUserInterface {
             System.out.println("3. Editar Tarefa");
             System.out.println("4. Marcar Tarefa como Concluída");
             System.out.println("5. Excluir Tarefa");
-            System.out.println("6. Editar Categoria de Tarefa");
+            System.out.println("6. Listar Tarefas Por Status");
+            System.out.println("7. Listar Tarefas Por Prioridade");
+            System.out.println("8. Listar Tarefas Por Cor");
+            System.out.println("9. Salvar tarefas como txt no Desktop");
+            System.out.println("10. Carregar tarefas de txt no Desktop");
             System.out.println("0. Voltar");
             System.out.printf("Opção: ");
             opcao = scanner.nextInt();
@@ -73,7 +71,11 @@ public class TextualUserInterface {
                 case 3 -> editarTarefa();
                 case 4 -> marcarTarefaConcluida();
                 case 5 -> excluirTarefa();
-                case 6 -> editarCategoriaTarefa();
+                case 6 -> listarTarefasStatus();
+                case 7 -> listarTarefasPrioridade();
+                case 8 -> listarTarefasCor();
+                case 9 -> salvarTarefa();
+                case 10 -> carregarTarefa();
                 case 0 -> System.out.println("Voltando ao menu principal...");
                 default -> System.out.println("Opção inválida!");
             }
@@ -93,16 +95,6 @@ public class TextualUserInterface {
         System.out.println("Digite o conteúdo da tarefa:");
         String conteudo = scanner.nextLine();
 
-        LocalDate dataCriacao = null;
-        while (dataCriacao == null) {
-            System.out.println("Digite a data de criação da tarefa (no formato yyyy-MM-dd):");
-            String dataCriacaoString = scanner.nextLine();
-            try {
-                dataCriacao = LocalDate.parse(dataCriacaoString);
-            } catch (DateTimeParseException e) {
-                System.out.println("Data inválida, tente novamente.");
-            }
-        }
 
         Status status = null;
         while (status == null) {
@@ -115,6 +107,9 @@ public class TextualUserInterface {
             }
         }
 
+        LocalDate dataCriacao = LocalDate.now();
+        LocalDate dataConclusao = null;
+
         Prioridades prioridade = null;
         while (prioridade == null) {
             System.out.println("Digite a prioridade da tarefa (importante, irrelevante ou faz se der tempo):");
@@ -126,7 +121,10 @@ public class TextualUserInterface {
             }
         }
 
-        Task tarefa = new Task(nome, conteudo, status, dataCriacao, prioridade);
+        System.out.println("Digite o conteúdo da tarefa:");
+        String cor = scanner.nextLine();
+
+        Task tarefa = new Task(nome, conteudo, status, dataCriacao, dataConclusao, prioridade, new ArrayList<>(), cor);
 
         try {
             fachada.adicionarTask(tarefa);
@@ -138,51 +136,24 @@ public class TextualUserInterface {
         }
     }
 
-
-
     private void editarTarefa() {
-//        System.out.println("Editar Tarefa");
-//
-//        try {
-//            System.out.println("Digite o id da tarefa que deseja editar:");
-//            int id = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            Task tarefa = controladorTasks.buscarTarefaPorId(id);
-//
-//            if (tarefa != null) {
-//                System.out.println("Digite o novo título da tarefa:");
-//                String novoTitulo = scanner.nextLine();
-//
-//                System.out.println("Digite a nova descrição da tarefa:");
-//                String novaDescricao = scanner.nextLine();
-//
-//                System.out.println("Digite a nova categoria da tarefa:");
-//                String novaCategoria = scanner.nextLine();
-//
-//                System.out.println("Digite a nova data de início da tarefa (no formato DD/MM/AAAA):");
-//                LocalDate novaDataInicio = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//
-//                System.out.println("Digite a nova data de término da tarefa (no formato DD/MM/AAAA):");
-//                LocalDate novaDataFim = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//
-//                tarefa.setTitulo(novoTitulo);
-//                tarefa.setDescricao(novaDescricao);
-//                tarefa.setCategoria(novaCategoria);
-//                tarefa.setDataInicio(novaDataInicio);
-//                tarefa.setDataFim(novaDataFim);
-//
-//                controladorTasks.atualizarTarefa(tarefa);
-//
-//                System.out.println("Tarefa editada com sucesso!");
-//            } else {
-//                System.out.println("Tarefa não encontrada!");
-//            }
-//        } catch (DateTimeParseException e) {
-//            System.out.println("Data inválida! Certifique-se de digitar a data no formato DD/MM/AAAA.");
-//        } catch (ElementoNaoEncontradoException | ArgumentoInvalidoException e) {
-//            System.out.println(e.getMessage());
-//        }
+        System.out.println("Editar Tarefa");
+
+        try {
+            System.out.println("Digite o nome da tarefa que deseja editar:");
+            String nome = scanner.nextLine();
+
+            Task tarefa = controladorTasks.buscarTarefaPorNome(nome);
+
+            if (tarefa != null) {
+                tarefa = adicionarTarefa();
+                System.out.println("Tarefa editada com sucesso!");
+            } else {
+                System.out.println("Tarefa não encontrada!");
+            }
+        } catch (ElementoNaoEncontradoException | ArgumentoInvalidoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void marcarTarefaConcluida() {
@@ -364,7 +335,6 @@ public class TextualUserInterface {
 //        for (YearMonth mes : tarefasPorMes.keySet()) {
 //            System.out.printf("%s\t%d\n", mes.toString(), tarefasPorMes.get(mes));
         }
-    }
 
     private void relatorioPomodorosPorTarefa() {
 //        System.out.println("== Pomodoros por tarefa ==");
