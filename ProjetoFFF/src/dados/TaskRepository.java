@@ -7,19 +7,20 @@ import exceptions.*;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class TaskRepository implements IRepository<Task> {
 
-    private static final String FILE_NAME = "tasks.txt";
     private static final String FIELD_SEPARATOR = ";";
+    private static final String FILE_EXTENSION = ".txt";
     List<Task> listasDeTask = new ArrayList<>();
 
     @Override
@@ -157,37 +158,36 @@ public class TaskRepository implements IRepository<Task> {
     }
 
 
-    public void salvarTarefas(List<Task> tasks) throws IOException {
-            FileWriter fileWriter = new FileWriter(FILE_NAME);
-            for (Task task : tasks) {
-                fileWriter.write(task.getNome() + FIELD_SEPARATOR
-                        + task.getConteudo() + FIELD_SEPARATOR
-                        + task.getStatus() + FIELD_SEPARATOR
-                        + task.getPrioridades() + FIELD_SEPARATOR
-                        + task.getCor() + FIELD_SEPARATOR
-                        + task.getUsuario() + "\n");
-            }
-            fileWriter.close();
+    public void salvarTarefas(List<Task> tasks, String nomeArquivo) throws IOException {
+        String nomeCompletoArquivo = nomeArquivo.endsWith(FILE_EXTENSION) ? nomeArquivo : nomeArquivo + FILE_EXTENSION;
+        String caminho = Paths.get(System.getProperty("user.home"), "Desktop", nomeCompletoArquivo).toString();
+        FileWriter fileWriter = new FileWriter(caminho);
+        for (Task task : tasks) {
+            fileWriter.write(task.getNome() + FIELD_SEPARATOR
+                    + task.getConteudo() + FIELD_SEPARATOR
+                    + task.getStatus() + FIELD_SEPARATOR
+                    + task.getPrioridades() + FIELD_SEPARATOR
+                    + task.getCor() + FIELD_SEPARATOR
+                    + task.getUsuario() + "\n");
         }
-    public List<Task> carregarTarefas() throws IOException {
+        fileWriter.close();
+    }
+}
+    public List<Task> carregarTarefas(String nomeArquivo) throws IOException {
+        String nomeCompletoArquivo = nomeArquivo.endsWith(FILE_EXTENSION) ? nomeArquivo : nomeArquivo + FILE_EXTENSION;
+        String caminho = Paths.get(System.getProperty("user.home"), "Desktop", nomeCompletoArquivo).toString();
         List<Task> tasks = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
-        String line = reader.readLine();
-        while (line != null) {
-            String[] fields = line.split(FIELD_SEPARATOR);
-            String nome = fields[0];
-            String conteudo = fields[1];
-            Status status = Status.valueOf(fields[2]);
-            Prioridades prioridade = Prioridades.valueOf(fields[3]);
-            String cor = fields[4];
-            Usuario usuario = Usuario.valueOf(fields[5]);
-            Task task = new Task(nome, conteudo, status, null,null,prioridade,null, cor,usuario);
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(caminho));
+        String linha;
+        while ((linha = bufferedReader.readLine()) != null) {
+            String[] campos = linha.split(FIELD_SEPARATOR);
+            Task task = new Task(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]);
             tasks.add(task);
-            line = reader.readLine();
         }
-        reader.close();
+        bufferedReader.close();
         return tasks;
     }
+}
 
 }
 

@@ -9,6 +9,7 @@ import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
+import java.io.IOException;
 import java.time.Month;
 import java.util.List;
 
@@ -103,11 +104,11 @@ public class Fachada {
     public void gerarRelatorioPorMes(Month mes) throws ElementoJaExisteException, ArgumentoInvalidoException{
         ControladorTasks.relatorioPorMes(mes);
     }
-    public void salvarTarefa(Task obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        ControladorTasks.salvar(obj);
+    public void salvarTarefa(List<Task> tasks, String nomeArquivo) throws IOException {
+        ControladorTasks.salvar(tasks, nomeArquivo);
     }
-    public void carregarTask(Task obj) throws ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorTasks.carregar(obj);
+    public List<Task> carregarTask(String nomeArquivo) throws IOException {
+        return ControladorTasks.carregar(nomeArquivo);
     }
 
 

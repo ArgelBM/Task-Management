@@ -72,13 +72,14 @@ public class ControladorTasks {
         repo.gerarRelatorioPorMes(mes);
     }
 
-    public static void salvar(List<Task> tasks) throws IOException {
+    public static void salvar(List<Task> tasks, String nomeArquivo) throws IOException {
         TaskRepository repo = new TaskRepository();
-        repo.salvarTarefas(tasks);
+        repo.salvarTarefas(tasks, nomeArquivo);
     }
 
-    public static void carregar() throws IOException {
+    public static List<Task>  carregar(String nomeArquivo) throws IOException {
         TaskRepository repo = new TaskRepository();
-        repo.carregarTarefas();
+        List<Task> tasks = repo.carregarTarefas(nomeArquivo);
+        return tasks;
     }
 }
