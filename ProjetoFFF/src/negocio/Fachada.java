@@ -32,6 +32,7 @@ public class Fachada {
         }
         return instance;
     }
+
     //Categorias
     public List<Categoria> listarCategorias(){
         return ControladorCategorias.listarPorTodos();
@@ -70,39 +71,32 @@ public class Fachada {
         return ControladorPomodoro.alerta();
     }
 
-
     //Task
     public List<Task> listarTask(){
         return ControladorTasks.listarTodos();
     }
-    public List<Task> listarTaskPorNome(String nome){
-        return ControladorTasks.listarPornome(nome);
-    }
     public void adicionarTask(Task obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
         ControladorTasks.adicionar(obj);
     }
-    public void atualizarTask(Task obj, Categoria elemento) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorTasks.atualizar(obj, elemento);
+    public void atualizarTask(Task obj) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
+        ControladorTasks.atualizar(obj);
     }
     public void removerTask(Task obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
         ControladorTasks.remover(obj);
     }
-    public List<Task> listarTaskPorStatus(Status status){
+    public List<Task> listarTaskPorStatus(Status status) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorTasks.listarPorStatus(status);
     }
-    public List<Task> listarTaskPorPrioridade(Prioridades prioridade){
+    public List<Task> listarTaskPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException {
         return ControladorTasks.listarPorPrioridade(prioridade);
     }
-    public List<Task> listarTaskPorCor(Categoria cor){
+    public List<Task> listarTaskPorCor(String cor) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorTasks.listarPorCor(cor);
     }
-    public List<Task> listarTaskConcluidas(){
-        return ControladorTasks.listarConcluidas();
-    }
-    public List<Task> listarTaskPorUsuario(Usuario nome){
+    public List<Task> listarTaskPorUsuario(Usuario nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorTasks.listarPorUsuario(nome);
     }
-    public void gerarRelatorioPorMes(Month mes) throws ElementoJaExisteException, ArgumentoInvalidoException{
+    public void gerarRelatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
         ControladorTasks.relatorioPorMes(mes);
     }
     public void salvarTarefa(List<Task> tasks, String nomeArquivo) throws IOException {
@@ -112,8 +106,7 @@ public class Fachada {
         return ControladorTasks.carregar(nomeArquivo);
     }
 
-
-
+    //Usuario
     public List<Usuario> listarUsuario(){
         return ControladorUsuarios.listarPorTodos();
     }
