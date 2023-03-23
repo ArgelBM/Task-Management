@@ -9,6 +9,7 @@ import negocio.beans.Usuario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,11 +124,6 @@ public class TaskRepository implements IRepository<Task> {
                         tasksFiltradas.add(task);
                     }
                     break;
-                case USUARIO:
-                    if(task.getUsuario().equals((String) valor)) {
-                        tasksFiltradas.add(task);
-                    }
-                    break;
                 default:
                     throw new ArgumentoInvalidoException(valor);
             }
@@ -167,12 +163,10 @@ public class TaskRepository implements IRepository<Task> {
                     + task.getConteudo() + FIELD_SEPARATOR
                     + task.getStatus() + FIELD_SEPARATOR
                     + task.getPrioridades() + FIELD_SEPARATOR
-                    + task.getCor() + FIELD_SEPARATOR
-                    + task.getUsuario() + "\n");
+                    + task.getCor() + "\n");
         }
         fileWriter.close();
     }
-}
     public List<Task> carregarTarefas(String nomeArquivo) throws IOException {
         String nomeCompletoArquivo = nomeArquivo.endsWith(FILE_EXTENSION) ? nomeArquivo : nomeArquivo + FILE_EXTENSION;
         String caminho = Paths.get(System.getProperty("user.home"), "Desktop", nomeCompletoArquivo).toString();
@@ -181,14 +175,16 @@ public class TaskRepository implements IRepository<Task> {
         String linha;
         while ((linha = bufferedReader.readLine()) != null) {
             String[] campos = linha.split(FIELD_SEPARATOR);
-            Task task = new Task(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]);
+            Status status = Status.valueOf(campos[2]);
+            Prioridades prioridades = Prioridades.valueOf(campos[5]);
+
+            Task task = new Task(campos[0], campos[1], status, LocalDate.parse(campos[3]),
+                    LocalDate.parse(campos[4]), prioridades, new ArrayList<>(), campos[7]);
             tasks.add(task);
         }
         bufferedReader.close();
         return tasks;
     }
-}
-
 }
 
 

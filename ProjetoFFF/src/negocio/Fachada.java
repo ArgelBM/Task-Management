@@ -93,9 +93,6 @@ public class Fachada {
     public List<Task> listarTaskPorCor(String cor) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorTasks.listarPorCor(cor);
     }
-    public List<Task> listarTaskPorUsuario(Usuario nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        return ControladorTasks.listarPorUsuario(nome);
-    }
     public void gerarRelatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
         ControladorTasks.relatorioPorMes(mes);
     }

@@ -17,9 +17,8 @@ public class Task {
     private Prioridades prioridades;
     private List<Pomodoro> pomodoros;
     private String cor;
-    private Usuario usuario;
 
-    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, LocalDate dataConclusao, Prioridades prioridades, List<Pomodoro> pomodoros, String cor, Usuario usuario) {
+    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, LocalDate dataConclusao, Prioridades prioridades, List<Pomodoro> pomodoros, String cor) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.status = status;
@@ -28,7 +27,6 @@ public class Task {
         this.prioridades = prioridades;
         this.pomodoros = pomodoros;
         this.cor = cor;
-        this.usuario = usuario;
     }
 
     public LocalDate getDataConclusao() {
@@ -102,11 +100,4 @@ public class Task {
         this.cor = cor;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }
