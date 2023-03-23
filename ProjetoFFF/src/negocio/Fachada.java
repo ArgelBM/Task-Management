@@ -37,7 +37,7 @@ public class Fachada {
     public List<Categoria> listarCategorias(){
         return ControladorCategorias.listarPorTodos();
     }
-    public List<Categoria> listarCategoriasPorNome(String nome){
+    public Categoria listarCategoriasPorNome(String nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorCategorias.listarPornome(nome);
     }
     public void adicionarCategoria(Categoria obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
@@ -87,7 +87,7 @@ public class Fachada {
     public List<Task> listarTaskPorStatus(Status status) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         return ControladorTasks.listarPorStatus(status);
     }
-    public List<Task> listarTaskPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException {
+    public List<Task> listarTaskPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return ControladorTasks.listarPorPrioridade(prioridade);
     }
     public List<Task> listarTaskPorCor(String cor) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
