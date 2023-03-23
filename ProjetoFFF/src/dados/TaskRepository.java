@@ -185,6 +185,15 @@ public class TaskRepository implements IRepository<Task> {
         bufferedReader.close();
         return tasks;
     }
+
+    public void marcaComoConcluida (Task task){
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.setDataConclusao(LocalDate.now());
+                a.setStatus(Status.CONCLUIDA);
+            }
+        }
+    }
 }
 
 

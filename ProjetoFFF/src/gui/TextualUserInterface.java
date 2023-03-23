@@ -108,7 +108,7 @@ public class TextualUserInterface {
         }
 
         LocalDate dataCriacao = LocalDate.now();
-        LocalDate dataConclusao = null;
+        LocalDate dataConclusao = LocalDate.now();
 
         Prioridades prioridade = null;
         while (prioridade == null) {
