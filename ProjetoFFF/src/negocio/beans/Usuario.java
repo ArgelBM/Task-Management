@@ -10,11 +10,11 @@ public class Usuario {
     private List<Task> task = new ArrayList<>();
     private String nomeUsuario;
     private LocalDate dataNascimento;
-    private String id;
+    private int id;
     private String login;
     private String senha;
 
-    public Usuario(List<Task> task, String nomeUsuario, LocalDate dataNascimento, String id, String login, String senha) {
+    public Usuario(List<Task> task, String nomeUsuario, LocalDate dataNascimento, int id, String login, String senha) {
         this.task = task;
         this.nomeUsuario = nomeUsuario;
         this.dataNascimento = dataNascimento;
@@ -47,11 +47,11 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
