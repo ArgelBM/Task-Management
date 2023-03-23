@@ -5,7 +5,6 @@ import enums.Prioridades;
 import enums.Status;
 import exceptions.*;
 import negocio.beans.Task;
-import negocio.beans.Usuario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
