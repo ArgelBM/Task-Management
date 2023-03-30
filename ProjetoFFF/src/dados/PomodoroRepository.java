@@ -2,13 +2,25 @@ package dados;
 
 import exceptions.*;
 import negocio.beans.Pomodoro;
+import negocio.beans.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PomodoroRepository implements IRepository<Pomodoro>{
-    List<Pomodoro> pomodoros = new ArrayList<>();
 
+    public String fileName;
+    List<Pomodoro> pomodoros;
+
+    public PomodoroRepository(String fileName){
+        this.fileName = fileName;
+        this.pomodoros = new ArrayList<>();
+
+        Object listaElementos = RepositorioFileUtil.lerDoArquivo(this.fileName);
+        if (listaElementos != null && listaElementos instanceof List<?>){
+            this.pomodoros = (List<Pomodoro>) listaElementos;
+        }
+    }
     @Override
     public List<Pomodoro> listarTodos() {
         return null;
@@ -31,23 +43,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
 
     @Override
     public void atualizar(Pomodoro item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if (item == null) {
-            throw new ArgumentoInvalidoException(item);
-        }
 
-        boolean atualizado = false;
-
-        for (Pomodoro p : this.pomodoros) {
-            if (p.getTempo().equals(item.getTempo())) {
-                this.pomodoros.set(this.pomodoros.indexOf(p), item);
-                atualizado = true;
-                break;
-            }
-        }
-
-        if (!atualizado) {
-            throw new ElementoNaoEncontradoException(item);
-        }
     }
 
     @Override
