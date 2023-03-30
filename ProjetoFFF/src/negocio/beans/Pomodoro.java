@@ -55,7 +55,7 @@ public class Pomodoro {
                 //executar ação aqui
             }
         };
-        int milissegundos = 5*60000; //25 min
+        int milissegundos = 5*60000; //5 min
         cronometro.schedule(tarefa, milissegundos);
 
     }
@@ -71,7 +71,7 @@ public class Pomodoro {
                 //executar ação aqui
             }
         };
-        int milissegundos = 15*60000; //25 min
+        int milissegundos = 15*60000; //15 min
         cronometro.schedule(tarefa, milissegundos);
 
     }

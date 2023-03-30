@@ -7,11 +7,23 @@ import java.util.*;
 
 public class CategoriasRepository implements IRepository<Categoria> {
 
-    List<Categoria> categorias = new ArrayList<>();
+    List<Categoria> categorias;
+    String fileName;
+
+    public CategoriasRepository(String fileName){
+        this.categorias = new ArrayList<>();
+        this.fileName = fileName;
+
+        Object listaElementos = RepositorioFileUtil.lerDoArquivo(this.fileName);
+        if (listaElementos != null && listaElementos instanceof List<?>){
+            this.categorias = (List<Categoria>) listaElementos;
+        }
+    }
+
 
     @Override
     public List<Categoria> listarTodos() {
-        return categorias;
+        return this.categorias;
     }
 
     @Override
@@ -24,9 +36,7 @@ public class CategoriasRepository implements IRepository<Categoria> {
         Categoria b = null;
         for( Categoria a: categorias) {
             if (a.getNome().equals(nome)) {
-
                 b = a;
-
             }
         }
         return b;
@@ -34,40 +44,37 @@ public class CategoriasRepository implements IRepository<Categoria> {
 
     @Override
     public void adicionar(Categoria item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if(item == null){
-            throw new ArgumentoInvalidoException("Item vazio");
-        }
-        else {
             try {
-                categorias.add((Categoria) item);
+                categorias.add(item);
             } catch (InputMismatchException e) {
-                throw new ArgumentoInvalidoException("Falha ao deletar item: " + e.getMessage());
+                throw new ArgumentoInvalidoException("Falha ao adicionar item: " + e.getMessage());
             } catch (NoSuchElementException e) {
                 throw new ArgumentoInvalidoException("Elemento não encontrado: " + e.getMessage());
             }
+
+        RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
         }
-    }
 
     @Override
     public void atualizar(Categoria item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-
+        int index = this.categorias.indexOf(item);
+        if(index >= 0){
+            categorias.set(index, item);
+        }
+        RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
     }
 
     @Override
     public void remover(Categoria item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if(item == null){
-            throw new ArgumentoInvalidoException("Item vazio");
-        }
-        else {
             try {
-                categorias.remove((Categoria) item);
+                categorias.remove(item);
             } catch (InputMismatchException e) {
                 throw new DeletarFalhouException("Falha ao deletar item: " + e.getMessage());
             } catch (NoSuchElementException e) {
                 throw new ElementoNaoEncontradoException("Elemento não encontrado: " + e.getMessage());
             }
+        RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
         }
-    }
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CategoriasRepository that)) return false;

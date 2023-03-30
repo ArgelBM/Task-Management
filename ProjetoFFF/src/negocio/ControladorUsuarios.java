@@ -1,5 +1,6 @@
 package negocio;
 
+import dados.CategoriasRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
@@ -10,7 +11,13 @@ import negocio.beans.Usuario;
 import java.util.List;
 
 public class ControladorUsuarios {
+
+    private UsuariosRepository repositorio;
     private static ControladorUsuarios instance;
+
+    public ControladorUsuarios(){
+        repositorio = new UsuariosRepository("usuarios.dat");
+    }
 
     public static ControladorUsuarios getInstance(){
         if(instance == null){
@@ -19,33 +26,26 @@ public class ControladorUsuarios {
         return instance;
     }
 
-    public static void remover(Usuario obj) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        UsuariosRepository repo = new UsuariosRepository();
-        repo.remover(obj);
-
+    public void remover(Usuario obj) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        repositorio.remover(obj);
 
     }
 
-    public static void adicionar(Usuario obj) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        UsuariosRepository repo = new UsuariosRepository();
-        repo.adicionar(obj);
-
+    public void adicionar(Usuario obj) throws ElementoJaExisteException, ArgumentoInvalidoException {
+        repositorio.adicionar(obj);
     }
 
 
-    public static List<Usuario> listarPorTodos() {
-        UsuariosRepository repo = new UsuariosRepository();
-        return repo.listarTodos();
+    public List<Usuario> listarPorTodos() {
+        return repositorio.listarTodos();
     }
 
-    public static Usuario listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        UsuariosRepository repo = new UsuariosRepository();
-        return repo.listarPorId(id);
+    public Usuario listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException{
+        return repositorio.listarPorId(id);
     }
 
-    public static void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        UsuariosRepository repo = new UsuariosRepository();
-        repo.atualizar(usuario);
+    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        repositorio.atualizar(usuario);
     }
 
 }

@@ -17,7 +17,13 @@ import java.util.List;
 
 
 public class ControladorTasks {
+
+    private TaskRepository repositorio;
     private static ControladorTasks instance;
+
+    public ControladorTasks(){
+        this.repositorio = new TaskRepository("taskrepositorio.dat");
+    }
 
     public static ControladorTasks getInstance(){
         if(instance == null){

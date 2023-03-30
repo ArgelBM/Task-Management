@@ -14,7 +14,7 @@ import java.time.Month;
 import java.util.List;
 
 public class Fachada {
-    private static Fachada instance;
+   /* private static Fachada instance;
     private ControladorCategorias controladorCategorias;
     private ControladorPomodoro controladorPomodoro;
     private ControladorTasks controladorTasks;
@@ -120,4 +120,6 @@ public class Fachada {
         ControladorUsuarios.atualizar(obj);
     }
 
+
+    */
 }

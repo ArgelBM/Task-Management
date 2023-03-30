@@ -19,9 +19,17 @@ import java.nio.file.Paths;
 
 public class TaskRepository implements IRepository<Task> {
 
-    private static final String FIELD_SEPARATOR = ";";
-    private static final String FILE_EXTENSION = ".txt";
-    List<Task> listasDeTask = new ArrayList<>();
+    //private static final String FIELD_SEPARATOR = ";";
+    //private static final String FILE_EXTENSION = ".txt";
+    private List<Task> listasDeTask;
+
+    private String fileName;
+
+    public TaskRepository(){
+
+    }
+
+
 
     @Override
     public List<Task> listarTodos() {

@@ -1,13 +1,25 @@
 package dados;
 
 import exceptions.*;
+import negocio.beans.Categoria;
 import negocio.beans.Usuario;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+import java.util.*;
 
 public class UsuariosRepository implements IRepository<Usuario> {
-    List<Usuario> usuarios = new ArrayList<>();
+    private List<Usuario> usuarios;
+
+    private String fileName;
+
+    public UsuariosRepository(String fileName){
+        this.usuarios = new ArrayList<>();
+        this.fileName = fileName;
+
+        Object listaElementos = RepositorioFileUtil.lerDoArquivo(this.fileName);
+        if (listaElementos != null && listaElementos instanceof List<?>){
+            this.usuarios = (List<Usuario>) listaElementos;
+        }
+    }
 
     public Usuario fazerLogin(String login, String senha) throws ArgumentoInvalidoException {
         for (Usuario usuario : usuarios) {
@@ -53,6 +65,8 @@ public class UsuariosRepository implements IRepository<Usuario> {
             throw new ElementoJaExisteException(usuario);
         }
         usuarios.add(usuario);
+        RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
+
     }
 
 
@@ -83,21 +97,25 @@ public class UsuariosRepository implements IRepository<Usuario> {
         usuarioAntigo.setLogin(item.getLogin());
         usuarioAntigo.setSenha(item.getSenha());
         usuarioAntigo.setTask(item.getTask());
+
+        RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
+
     }
 
      @Override
      public void remover(Usuario item) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-         if (item == null) {
-             throw new ArgumentoInvalidoException(null);
+
+         try {
+             usuarios.remove(item);
+
+         } catch (InputMismatchException e) {
+             throw new ArgumentoInvalidoException("Falha ao deletar item: " + e.getMessage());
+         } catch (NoSuchElementException e) {
+             throw new ElementoNaoEncontradoException("Elemento não encontrado: " + e.getMessage());
          }
-         int index = usuarios.indexOf(item);
-         if (index == -1) {
-             throw new ElementoNaoEncontradoException(item);
-         }
-         if (!usuarios.remove(item)) {
-             throw new ArgumentoInvalidoException(item);
-         }
+         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
      }
+
 
     @Override
     public boolean equals(Object o) {

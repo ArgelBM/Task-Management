@@ -7,10 +7,19 @@ import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Categoria;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ControladorCategorias {
     private static ControladorCategorias instance;
+
+    private CategoriasRepository repositorio;
+
+    public ControladorCategorias(){
+        this.repositorio = new CategoriasRepository("Controlador" + ".dat");
+    }
 
     public static ControladorCategorias getInstance(){
         if(instance == null){
@@ -20,22 +29,18 @@ public class ControladorCategorias {
     }
 
     public static void adicionar(Categoria obj) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        CategoriasRepository repo = new CategoriasRepository();
-        repo.adicionar(obj);
+
     }
 
     public static void remover(Categoria obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        CategoriasRepository repo = new CategoriasRepository();
-        repo.remover(obj);
+
     }
 
     public static List<Categoria> listarPorTodos() {
-        CategoriasRepository repo = new CategoriasRepository();
-        return repo.listarTodos();
+    return null;
     }
 
     public static Categoria listarPornome(String nome)  throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        CategoriasRepository repo = new CategoriasRepository();
-        return repo.listarPorNome(nome);
+        return null;
     }
 }
