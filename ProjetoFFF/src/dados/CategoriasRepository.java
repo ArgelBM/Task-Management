@@ -20,7 +20,6 @@ public class CategoriasRepository implements IRepository<Categoria> {
         }
     }
 
-
     @Override
     public List<Categoria> listarTodos() {
         return this.categorias;
@@ -33,46 +32,23 @@ public class CategoriasRepository implements IRepository<Categoria> {
 
     @Override
     public Categoria listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        Categoria b = null;
-        for( Categoria a: categorias) {
-            if (a.getNome().equals(nome)) {
-                b = a;
-            }
-        }
-        return b;
+        return null;
     }
 
     @Override
     public void adicionar(Categoria item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-            try {
-                categorias.add(item);
-            } catch (InputMismatchException e) {
-                throw new ArgumentoInvalidoException("Falha ao adicionar item: " + e.getMessage());
-            } catch (NoSuchElementException e) {
-                throw new ArgumentoInvalidoException("Elemento não encontrado: " + e.getMessage());
-            }
-
+        this.categorias.add(item);
         RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
         }
 
     @Override
     public void atualizar(Categoria item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        int index = this.categorias.indexOf(item);
-        if(index >= 0){
-            categorias.set(index, item);
-        }
-        RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
+
     }
 
     @Override
     public void remover(Categoria item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-            try {
-                categorias.remove(item);
-            } catch (InputMismatchException e) {
-                throw new DeletarFalhouException("Falha ao deletar item: " + e.getMessage());
-            } catch (NoSuchElementException e) {
-                throw new ElementoNaoEncontradoException("Elemento não encontrado: " + e.getMessage());
-            }
+        this.categorias.remove(item);
         RepositorioFileUtil.salvarArquivo(categorias, this.fileName);
         }
     public boolean equals(Object o) {
