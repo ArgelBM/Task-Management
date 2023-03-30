@@ -25,13 +25,12 @@ public class ControladorPomodoro {
         return instance;
     }
 
-    public void getTempoPomodoro() {
+    public void getTempoPomodoro( ) {
 
         Timer cronometro = new Timer();
         TimerTask tarefa = new TimerTask() {
             @Override
             public void run() {
-                pomodoro++;
 
                 System.out.println( "Descanso de 5 min");
                 //executar ação aqui
@@ -64,7 +63,6 @@ public class ControladorPomodoro {
             @Override
             public void run() {
 
-                ciclo++;
                 System.out.println( "estude 25 min");
                 //executar ação aqui
             }
@@ -74,7 +72,7 @@ public class ControladorPomodoro {
 
     }
 
-    public void iniciarPomodoro(){
+    public void iniciarPomodoro(Pomodoro pomodoro){
 
         getTempoPomodoro();
         getTempoDescanso();
