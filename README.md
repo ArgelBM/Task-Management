@@ -1,8 +1,6 @@
 <h1 style="text-align: center;">Task Management</h1> 
 
-<img src ="https://img.shields.io/static/v1?label=Java&message=17.0.6&color=blue&style=for-the-badge&logo=oracle"/>
-<img src="https://img.shields.io/static/v1?label=IntelliJ%20IDEA&message=2022.3.1&color=blueviolet&style=for-the-badge&logo=intellijidea"/>
-<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
+<img src ="https://img.shields.io/static/v1?label=Java&message=17.0.6&color=blue&style=for-the-badge&logo=oracle"/><img src="https://img.shields.io/static/v1?label=IntelliJ%20IDEA&message=2022.3.1&color=blueviolet&style=for-the-badge&logo=intellijidea"/><img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
 
 ### Tópicos
 
