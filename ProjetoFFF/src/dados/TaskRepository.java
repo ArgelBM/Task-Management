@@ -20,8 +20,6 @@ import java.nio.file.Paths;
 
 public class TaskRepository implements IRepository<Task> {
 
-    //private static final String FIELD_SEPARATOR = ";";
-    //private static final String FILE_EXTENSION = ".txt";
     private List<Task> listasDeTask;
 
     private String fileName;
@@ -36,8 +34,6 @@ public class TaskRepository implements IRepository<Task> {
         }
 
     }
-
-
 
     @Override
     public List<Task> listarTodos() {
@@ -56,7 +52,7 @@ public class TaskRepository implements IRepository<Task> {
 
     @Override
     public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if (item == null){
+        if ((item == null){
             throw new ArgumentoInvalidoException(null);
         }
         if(item.getNome() == null || item.getNome().trim().isEmpty()){
@@ -73,7 +69,7 @@ public class TaskRepository implements IRepository<Task> {
         }
         if (listasDeTask.contains(item)) {
             throw new ElementoJaExisteException(item);
-        }
+        })
         listasDeTask.add(item);
 
         RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);
