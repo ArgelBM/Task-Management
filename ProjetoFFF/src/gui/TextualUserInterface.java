@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextualUserInterface {
-    private final Scanner scanner;
+    /*private final Scanner scanner;
     private final Fachada fachada;
 
 
@@ -401,4 +401,6 @@ public class TextualUserInterface {
     }
 
 
+
+     */
 }

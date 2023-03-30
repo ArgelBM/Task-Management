@@ -5,6 +5,7 @@ import enums.Prioridades;
 import enums.Status;
 import exceptions.*;
 import negocio.beans.Task;
+import negocio.beans.Usuario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,7 +26,14 @@ public class TaskRepository implements IRepository<Task> {
 
     private String fileName;
 
-    public TaskRepository(){
+    public TaskRepository(String fileName){
+        this.listasDeTask = new ArrayList<>();
+        this.fileName = fileName;
+
+        Object listaElementos = RepositorioFileUtil.lerDoArquivo(this.fileName);
+        if (listaElementos != null && listaElementos instanceof List<?>){
+            this.listasDeTask = (List<Task>) listaElementos;
+        }
 
     }
 
@@ -67,6 +75,8 @@ public class TaskRepository implements IRepository<Task> {
             throw new ElementoJaExisteException(item);
         }
         listasDeTask.add(item);
+
+        RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);
     }
 
     @Override
@@ -95,6 +105,8 @@ public class TaskRepository implements IRepository<Task> {
         taskAntiga.setConteudo(item.getConteudo());
         taskAntiga.setStatus(item.getStatus());
         taskAntiga.setPrioridades(item.getPrioridades());
+
+        RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);
     }
 
     @Override
@@ -109,6 +121,8 @@ public class TaskRepository implements IRepository<Task> {
         if (!listasDeTask.remove(item)) {
             throw new DeletarFalhouException(item);
         }
+        RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);
+
     }
 
     public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
@@ -160,38 +174,6 @@ public class TaskRepository implements IRepository<Task> {
         return tarefasConcluidasNoMes;
     }
 
-
-    public void salvarTarefas(List<Task> tasks, String nomeArquivo) throws IOException {
-        String nomeCompletoArquivo = nomeArquivo.endsWith(FILE_EXTENSION) ? nomeArquivo : nomeArquivo + FILE_EXTENSION;
-        String caminho = Paths.get(System.getProperty("user.home"), "Desktop", nomeCompletoArquivo).toString();
-        FileWriter fileWriter = new FileWriter(caminho);
-        for (Task task : tasks) {
-            fileWriter.write(task.getNome() + FIELD_SEPARATOR
-                    + task.getConteudo() + FIELD_SEPARATOR
-                    + task.getStatus() + FIELD_SEPARATOR
-                    + task.getPrioridades() + FIELD_SEPARATOR
-                    + task.getCor() + "\n");
-        }
-        fileWriter.close();
-    }
-    public List<Task> carregarTarefas(String nomeArquivo) throws IOException {
-        String nomeCompletoArquivo = nomeArquivo.endsWith(FILE_EXTENSION) ? nomeArquivo : nomeArquivo + FILE_EXTENSION;
-        String caminho = Paths.get(System.getProperty("user.home"), "Desktop", nomeCompletoArquivo).toString();
-        List<Task> tasks = new ArrayList<>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(caminho));
-        String linha;
-        while ((linha = bufferedReader.readLine()) != null) {
-            String[] campos = linha.split(FIELD_SEPARATOR);
-            Status status = Status.valueOf(campos[2]);
-            Prioridades prioridades = Prioridades.valueOf(campos[5]);
-
-            Task task = new Task(campos[0], campos[1], status, LocalDate.parse(campos[3]),
-                    LocalDate.parse(campos[4]), prioridades, new ArrayList<>(), campos[7]);
-            tasks.add(task);
-        }
-        bufferedReader.close();
-        return tasks;
-    }
 
     public void marcaComoConcluida (Task task){
         for(Task a : listasDeTask){
