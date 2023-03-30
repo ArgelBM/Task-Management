@@ -12,9 +12,9 @@
 
 :o: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)
 
-:o:[Desenvolvedores](#desenvolvedores-octocat)
+:o: [Desenvolvedores](#desenvolvedores-octocat)
 
-## Descrição geral do projeto :memo:
+## Descrição geral do projeto :pencil:
 O projeto em questão é um gerenciador de tarefas (task manager) implementado seguindo o padrão de arquitetura Model-View-Controller (MVC).
 
 O sistema permite o cadastro de usuários, criação e edição de tarefas, bem como a associação de categorias e pomodoros a cada tarefa. Além disso, é possível gerar relatórios de tarefas concluídas, ordená-las por prioridade e cor, e gerar relatórios de pomodoros completados por tarefa.
