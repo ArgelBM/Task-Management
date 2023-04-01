@@ -7,9 +7,10 @@ import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Usuario;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ControladorUsuarios {
+public class ControladorUsuarios implements Serializable {
 
     private UsuariosRepository repositorio;
     private static ControladorUsuarios instance;

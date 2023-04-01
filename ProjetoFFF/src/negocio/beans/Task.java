@@ -3,11 +3,12 @@ package negocio.beans;
 import enums.Prioridade;
 import enums.Status;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 
-public class Task {
+public class Task implements Serializable {
     private String nome;
     private String conteudo;
     private Status status;

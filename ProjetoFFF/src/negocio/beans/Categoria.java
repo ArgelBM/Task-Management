@@ -2,7 +2,9 @@ package negocio.beans;
 
 import enums.Prioridade;
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
 
     private String nome;
     private String cor;

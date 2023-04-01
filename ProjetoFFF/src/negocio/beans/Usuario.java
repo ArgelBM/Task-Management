@@ -1,10 +1,11 @@
 package negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private List<Task> task = new ArrayList<>();
     private String nomeUsuario;
     private LocalDate dataNascimento;

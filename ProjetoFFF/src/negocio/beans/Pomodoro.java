@@ -1,10 +1,11 @@
 package negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Pomodoro {
+public class Pomodoro implements Serializable {
 
     private Task task;
     private LocalDateTime tempoInicial;
