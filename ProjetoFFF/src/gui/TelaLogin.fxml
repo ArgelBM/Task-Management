@@ -43,8 +43,10 @@
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="LOCK" layoutX="92.0" layoutY="286.0" selectionFill="BLACK" size="20" />
             <Hyperlink layoutX="130.0" layoutY="441.0" prefHeight="24.0" prefWidth="101.0" text="Criar Nova Conta" />
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USERS" layoutX="162.0" layoutY="105.0" size="35" />
-            <Button layoutX="278.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="TIMES" layoutX="322.0" layoutY="32.0" size="18" />
+            <Button layoutX="318.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontAwesomeIconView fill="BLUEVIOLET" glyphName="TIMES" size="18" />
+               </graphic></Button>
          </children>
       </AnchorPane>
    </right>
