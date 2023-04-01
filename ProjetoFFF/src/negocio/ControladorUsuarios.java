@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ControladorUsuarios {
 
-    private IRepository<Usuario> repositorio;
+    private UsuariosRepository repositorio;
     private static ControladorUsuarios instance;
 
     public ControladorUsuarios(){

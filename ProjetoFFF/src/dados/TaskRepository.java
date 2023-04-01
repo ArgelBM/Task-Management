@@ -45,7 +45,7 @@ public class TaskRepository implements IRepository<Task> {
 
     @Override
     public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if ((item == null){
+        if ((item == null)){
             throw new ArgumentoInvalidoException(null);
         }
         if(item.getNome() == null || item.getNome().trim().isEmpty()){
@@ -62,7 +62,7 @@ public class TaskRepository implements IRepository<Task> {
         }
         if (listasDeTask.contains(item)) {
             throw new ElementoJaExisteException(item);
-        })
+        }
         listasDeTask.add(item);
 
         RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);

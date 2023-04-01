@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ControladorTasks {
 
-    private IRepository<Task> repositorio;
+    private TaskRepository repositorio;
     private static ControladorTasks instance;
 
     public ControladorTasks(){

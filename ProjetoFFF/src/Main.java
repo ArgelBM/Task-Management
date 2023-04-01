@@ -4,6 +4,7 @@ import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
 
 public class Main {
+    /*
     public static void main(String[] args) {
         ControladorTasks controladorTasks = new ControladorTasks();
         ControladorUsuarios controladorUsuarios = new ControladorUsuarios();
@@ -11,4 +12,5 @@ public class Main {
         TextualUserInterface tui = new TextualUserInterface(controladorTasks, controladorUsuarios, controladorPomodoro);
         tui.exibirMenuPrincipal();
     }
+    */
 }
