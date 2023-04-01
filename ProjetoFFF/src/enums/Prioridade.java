@@ -2,7 +2,7 @@ package enums;
 
 import exceptions.ArgumentoInvalidoException;
 
-public enum Prioridades {
+public enum Prioridade {
         IMPORTANTE("Importante","vermelho"),
         IRRELEVANTE("Irrelevante","amarelo"),
         FAZ_SE_DER_TEMPO("Faz se der tempo","azul");
@@ -10,7 +10,7 @@ public enum Prioridades {
         private final String prioridade;
         private final String cor;
 
-        Prioridades(String prioridade, String cor) {this.prioridade = prioridade; this.cor = cor;}
+        Prioridade(String prioridade, String cor) {this.prioridade = prioridade; this.cor = cor;}
 
 
         @Override
@@ -19,8 +19,8 @@ public enum Prioridades {
         }
         public String getCor() { return cor;}
 
-        public static Prioridades fromString(String text) throws ArgumentoInvalidoException {
-            for (Prioridades p : Prioridades.values()) {
+        public static Prioridade fromString(String text) throws ArgumentoInvalidoException {
+            for (Prioridade p : Prioridade.values()) {
                 if (p.prioridade.equalsIgnoreCase(text)) {
                     return p;
                 }

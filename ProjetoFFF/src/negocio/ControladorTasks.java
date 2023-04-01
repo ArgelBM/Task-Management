@@ -2,16 +2,12 @@ package negocio;
 
 import dados.TaskRepository;
 import enums.Filtro;
-import enums.Prioridades;
-import enums.Status;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;
-import negocio.beans.Usuario;
 
-import java.io.IOException;
 import java.time.Month;
 import java.util.List;
 

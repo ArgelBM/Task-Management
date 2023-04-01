@@ -1,22 +1,15 @@
 package dados;
 
 import enums.Filtro;
-import enums.Prioridades;
+import enums.Prioridade;
 import enums.Status;
 import exceptions.*;
 import negocio.beans.Task;
-import negocio.beans.Usuario;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
 
 public class TaskRepository implements IRepository<Task> {
 
@@ -46,7 +39,7 @@ public class TaskRepository implements IRepository<Task> {
     }
 
     @Override
-    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Task> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
 
@@ -132,7 +125,7 @@ public class TaskRepository implements IRepository<Task> {
                     }
                     break;
                 case PRIORIDADE:
-                    if(task.getPrioridades() == (Prioridades) valor) {
+                    if(task.getPrioridades() == (Prioridade) valor) {
                         tasksFiltradas.add(task);
                     }
                     break;

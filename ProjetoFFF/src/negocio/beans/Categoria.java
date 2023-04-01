@@ -1,12 +1,12 @@
 package negocio.beans;
 
-import enums.Prioridades;
+import enums.Prioridade;
 
 public class Categoria {
 
     private String nome;
     private String cor;
-    private Prioridades prioridade;
+    private Prioridade prioridade;
 
     public String getNome() {
         return nome;
@@ -24,11 +24,11 @@ public class Categoria {
         this.cor = cor;
     }
 
-    public Prioridades getPrioridade() {
+    public Prioridade getPrioridade() {
         return prioridade;
     }
 
-    public void setPrioridade(Prioridades prioridade) {
+    public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
     }
 

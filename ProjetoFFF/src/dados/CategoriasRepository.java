@@ -31,7 +31,7 @@ public class CategoriasRepository implements IRepository<Categoria> {
     }
 
     @Override
-    public Categoria listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Categoria> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
 

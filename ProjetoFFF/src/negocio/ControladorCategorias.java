@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.CategoriasRepository;
+import dados.IRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
@@ -10,9 +11,9 @@ import negocio.beans.Categoria;
 import java.util.List;
 
 public class ControladorCategorias {
-    private static ControladorCategorias instance;
 
-    private CategoriasRepository repositorio;
+    private IRepository<Categoria> repositorio;
+    private static ControladorCategorias instance;
 
     public ControladorCategorias(){
         this.repositorio = new CategoriasRepository("Controlador" + ".dat");
@@ -55,10 +56,10 @@ public class ControladorCategorias {
         if(nome == null || nome.trim().isEmpty()){
             throw new ArgumentoInvalidoException("O nome da categoria não pode ser vazio");
         }
-        Categoria categoria = this.repositorio.listarPorNome(nome);
-        if(categoria == null){
+        List<Categoria> categorias = this.repositorio.listarPorNome(nome);
+        if(categorias == null){
             throw new ElementoNaoEncontradoException("Não foi possível encontrar a categoria");
         }
-        return categoria;
+        return categorias.get(0);
     }
 }

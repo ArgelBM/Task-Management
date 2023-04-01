@@ -1,18 +1,5 @@
 package gui;
 
-import enums.Prioridades;
-import enums.Status;
-import exceptions.ArgumentoInvalidoException;
-import exceptions.ElementoJaExisteException;
-import exceptions.ElementoNaoEncontradoException;
-import negocio.Fachada;
-import negocio.beans.Task;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class TextualUserInterface {
     /*private final Scanner scanner;
     private final Fachada fachada;

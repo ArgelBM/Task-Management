@@ -2,7 +2,6 @@ package dados;
 
 import exceptions.*;
 import negocio.beans.Pomodoro;
-import negocio.beans.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     }
 
     @Override
-    public Object listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Pomodoro> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         return null;
     }
 

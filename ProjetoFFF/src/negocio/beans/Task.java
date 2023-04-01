@@ -1,10 +1,9 @@
 package negocio.beans;
 
-import enums.Prioridades;
+import enums.Prioridade;
 import enums.Status;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,17 +13,17 @@ public class Task {
     private Status status;
     private LocalDate dataCriada;
     private LocalDate dataConclusao;
-    private Prioridades prioridades;
+    private Prioridade prioridade;
     private List<Pomodoro> pomodoros;
     private String cor;
 
-    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, LocalDate dataConclusao, Prioridades prioridades, List<Pomodoro> pomodoros, String cor) {
+    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, LocalDate dataConclusao, Prioridade prioridade, List<Pomodoro> pomodoros, String cor) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.status = status;
         this.dataCriada = dataCriada;
         this.dataConclusao = dataConclusao;
-        this.prioridades = prioridades;
+        this.prioridade = prioridade;
         this.pomodoros = pomodoros;
         this.cor = cor;
     }
@@ -77,15 +76,15 @@ public class Task {
         this.dataCriada = dataCriada;
     }
 
-    public Prioridades getPrioridades() {
-        return prioridades;
+    public Prioridade getPrioridades() {
+        return prioridade;
     }
 
-    public void setPrioridades(Prioridades prioridades) {
-        this.prioridades = prioridades;
+    public void setPrioridades(Prioridade prioridade) {
+        this.prioridade = prioridade;
     }
     public String getCor() {
-        switch (this.prioridades) {
+        switch (this.prioridade) {
             case IMPORTANTE:
                 return "vermelho";
             case IRRELEVANTE:

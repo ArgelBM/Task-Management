@@ -1,18 +1,6 @@
 package negocio;
 
 
-import enums.Prioridades;
-import enums.Status;
-import exceptions.*;
-import negocio.beans.Categoria;
-import negocio.beans.Pomodoro;
-import negocio.beans.Task;
-import negocio.beans.Usuario;
-
-import java.io.IOException;
-import java.time.Month;
-import java.util.List;
-
 public class Fachada {
    /* private static Fachada instance;
     private ControladorCategorias controladorCategorias;
