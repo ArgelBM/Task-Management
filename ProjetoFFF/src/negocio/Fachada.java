@@ -1,8 +1,21 @@
 package negocio;
 
 
+import enums.Filtro;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.DeletarFalhouException;
+import exceptions.ElementoJaExisteException;
+import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Categoria;
+import negocio.beans.Pomodoro;
+import negocio.beans.Task;
+import negocio.beans.Usuario;
+
+import java.time.Month;
+import java.util.List;
+
 public class Fachada {
-   /* private static Fachada instance;
+   private static Fachada instance;
     private ControladorCategorias controladorCategorias;
     private ControladorPomodoro controladorPomodoro;
     private ControladorTasks controladorTasks;
@@ -22,92 +35,88 @@ public class Fachada {
     }
 
     //Categorias
-    public List<Categoria> listarCategorias(){
-        return ControladorCategorias.listarPorTodos();
+    public void adicionar(Categoria categoria) throws ElementoJaExisteException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorCategorias.adicionar(categoria);
     }
-    public Categoria listarCategoriasPorNome(String nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        return ControladorCategorias.listarPornome(nome);
+
+    public void remover(Categoria categoria) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        controladorCategorias.remover(categoria);
     }
-    public void adicionarCategoria(Categoria obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        ControladorCategorias.adicionar(obj);
+
+    public List<Categoria> listarTodos() {
+        return controladorCategorias.listarTodos();
     }
-    public void removerCategoria(Categoria obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorCategorias.remover(obj);
+
+    public Categoria listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        return controladorCategorias.listarPorNome(nome);
     }
 
 
     //Pomodoro
-    public void adicionarPomodoro(Pomodoro obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        ControladorPomodoro.adicionar(obj);
+    public void getTempoPomodoro() {
+        controladorPomodoro.getTempoPomodoro();
     }
-    public void removerPomodoro(Pomodoro obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorPomodoro.remover(obj);
+
+    public void getTempoDescanso() {
+        controladorPomodoro.getTempoDescanso();
     }
-    public List<Pomodoro> pomodoroPorTarefa(Task obj){
-        return ControladorPomodoro.listarPorTarefa(obj);
+
+    public void getTempoDescansoLongo() {
+        controladorPomodoro.getTempoDescansoLongo();
     }
-    public List<Pomodoro> pomodoroConcluidosPorTarefa(Task obj){
-        return ControladorPomodoro.listarPorTarefa(obj);
-    }
-    public Pomodoro iniciarPomodoro(){
-        return ControladorPomodoro.iniciar();
-    }
-    public Pomodoro pararPomodoro(){
-        return ControladorPomodoro.parar();
-    }
-    public Pomodoro alertaPomodoro(){
-        return ControladorPomodoro.alerta();
+
+    public void iniciarPomodoro(Pomodoro pomodoro) {
+        controladorPomodoro.iniciarPomodoro(pomodoro);
     }
 
     //Task
-    public List<Task> listarTask(){
-        return ControladorTasks.listarTodos();
-    }
-    public void adicionarTask(Task obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        ControladorTasks.adicionar(obj);
-    }
-    public void atualizarTask(Task obj) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorTasks.atualizar(obj);
-    }
-    public void removerTask(Task obj) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorTasks.remover(obj);
-    }
-    public List<Task> listarTaskPorStatus(Status status) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        return ControladorTasks.listarPorStatus(status);
-    }
-    public List<Task> listarTaskPorPrioridade(Prioridades prioridade) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        return ControladorTasks.listarPorPrioridade(prioridade);
-    }
-    public List<Task> listarTaskPorCor(String cor) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        return ControladorTasks.listarPorCor(cor);
-    }
-    public void gerarRelatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
-        ControladorTasks.relatorioPorMes(mes);
-    }
-    public void salvarTarefa(List<Task> tasks, String nomeArquivo) throws IOException {
-        ControladorTasks.salvar(tasks, nomeArquivo);
-    }
-    public List<Task> carregarTask(String nomeArquivo) throws IOException {
-        return ControladorTasks.carregar(nomeArquivo);
+    public List<Task> listarTarefas() {
+        return controladorTasks.listarTarefas();
     }
 
-    //Usuario
-    public List<Usuario> listarUsuario(){
-        return ControladorUsuarios.listarPorTodos();
+    public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        controladorTasks.adicionar(task);
     }
-    public Usuario listarUsuarioPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        return ControladorUsuarios.listarPorId(id);
+
+    public void atualizar(Task task) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorTasks.atualizar(task);
     }
-    public void adicionarUsuario(Usuario obj) throws ElementoJaExisteException, ArgumentoInvalidoException{
-        ControladorUsuarios.adicionar(obj);
+
+    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorTasks.remover(task);
     }
-    public void removerUsuario(Usuario obj) throws ElementoNaoEncontradoException, ArgumentoInvalidoException{
-        ControladorUsuarios.remover(obj);
+
+    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        return controladorTasks.listarPor(filtro, valor);
     }
-    public void atualizarUsuario(Usuario obj) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        ControladorUsuarios.atualizar(obj);
+
+    public void relatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
+        controladorTasks.relatorioPorMes(mes);
     }
 
 
-    */
+    //Usuarios
+    public Usuario fazerLogin(String login, String senha) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        return controladorUsuarios.fazerLogin(login, senha);
+    }
+
+    public List<Usuario> listarPorTodos() {
+        return controladorUsuarios.listarPorTodos();
+    }
+
+    public Usuario listarPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        return controladorUsuarios.listarPorId(id);
+    }
+
+    public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
+        controladorUsuarios.adicionar(usuario);
+    }
+
+    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorUsuarios.atualizar(usuario);
+    }
+
+    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorUsuarios.remover(usuario);
+    }
 }

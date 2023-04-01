@@ -1,19 +1,18 @@
 package negocio;
 
+import dados.IRepository;
 import dados.PomodoroRepository;
 import negocio.beans.Pomodoro;
-import negocio.beans.Task;
 
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ControladorPomodoro {
 
-    public PomodoroRepository repository;
+    public IRepository<Pomodoro> repositorio;
 
     public ControladorPomodoro(){
-        this.repository = new PomodoroRepository("repositoriopomodoro.dat");
+        this.repositorio = new PomodoroRepository("repositoriopomodoro.dat");
     }
 
     private static ControladorPomodoro instance;

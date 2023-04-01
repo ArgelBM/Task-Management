@@ -1,5 +1,6 @@
 package negocio;
 
+import dados.IRepository;
 import dados.TaskRepository;
 import enums.Filtro;
 import exceptions.ArgumentoInvalidoException;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class ControladorTasks {
 
-    private TaskRepository repositorio;
+    private IRepository<Task> repositorio;
     private static ControladorTasks instance;
 
     public ControladorTasks(){
@@ -29,8 +30,8 @@ public class ControladorTasks {
     }
 
 
-    public List<Task> listarTodos() {
-        return repositorio.listarTodos();
+    public List<Task> listarTarefas() {
+        return this.repositorio.listarTodos();
     }
 
     public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
