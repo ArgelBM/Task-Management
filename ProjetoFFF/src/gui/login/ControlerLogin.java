@@ -1,9 +1,11 @@
-package gui;
+package gui.login;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
 
@@ -11,6 +13,12 @@ import java.util.Objects;
 
 
 public class ControlerLogin {
+
+    private Stage stage;
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private Label testador;
@@ -20,6 +28,11 @@ public class ControlerLogin {
 
     @FXML
     private PasswordField senha;
+
+    @FXML
+    void fecharTela(){
+        stage.close();
+    }
 
     @FXML
     void fazerLogin() {
@@ -33,6 +46,7 @@ public class ControlerLogin {
             testador.setText("Bem vindo "+ usuario);
         }
         catch (Exception a ){
+            testador.setText("usurio ou senha errados");
             System.out.println("erro ao fazer login");
         }
         }
@@ -49,6 +63,7 @@ public class ControlerLogin {
         }
         catch (Exception a){
             System.out.println("erro");
+            System.out.println(a);
         }
 
 

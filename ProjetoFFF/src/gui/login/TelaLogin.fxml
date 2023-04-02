@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControlerLogin">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.login.ControlerLogin">
    <left>
       <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #8A2BE2#8A2BE2;" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,6 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="415.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="testador" layoutX="17.0" layoutY="321.0" prefHeight="17.0" prefWidth="151.0" />
             <Button layoutX="124.0" layoutY="375.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #8A2BE2#8A2BE2;" text="Login" textFill="WHITE">
                <font>
                   <Font size="17.0" />
@@ -45,11 +44,11 @@
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="LOCK" layoutX="92.0" layoutY="286.0" selectionFill="BLACK" size="20" />
             <Hyperlink layoutX="130.0" layoutY="441.0" onAction="#criaNovaConta" prefHeight="24.0" prefWidth="101.0" text="Criar Nova Conta" />
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USERS" layoutX="162.0" layoutY="105.0" size="35" />
-            <Button layoutX="315.0" layoutY="12.0" mnemonicParsing="false" onAction="#fecharTela" prefHeight="20.0" prefWidth="6.0" style="-fx-background-color: transparent;">
+            <Button layoutX="318.0" layoutY="12.0" mnemonicParsing="false" onAction="#fecharTela" style="-fx-background-color: transparent;">
                <graphic>
-                  <FontAwesomeIconView fill="BLUEVIOLET" glyphName="TIMES" size="18" wrappingWidth="15.142857551574707" />
+                  <FontAwesomeIconView fill="BLUEVIOLET" glyphName="TIMES" size="18" />
                </graphic></Button>
-            <Button layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#fechartela" text="Button" />
+            <Label fx:id="testador" layoutX="17.0" layoutY="321.0" prefHeight="17.0" prefWidth="151.0" />
          </children>
       </AnchorPane>
    </right>
