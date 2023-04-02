@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -19,7 +20,7 @@ public class TelaLogin extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root, 700, 500);
 
-        stage.setTitle("Task Management!");
+        stage.initStyle(StageStyle.UNDECORATED);
 
         // escolhe a scene
         stage.setScene(scene);

@@ -13,5 +13,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="javafx" level="application" />
+    <orderEntry type="library" name="de.jensd.fontawesomefx.fontawesome" level="project" />
   </component>
 </module>
