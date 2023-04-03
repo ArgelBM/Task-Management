@@ -6,13 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import negocio.ControladorUsuarios;
-import negocio.beans.Usuario;
 
 import java.util.Objects;
 
 
 public class ControlerLogin{
-
 
     @FXML
     private Label testador;
@@ -51,19 +49,14 @@ public class ControlerLogin{
     @FXML
     void criaNovaConta() {
 
-        String usuario = login.getText();
-        String key = senha.getText();
 
         try {
-            ControladorUsuarios.getInstance().adicionar(new Usuario(null, "teste", null, 123, usuario, key));
-            System.out.println("conta criada");
+            Main.mudarTela("telaCadastro");
         }
         catch (Exception a){
             System.out.println("erro");
             System.out.println(a);
         }
-
-
     }
 
     @Override
