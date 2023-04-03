@@ -1,10 +1,10 @@
-package gui.login;
+package gui.controlers;
 
+import gui.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
 
@@ -13,12 +13,6 @@ import java.util.Objects;
 
 public class ControlerLogin{
 
-    private Stage stage;
-
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
 
     @FXML
     private Label testador;
@@ -31,7 +25,7 @@ public class ControlerLogin{
 
     @FXML
     void fecharTela(){
-        stage.close();
+        Main.fecharTela();
     }
 
     @FXML
@@ -44,6 +38,7 @@ public class ControlerLogin{
         try {
             ControladorUsuarios.getInstance().fazerLogin(usuario, key);
             testador.setText("Bem vindo "+ usuario);
+            Main.mudarTela("telaPrincipal");
 
         }
         catch (Exception a ){

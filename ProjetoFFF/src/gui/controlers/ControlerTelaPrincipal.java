@@ -1,16 +1,14 @@
-package gui.telaprincipal;
+package gui.controlers;
 
+import gui.Main;
 import javafx.fxml.FXML;
-
-import javafx.event.ActionEvent;
 
 public class ControlerTelaPrincipal {
 
 
     @FXML
     void sair() {
-
-
+        Main.fecharTela();
 
     }
 }
