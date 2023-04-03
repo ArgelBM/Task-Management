@@ -2,9 +2,11 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../javafx/javafx-sdk-17.0.6/lib" />
+      <root url="file://$PROJECT_DIR$/../../../java fx/openjfx-17_windows-x64_bin-sdk/javafx-sdk-17/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../java fx/openjfx-17_windows-x64_bin-sdk/javafx-sdk-17/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../javafx/javafx-sdk-17.0.6/lib" recursive="false" />
   </library>
 </component>

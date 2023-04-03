@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
@@ -12,9 +11,10 @@ import negocio.beans.Usuario;
 import java.util.Objects;
 
 
-public class ControlerLogin {
+public class ControlerLogin{
 
     private Stage stage;
+
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -44,10 +44,12 @@ public class ControlerLogin {
         try {
             ControladorUsuarios.getInstance().fazerLogin(usuario, key);
             testador.setText("Bem vindo "+ usuario);
+
         }
         catch (Exception a ){
             testador.setText("usurio ou senha errados");
             System.out.println("erro ao fazer login");
+            System.out.println(a);
         }
         }
 
