@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -27,28 +30,43 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="415.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="124.0" layoutY="375.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #8A2BE2#8A2BE2;" text="Login" textFill="WHITE">
+            <Button layoutX="74.0" layoutY="333.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="214.0" style="-fx-background-color: #8A2BE2#8A2BE2; -fx-border-radius: 5;" text="Login" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <TextField fx:id="login" layoutX="121.0" layoutY="206.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="senha" layoutX="121.0" layoutY="266.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Hyperlink layoutX="196.0" layoutY="318.0" text="Esqueceu a senha?" />
-            <Text fill="BLUEVIOLET" layoutX="148.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+            <TextField fx:id="login" layoutX="121.0" layoutY="177.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="senha" layoutX="121.0" layoutY="237.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Hyperlink layoutX="196.0" layoutY="376.0" text="Esqueceu a senha?" />
+            <Text fill="BLUEVIOLET" layoutX="148.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USER_CIRCLE" layoutX="88.0" layoutY="227.0" size="20" />
-            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="LOCK" layoutX="92.0" layoutY="286.0" selectionFill="BLACK" size="20" />
-            <Hyperlink layoutX="130.0" layoutY="441.0" onAction="#criaNovaConta" prefHeight="24.0" prefWidth="101.0" text="Criar Nova Conta" />
-            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USERS" layoutX="162.0" layoutY="105.0" size="35" />
+            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USER_CIRCLE" layoutX="88.0" layoutY="198.0" size="20" />
+            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="LOCK" layoutX="92.0" layoutY="257.0" selectionFill="BLACK" size="20" />
+            <Hyperlink layoutX="129.0" layoutY="462.0" onAction="#criaNovaConta" prefHeight="24.0" prefWidth="101.0" text="Criar Nova Conta" />
+            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="USERS" layoutX="161.0" layoutY="83.0" size="35" />
             <Button layoutX="318.0" layoutY="12.0" mnemonicParsing="false" onAction="#fecharTela" style="-fx-background-color: transparent;">
                <graphic>
                   <FontAwesomeIconView fill="BLUEVIOLET" glyphName="TIMES" size="18" />
                </graphic></Button>
-            <Label fx:id="testador" layoutX="17.0" layoutY="321.0" prefHeight="17.0" prefWidth="151.0" />
+            <JFXButton layoutX="74.0" layoutY="414.0" prefHeight="38.0" prefWidth="214.0" style="-fx-background-color: white; -fx-border-radius: 5;" text="Continue com Google">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="76.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/google-37.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <FontAwesomeIconView fill="GREY" glyphName="EYE" layoutX="243.0" layoutY="284.0" size="13" visible="false" />
+            <FontAwesomeIconView fill="GREY" glyphName="EYE_SLASH" layoutX="243.0" layoutY="284.0" size="13" visible="false" />
+            <FontAwesomeIconView fill="GREY" glyphName="CARET_UP" layoutX="260.0" layoutY="284.0" size="13" visible="false" />
+            <CheckBox layoutX="88.0" layoutY="286.0" mnemonicParsing="false" text="Lembre de mim?" textFill="BLUEVIOLET" />
          </children>
       </AnchorPane>
    </right>
