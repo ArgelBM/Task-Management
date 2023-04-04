@@ -33,7 +33,7 @@ public class Main extends Application {
 
         //carrega tela cadastro
         Parent fxmlCadastro =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaCadastro.fxml")));
-        telaCadastro = new Scene(fxmlCadastro, 700, 500);
+        telaCadastro = new Scene(fxmlCadastro, 300, 400);
 
         //tira borda
         stage.initStyle(StageStyle.UNDECORATED);

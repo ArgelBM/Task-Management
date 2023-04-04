@@ -2,19 +2,18 @@ package gui.controlers;
 
 import gui.Main;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
-
-import java.time.LocalDate;
 
 public class ControlerCadastro {
     @FXML
     private Label erro;
 
     @FXML
-    private TextField dataDeNascimento;
+    private DatePicker dataDeNascimento;
 
     @FXML
     private TextField login;
@@ -24,7 +23,6 @@ public class ControlerCadastro {
 
     @FXML
     private TextField userName;
-
 
     @FXML
     private Label validadorData;
@@ -60,37 +58,22 @@ public class ControlerCadastro {
             validadorNome.setText("X");
         }
         if(this.login.getText().length() <= 10 && this.senha.getText().length() <= 20 &&
-                this.userName.getText().length() <= 20 && verificarData() != null){
+                this.userName.getText().length() <= 20 ){
             v = true;
         }
         return v;
     }
 
     @FXML
-    LocalDate verificarData(){
-        LocalDate output = null;
-        try {
-            String x = dataDeNascimento.getText();
-            String[] data = x.split("/");
-            output = LocalDate.parse(String.format("%s-%s-%s",data[2],data[1],data[0]));
-            validadorData.setText("ok!");
-        }
-        catch (Exception a){
-            validadorData.setText("X");
-        }
-        return output;
-    }
-
-    @FXML
     void cadastrar() {
 
         try {
-            ControladorUsuarios.getInstance().adicionar(new Usuario(null, userName.getText(), verificarData(), 123, login.getText(), senha.getText()));
+            ControladorUsuarios.getInstance().adicionar(new Usuario(null, userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
             System.out.println("conta criada");
             Main.mudarTela("telaLogin");
         }
         catch (Exception a){
-            erro.setText("Erro ao criar conta");
+            erro.setText("*Erro ao criar conta");
             System.out.println("erro");
             System.out.println(a);
         }
