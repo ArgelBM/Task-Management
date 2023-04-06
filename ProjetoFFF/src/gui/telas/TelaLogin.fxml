@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerLogin">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="40.0" prefHeight="461.0" prefWidth="350.0">
          <children>
@@ -61,7 +61,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="218.0" prefWidth="350.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -71,7 +71,7 @@
                   </Button>
                   <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="350.0">
                      <children>
-                        <Hyperlink onAction="#volta" text="Esqueceu a senha?">
+                        <Hyperlink text="Esqueceu a senha?">
                            <padding>
                               <Insets left="20.0" />
                            </padding>
@@ -93,7 +93,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <Hyperlink onAction="#volta" text="Criar Nova Conta" />
+                  <Hyperlink text="Criar Nova Conta" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="20.0" />
@@ -101,7 +101,7 @@
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
+      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT;">
          <graphic>
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
          </graphic>
