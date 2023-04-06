@@ -24,7 +24,7 @@ public class Main extends Application {
         stage = stagePrimary;
 
         //carrega tela de login
-        Parent fxmlMain = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaLogin.fxml")));
+        Parent fxmlMain = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaInicial.fxml")));
         mainScene = new Scene(fxmlMain, 700, 500);
 
         //carrega tela principal

@@ -21,7 +21,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" layoutY="65.0" prefHeight="436.0" prefWidth="350.0">
+      <VBox alignment="TOP_CENTER" layoutY="40.0" prefHeight="461.0" prefWidth="350.0">
          <children>
             <VBox alignment="CENTER" prefHeight="69.0" prefWidth="350.0">
                <children>
@@ -33,11 +33,11 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="251.0" prefWidth="350.0" spacing="15.0">
+            <VBox alignment="TOP_CENTER" prefHeight="248.0" prefWidth="350.0" spacing="20.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="222.0" prefWidth="350.0" spacing="10.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="155.0" prefWidth="127.0" spacing="20.0">
                            <children>
                               <Label text="Nome" textFill="BLUEVIOLET">
                                  <font>
@@ -49,53 +49,34 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
+                              <Label text="Email" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Senha" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
                            <children>
                               <TextField fx:id="userName" prefHeight="25.0" prefWidth="150.0" />
                               <DatePicker fx:id="dataDeNascimento" editable="false" prefHeight="25.0" prefWidth="150.0" promptText="Selecione uma data" />
+                              <TextField fx:id="userName1" prefHeight="25.0" prefWidth="150.0" />
+                              <PasswordField prefHeight="25.0" prefWidth="150.0" />
                            </children>
                         </VBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="350.0" spacing="9.0">
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets left="30.0" top="50.0" />
                      </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="350.0" spacing="99.0">
-                     <children>
-                        <Label text="Email" textFill="BLUEVIOLET">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="userName1" prefHeight="25.0" prefWidth="150.0" />
-                     </children>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="350.0" spacing="95.0">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <children>
-                        <Label text="Senha" textFill="BLUEVIOLET">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <PasswordField prefHeight="25.0" prefWidth="150.0" />
-                     </children>
                   </HBox>
                </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="292.0" prefWidth="350.0" spacing="15.0">
+            <VBox alignment="CENTER" prefHeight="218.0" prefWidth="350.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -125,16 +106,16 @@
                   </HBox>
                </children>
                <padding>
-                  <Insets top="20.0" />
+                  <Insets top="30.0" />
                </padding>
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="318.0" layoutY="12.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
+      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
          <graphic>
-            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="18" />
+            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
          </graphic>
       </Button>
-      <ChoiceBox layoutX="260.0" layoutY="93.0" prefHeight="25.0" prefWidth="62.0" />
+      <ChoiceBox layoutX="255.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" />
    </children>
 </AnchorPane>
