@@ -29,7 +29,7 @@ public class ControlerInicial implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            carregarTelaCadastro();
+            carregarTelaLogin();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,4 +59,7 @@ public class ControlerInicial implements Initializable {
         carregarTela("/gui/telas/TelaCadastro.fxml", "RIGHT");
     }
 
+    public void setContentArea(BorderPane contentArea) {
+        this.contentArea = contentArea;
+    }
 }

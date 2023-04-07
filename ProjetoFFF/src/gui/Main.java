@@ -1,5 +1,6 @@
 package gui;
 
+import gui.controlers.ControlerInicial;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ public class Main extends Application {
     private static Stage stage;
     private static Scene mainScene;
     private static Scene telaPrincipalScene;
-    private static Scene telaCadastro;
 
     @Override
     public void start(Stage stagePrimary) throws IOException {
@@ -24,8 +24,13 @@ public class Main extends Application {
         stage = stagePrimary;
 
         //carrega tela de login
-        Parent fxmlMain = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaInicial.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("telas//TelaInicial.fxml"));
+        Parent fxmlMain = loader.load();
         mainScene = new Scene(fxmlMain, 700, 500);
+
+        ControlerInicial a = loader.getController();
+        ControlerInicial.getInstance().setContentArea(a.getContentArea());
+
 
         //carrega tela principal
         Parent fxmlPrincipal = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaPrincipal.fxml")));
@@ -47,7 +52,7 @@ public class Main extends Application {
         switch (tela) {
             case "telaLogin" -> stage.setScene(mainScene);
             case "telaPrincipal" -> stage.setScene(telaPrincipalScene);
-            case "telaCadastro" -> stage.setScene(telaCadastro);
+
         }
     }
 
