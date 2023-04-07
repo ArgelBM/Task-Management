@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import negocio.ControladorUsuarios;
 
 import java.util.Objects;
@@ -49,9 +50,9 @@ public class ControlerLogin{
     @FXML
     void criaNovaConta() {
 
-
         try {
-            Main.mudarTela("telaCadastro");
+            BorderPane contentArea = ControlerInicial.getInstance().getContentArea();
+            ControlerInicial.getInstance().carregarTelaCadastro();
         }
         catch (Exception a){
             System.out.println("erro");

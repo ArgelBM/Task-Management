@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,29 +17,46 @@ public class ControlerInicial implements Initializable {
     @FXML
     private BorderPane contentArea;
 
+    private static ControlerInicial instance;
+
+    public static ControlerInicial getInstance(){
+        if(instance == null){
+            instance = new ControlerInicial();
+        }
+        return instance;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            trocarConteudoDireita("/gui/telas/TelaLogin.fxml");
+            carregarTelaCadastro();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void trocarConteudoDireita(String caminhoFXML) throws IOException {
+    public BorderPane getContentArea() {
+        return contentArea;
+    }
+
+    public void carregarTela(String caminhoFXML, String posicao) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
         Parent root = loader.load();
-        contentArea.setRight(root);
+        switch (posicao) {
+            case "TOP" -> contentArea.setTop(root);
+            case "LEFT" -> contentArea.setLeft(root);
+            case "BOTTOM" -> contentArea.setBottom(root);
+            case "RIGHT" -> contentArea.setRight(root);
+            default -> throw new IllegalArgumentException("Posição inválida");
+        }
     }
 
-    @FXML
-    private void exibirTelaLogin(ActionEvent event) throws IOException {
-        trocarConteudoDireita("/gui/telas/TelaLogin.fxml");
+    public void carregarTelaLogin() throws IOException {
+        carregarTela("/gui/telas/TelaLogin.fxml", "RIGHT");
     }
 
-    @FXML
-    private void exibirTelaCadastro(ActionEvent event) throws IOException {
-        trocarConteudoDireita("/gui/telas/TelaCadastro.fxml");
+    public void carregarTelaCadastro() throws IOException {
+        carregarTela("/gui/telas/TelaCadastro.fxml", "RIGHT");
     }
 
 }
