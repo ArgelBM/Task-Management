@@ -60,6 +60,11 @@ public class ControlerLogin{
         }
     }
 
+    @FXML
+    void fecha() {
+        Main.fecharTela();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
