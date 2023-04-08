@@ -64,11 +64,14 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if (usuario == null) {
+        if (usuario == null || usuario.getSenha().equals("") || usuario.getLogin().equals("") || usuario.getNomeUsuario().equals("") ||
+        usuario.getDataNascimento() == null ) {
             throw new ArgumentoInvalidoException("Usuário não pode ser nulo");
         }
-        if (usuarios.contains(usuario)) {
-            throw new ElementoJaExisteException("Usuário já existe");
+        for(Usuario a : usuarios){
+            if (a.getLogin().equals(usuario.getLogin()) && a.getSenha().equals(usuario.getSenha())){
+                throw new ElementoJaExisteException("Usuário já existe");
+            }
         }
         usuarios.add(usuario);
         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);

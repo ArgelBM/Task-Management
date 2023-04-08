@@ -23,11 +23,6 @@ public class ControlerLogin{
     private PasswordField senha;
 
     @FXML
-    void fecharTela(){
-        Main.fecharTela();
-    }
-
-    @FXML
     void fazerLogin() {
 
 

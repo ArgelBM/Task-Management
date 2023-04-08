@@ -5,7 +5,7 @@ public class ElementoJaExisteException extends Exception {
 
     public ElementoJaExisteException(Object obj){
         super("Objeto ja esta cadastrado no repositorio e nao pode ser" +
-                "adicionado novamente");
+                " adicionado novamente");
         this.elemento = obj;
     }
 
