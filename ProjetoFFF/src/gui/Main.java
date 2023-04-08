@@ -13,9 +13,15 @@ import java.util.Objects;
 
 public class Main extends Application {
 
+
+
     private static Stage stage;
     private static Scene mainScene;
     //private static Scene telaPrincipalScene;
+
+    public static Stage getStage() {
+        return stage;
+    }
 
     @Override
     public void start(Stage stagePrimary) throws IOException {
@@ -57,6 +63,10 @@ public class Main extends Application {
 
     public static void fecharTela(){
         stage.close();
+    }
+
+    public static Scene getMainScene(){
+        return mainScene;
     }
 
     public static void main(String[] args) {

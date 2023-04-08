@@ -123,6 +123,7 @@
                   <Insets left="5.0" />
                </padding>
             </HBox>
+            <Button layoutX="28.0" layoutY="366.0" mnemonicParsing="false" onAction="#sair" text="sair" />
          </children>
       </Pane>
    </left>

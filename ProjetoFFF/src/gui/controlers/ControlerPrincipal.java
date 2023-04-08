@@ -1,6 +1,7 @@
 package gui.controlers;
 
 import gui.Main;
+import gui.ScreamControl;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -24,8 +25,6 @@ public class ControlerPrincipal implements Initializable {
             e.printStackTrace();
         }
     }
-
-
     @FXML
     private BorderPane contentArea;
 
@@ -35,13 +34,9 @@ public class ControlerPrincipal implements Initializable {
     @FXML
     private Label nomeDeUsuario;
 
-    public ControlerPrincipal(){
-
-    }
-
     @FXML
-    void sair() {
-        Main.fecharTela();
+    void sair() throws IOException {
+        ScreamControl.getInstance().telaLogin();
 
     }
 }

@@ -1,6 +1,7 @@
 package gui.controlers;
 
 import gui.Main;
+import gui.ScreamControl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,13 +40,7 @@ public class ControlerLogin{
             testador.setText("*Bem vindo "+ usuario);
 //            Main.mudarTela("telaPrincipal");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../telas/telaPrincipal.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            Main.fecharTela();
+            ScreamControl.getInstance().telaPrincipal();
 
         }
         catch (Exception a ){
@@ -68,9 +63,13 @@ public class ControlerLogin{
         }
     }
 
+
     @FXML
-    void fecha() {
-        Main.fecharTela();
+    void fecha(){
+            Main.fecharTela();
+            if (ScreamControl.getInstance().getStage() != null) {
+                ScreamControl.getInstance().fecharTela();
+            }
     }
 
     @Override

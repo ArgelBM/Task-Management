@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario implements Serializable {
-    private List<Task> task = new ArrayList<>();
+    private List<Task> task ;
     private String nomeUsuario;
     private LocalDate dataNascimento;
     private int id;
     private String login;
     private String senha;
 
-    public Usuario(List<Task> task, String nomeUsuario, LocalDate dataNascimento, int id, String login, String senha) {
-        this.task = task;
+    public Usuario( String nomeUsuario, LocalDate dataNascimento, int id, String login, String senha) {
+        this.task = new ArrayList<>();
         this.nomeUsuario = nomeUsuario;
         this.dataNascimento = dataNascimento;
         this.id = id;

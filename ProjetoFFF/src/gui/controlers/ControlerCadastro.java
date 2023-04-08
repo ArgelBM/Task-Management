@@ -71,9 +71,9 @@ public class ControlerCadastro {
     void cadastrar() {
 
         try {
-            ControladorUsuarios.getInstance().adicionar(new Usuario(null, userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
+            ControladorUsuarios.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
             System.out.println("conta criada");
-            Main.mudarTela("telaLogin");
+            ControlerInicial.getInstance().carregarTelaLogin();
         }
         catch (Exception a){
             erro.setText("*Erro ao criar conta");
@@ -99,9 +99,9 @@ public class ControlerCadastro {
         }
     }
 
-    void volta() throws IOException {
-        ControlerInicial.getInstance().carregarTelaLogin();
-
-    }
+//    void volta() throws IOException {
+//        ControlerInicial.getInstance().carregarTelaLogin();
+//
+//    }
 
 }
