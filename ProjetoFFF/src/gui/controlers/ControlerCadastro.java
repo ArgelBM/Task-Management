@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
 
+import java.io.IOException;
+
 public class ControlerCadastro {
     @FXML
     private Label erro;
@@ -86,8 +88,8 @@ public class ControlerCadastro {
 
 
     @FXML
-    void volta() {
-        Main.mudarTela("telaLogin");
+    void volta() throws IOException {
+        ControlerInicial.getInstance().carregarTelaLogin();
 
     }
 

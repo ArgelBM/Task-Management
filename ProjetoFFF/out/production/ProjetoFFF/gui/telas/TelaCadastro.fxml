@@ -2,92 +2,120 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerCadastro">
-   <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerCadastro">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutY="40.0" prefHeight="461.0" prefWidth="350.0">
          <children>
-            <Label layoutX="57.0" layoutY="34.0" text="Nome" textFill="BLUEVIOLET">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="12.0" layoutY="77.0" text="Data de nascimento" textFill="BLUEVIOLET">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="57.0" layoutY="122.0" text="Email" textFill="BLUEVIOLET">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="55.0" layoutY="165.0" text="Senha" textFill="BLUEVIOLET">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Text fill="BLUEVIOLET" layoutX="88.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Já é um usuário?" />
-            <Hyperlink layoutX="178.0" layoutY="313.0" onAction="#volta" text="LOGIN" />
-            <DatePicker fx:id="dataDeNascimento" editable="false" layoutX="141.0" layoutY="74.0" prefHeight="25.0" prefWidth="145.0" promptText="Selecione uma data" />
-            <TextField fx:id="userName" layoutX="141.0" layoutY="31.0" opacity="0.41" prefHeight="25.0" prefWidth="145.0" />
-            <TextField fx:id="login" layoutX="141.0" layoutY="120.0" prefHeight="25.0" prefWidth="145.0" />
-            <TextField fx:id="senha" layoutX="141.0" layoutY="163.0" prefHeight="25.0" prefWidth="145.0" />
-            <Button layoutX="59.0" layoutY="219.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" size="25" />
-               </graphic>
-            </Button>
-            <JFXButton layoutX="59.0" layoutY="268.0" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: white; -fx-border-radius: 5;" text="Continue com Google">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="76.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/img/google-37.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <ChoiceBox layoutX="227.0" layoutY="120.0" prefHeight="25.0" prefWidth="62.0" />
-            <Label fx:id="erro" alignment="CENTER" layoutX="100.0" layoutY="196.0" prefHeight="15.0" prefWidth="152.0" textFill="RED">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" prefHeight="69.0" prefWidth="350.0">
+               <children>
+                  <MaterialIconView fill="BLUEVIOLET" glyphName="PERSON_ADD" size="35" />
+                  <Label contentDisplay="TOP" text="SIGN UP" textAlignment="CENTER" textFill="BLUEVIOLET">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="248.0" prefWidth="350.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="222.0" prefWidth="350.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="155.0" prefWidth="127.0" spacing="20.0">
+                           <children>
+                              <Label text="Nome" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Data de nascimento" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Email" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Senha" textFill="BLUEVIOLET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
+                           <children>
+                              <TextField fx:id="userName" prefHeight="25.0" prefWidth="150.0" />
+                              <DatePicker fx:id="dataDeNascimento" editable="false" prefHeight="25.0" prefWidth="150.0" promptText="Selecione uma data" />
+                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" />
+                              <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" top="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="218.0" prefWidth="350.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" size="25" />
+                     </graphic>
+                  </Button>
+                  <JFXButton prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: white; -fx-border-radius: 5;" text="Continue com Google">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="76.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/google-37.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="350.0">
+                     <children>
+                        <Text fill="BLUEVIOLET" strokeType="OUTSIDE" strokeWidth="0.0" text="Já é um usuário?" />
+                        <Hyperlink onAction="#volta" text="LOGIN" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
          </children>
-      </Pane>
-   </center>
-   <top>
-      <Pane prefHeight="34.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="109.0" layoutY="4.0" text="SIGN UP" textAlignment="CENTER" textFill="BLUEVIOLET">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Button layoutX="263.0" layoutY="6.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
-               <graphic>
-                  <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="18" />
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
-   </top>
-</BorderPane>
+      </VBox>
+      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
+         <graphic>
+            <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
+         </graphic>
+      </Button>
+      <ChoiceBox layoutX="255.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" />
+   </children>
+</AnchorPane>

@@ -9,6 +9,8 @@ public class UsuariosRepository implements IRepository<Usuario> {
     List<Usuario> usuarios;
     String fileName;
 
+    private Usuario usuarioAtivo;
+
     public UsuariosRepository(String fileName){
         this.usuarios = new ArrayList<>();
         this.fileName = fileName;
@@ -25,6 +27,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
         }
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+                usuarioAtivo = usuario;
                 return usuario;
             }
         }
@@ -105,4 +108,12 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
          RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
      }
+
+    public Usuario getUsuarioAtivo() {
+        return usuarioAtivo;
+    }
+
+    public void mudarUsuario(){
+        this.usuarioAtivo = null;
+    }
 }
