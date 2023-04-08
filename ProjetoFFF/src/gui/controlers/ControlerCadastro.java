@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import negocio.ControladorUsuarios;
 import negocio.beans.Usuario;
 
@@ -84,11 +85,16 @@ public class ControlerCadastro {
         Main.fecharTela();
     }
 
-
     @FXML
-    void volta() {
-        Main.mudarTela("telaLogin");
-
+    void login(){
+        try {
+            BorderPane contentArea = ControlerInicial.getInstance().getContentArea();
+            ControlerInicial.getInstance().carregarTelaLogin();
+        }
+        catch (Exception a){
+            System.out.println("erro");
+            System.out.println(a);
+        }
     }
 
 }
