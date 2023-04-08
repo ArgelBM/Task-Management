@@ -2,10 +2,14 @@ package gui.controlers;
 
 import gui.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 
 import java.util.Objects;
@@ -30,9 +34,18 @@ public class ControlerLogin{
         String key = senha.getText();
 
         try {
+
             ControladorUsuarios.getInstance().fazerLogin(usuario, key);
             testador.setText("*Bem vindo "+ usuario);
-            Main.mudarTela("telaPrincipal");
+//            Main.mudarTela("telaPrincipal");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../telas/telaPrincipal.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            Main.fecharTela();
 
         }
         catch (Exception a ){

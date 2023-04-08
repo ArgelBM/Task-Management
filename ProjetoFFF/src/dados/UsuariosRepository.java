@@ -116,7 +116,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
         return usuarioAtivo;
     }
 
-    public void mudarUsuario(){
+    public void sair(){
         this.usuarioAtivo = null;
     }
 }

@@ -78,6 +78,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="218.0" prefWidth="350.0" spacing="20.0">
                <children>
+                  <Label fx:id="erro" contentDisplay="CENTER" prefHeight="17.0" prefWidth="156.0" textFill="#fc0000" />
                   <Button mnemonicParsing="false" onAction="#cadastrar" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />

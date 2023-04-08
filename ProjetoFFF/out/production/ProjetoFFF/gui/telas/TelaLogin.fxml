@@ -43,8 +43,8 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
                            <children>
-                              <TextField fx:id="userName" prefHeight="25.0" prefWidth="150.0" promptText="Usuário" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-                              <PasswordField prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Usuário" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </VBox>
                      </children>
@@ -61,7 +61,8 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="239.0" prefWidth="350.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="testador" alignment="CENTER" prefHeight="17.0" prefWidth="185.0" text="NÃO MEXER NA LABEL!!!!" textFill="#e10000" />
+                  <Button mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

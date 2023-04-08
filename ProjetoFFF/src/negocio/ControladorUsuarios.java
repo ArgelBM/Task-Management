@@ -81,4 +81,8 @@ public class ControladorUsuarios implements Serializable {
         }
         repositorio.remover(usuario);
     }
+
+    public Usuario usuarioAtivo(){
+        return repositorio.getUsuarioAtivo();
+    }
 }

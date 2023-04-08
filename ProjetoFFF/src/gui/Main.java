@@ -15,7 +15,7 @@ public class Main extends Application {
 
     private static Stage stage;
     private static Scene mainScene;
-    private static Scene telaPrincipalScene;
+    //private static Scene telaPrincipalScene;
 
     @Override
     public void start(Stage stagePrimary) throws IOException {
@@ -31,10 +31,9 @@ public class Main extends Application {
         ControlerInicial a = loader.getController();
         ControlerInicial.getInstance().setContentArea(a.getContentArea());
 
-
         //carrega tela principal
-        Parent fxmlPrincipal = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaPrincipal.fxml")));
-        telaPrincipalScene = new Scene(fxmlPrincipal, 700, 500);
+        //Parent fxmlPrincipal = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("telas//TelaPrincipal.fxml")));
+        //telaPrincipalScene = new Scene(fxmlPrincipal, 700, 500);
 
 
         //tira borda
@@ -51,7 +50,7 @@ public class Main extends Application {
     public static void mudarTela(String tela){
         switch (tela) {
             case "telaLogin" -> stage.setScene(mainScene);
-            case "telaPrincipal" -> stage.setScene(telaPrincipalScene);
+            //case "telaPrincipal" -> stage.setScene(telaPrincipalScene);
 
         }
     }

@@ -30,12 +30,12 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="21.0" prefWidth="201.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818">
+                        <Label fx:id="nomeDeUsuario" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="204.0" text="email.do.usuario@email.com" textFill="#636363">
+                        <Label fx:id="login" alignment="CENTER" prefHeight="15.0" prefWidth="204.0" text="email.do.usuario@email.com" textFill="#636363">
                            <font>
                               <Font size="11.0" />
                            </font>
