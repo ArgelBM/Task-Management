@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #CFCFCF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerLogin">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="40.0" prefHeight="461.0" prefWidth="350.0">
          <children>
@@ -31,11 +31,11 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="248.0" prefWidth="350.0">
+            <VBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="350.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="222.0" prefWidth="350.0" spacing="10.0">
                      <children>
-                        <VBox alignment="TOP_RIGHT" prefHeight="68.0" prefWidth="133.0" spacing="15.0">
+                        <VBox alignment="TOP_RIGHT" prefHeight="68.0" prefWidth="25.0" spacing="15.0">
                            <children>
                               <MaterialIconView fill="BLUEVIOLET" glyphName="ACCOUNT_CIRCLE" size="25" />
                               <MaterialIconView fill="BLUEVIOLET" glyphName="LOCK" size="25" />
@@ -43,26 +43,25 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
                            <children>
-                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-                              <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <TextField fx:id="userName" prefHeight="25.0" prefWidth="150.0" promptText="Usuário" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <PasswordField prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets top="50.0" />
+                        <Insets left="80.0" top="50.0" />
                      </padding>
                   </HBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="239.0" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
+                  <CheckBox mnemonicParsing="false" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
                      <padding>
-                        <Insets bottom="50.0" left="112.0" />
+                        <Insets left="83.0" top="20.0" />
                      </padding>
                   </CheckBox>
-                  <Label fx:id="testador" alignment="CENTER" prefHeight="17.0" prefWidth="159.0" textFill="#f80000" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="218.0" prefWidth="350.0" spacing="15.0">
+            <VBox alignment="CENTER" prefHeight="239.0" prefWidth="350.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -97,12 +96,12 @@
                   <Hyperlink onAction="#criaNovaConta" text="Criar Nova Conta" />
                </children>
                <padding>
-                  <Insets bottom="10.0" top="20.0" />
+                  <Insets bottom="10.0" top="50.0" />
                </padding>
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" onAction="#fecharTela" style="-fx-background-color: TRANSPARENT;">
+      <Button layoutX="312.0" layoutY="1.0" mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: TRANSPARENT;">
          <graphic>
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
          </graphic>

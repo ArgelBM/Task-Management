@@ -97,6 +97,8 @@ public class ControlerCadastro {
             System.out.println("erro");
             System.out.println(a);
         }
+    }
+
     void volta() throws IOException {
         ControlerInicial.getInstance().carregarTelaLogin();
 
