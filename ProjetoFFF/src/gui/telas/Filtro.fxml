@@ -16,8 +16,8 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="698.0" spacing="10.0">
                <children>
-                  <MaterialIconView fill="#f2f25f" glyphName="STAR_BORDER" size="30" />
-                  <Label text="Importante" textFill="WHITE">
+                  <MaterialIconView fill="#25b84c" glyphName="TODAY" size="30" />
+                  <Label text="Hoje" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
@@ -26,16 +26,8 @@
             </HBox>
             <VBox prefHeight="611.0" prefWidth="738.0">
                <children>
-                  <VBox>
-                     <children>
-                        <ListView prefHeight="305.0" prefWidth="698.0" style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0; -fx-border-style: solid;" />
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <ListView prefHeight="306.0" prefWidth="698.0" />
-                     </children>
-                  </VBox>
+                  <ListView prefHeight="305.0" prefWidth="698.0" />
+                  <ListView prefHeight="306.0" prefWidth="698.0" />
                </children>
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="738.0" spacing="40.0" style="-fx-background-color: #DADEE1;">
