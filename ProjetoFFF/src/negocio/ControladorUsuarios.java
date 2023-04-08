@@ -48,13 +48,12 @@ public class ControladorUsuarios implements Serializable {
         if (usuario == null) {
             throw new ArgumentoInvalidoException("Usuário inválido");
         }
-        if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Login inválido");
+        else if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty() || usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
+            throw new ArgumentoInvalidoException("Login inválido ou senha invalidos");
         }
-        if (usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Senha inválida");
+        else {
+            repositorio.adicionar(usuario);
         }
-        repositorio.adicionar(usuario);
     }
 
     public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {

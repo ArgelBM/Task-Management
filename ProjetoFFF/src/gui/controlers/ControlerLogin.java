@@ -36,12 +36,12 @@ public class ControlerLogin{
 
         try {
             ControladorUsuarios.getInstance().fazerLogin(usuario, key);
-            testador.setText("Bem vindo "+ usuario);
+            testador.setText("*Bem vindo "+ usuario);
             Main.mudarTela("telaPrincipal");
 
         }
         catch (Exception a ){
-            testador.setText("usurio ou senha errados");
+            testador.setText("*usurio ou senha errados");
             System.out.println("erro ao fazer login");
             System.out.println(a);
         }
