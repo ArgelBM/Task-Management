@@ -3,6 +3,7 @@ package negocio.beans;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Usuario implements Serializable {
@@ -12,6 +13,9 @@ public class Usuario implements Serializable {
     private int id;
     private String login;
     private String senha;
+    private List<String> cor;
+    private List<String> prioridade;
+    private List<String> status;
 
     public Usuario( String nomeUsuario, LocalDate dataNascimento, int id, String login, String senha) {
         this.task = new ArrayList<>();
@@ -20,6 +24,11 @@ public class Usuario implements Serializable {
         this.id = id;
         this.login = login;
         this.senha = senha;
+        //
+        cor = Arrays.asList("vermelho","verde", "azul","");
+        prioridade = Arrays.asList("importante","irrelevante","");
+        status = Arrays.asList("concluído","pendente", "fazendo");
+
     }
 
     public List<Task> getTask() {
