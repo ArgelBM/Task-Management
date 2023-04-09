@@ -63,7 +63,7 @@
             </Button>
             <VBox layoutY="69.0" prefHeight="206.0" prefWidth="262.0" spacing="10.0">
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Hoje" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaHoje" prefWidth="262.0" style="-fx-background-color: transparent;" text="Hoje" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#25b84c" glyphName="TODAY" size="15" />
                      </graphic>
@@ -71,7 +71,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Em breve" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaEmbreve" prefWidth="262.0" style="-fx-background-color: transparent;" text="Em breve" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#5297ff" glyphName="EVENT_NOTE" size="15" />
                      </graphic>
@@ -79,7 +79,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Importante" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaImportante" prefWidth="262.0" style="-fx-background-color: transparent;" text="Importante" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#f2f25f" glyphName="STAR_BORDER" size="15" />
                      </graphic>
@@ -87,7 +87,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Filtros" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaFiltro" prefWidth="262.0" style="-fx-background-color: transparent;" text="Filtros" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#ff9a14" glyphName="FILTER_LIST" size="15" />
                      </graphic>
@@ -95,7 +95,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Pomodoro" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaPomodoro" prefWidth="262.0" style="-fx-background-color: transparent;" text="Pomodoro" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#f44336" glyphName="TIMER" size="15" />
                      </graphic>

@@ -1,6 +1,7 @@
 package gui;
 
 import gui.controlers.ControlerInicial;
+import gui.controlers.ControlerPrincipal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,6 +39,9 @@ public void telaPrincipal() throws IOException {
     Parent root = loader.load();
 
     Scene scene = new Scene(root, 1000, 664);
+
+    ControlerPrincipal a = loader.getController();
+    ControlerPrincipal.getInstance().setContentArea(a.getContentArea());
 
     stage.setScene(scene);
     stage.show();

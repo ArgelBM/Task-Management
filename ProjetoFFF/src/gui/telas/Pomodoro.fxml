@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="664.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.telas.Importante">
+<AnchorPane prefHeight="664.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerPomodoro">
    <children>
       <VBox prefHeight="664.0" prefWidth="738.0" style="-fx-background-color: #73818C;">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="698.0" spacing="10.0">
                <children>
-                  <MaterialIconView fill="#25b84c" glyphName="TODAY" size="30" />
-                  <Label text="Hoje" textFill="WHITE">
+                  <MaterialIconView fill="#f44336" glyphName="TIMER" size="30" />
+                  <Label text="Pomodoro" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
