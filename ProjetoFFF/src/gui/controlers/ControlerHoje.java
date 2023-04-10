@@ -31,7 +31,9 @@ public class ControlerHoje implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inciarTarefas();
+        System.out.println("teste");
     }
+
 
     @FXML
     void inciarTarefas() {
