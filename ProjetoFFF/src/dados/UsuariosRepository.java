@@ -85,19 +85,6 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public void atualizar(Usuario usuario) throws ElementoNaoEncontradoException {
-//        int index = usuarios.indexOf(usuario);
-//
-//        if (index == -1) {
-//            throw new ElementoNaoEncontradoException("Usuário não encontrado");
-//        }
-//
-//        Usuario usuarioAntigo = usuarios.get(index);
-//
-//        usuarioAntigo.setNomeUsuario(usuario.getNomeUsuario());
-//        usuarioAntigo.setDataNascimento(usuario.getDataNascimento());
-//        usuarioAntigo.setLogin(usuario.getLogin());
-//        usuarioAntigo.setSenha(usuario.getSenha());
-//        usuarioAntigo.setTask(usuario.getTask());
 
         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
