@@ -3,6 +3,7 @@ package gui.controlers;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
@@ -15,7 +16,7 @@ public class ControlerItem  {
     private CheckBox checkbox;
 
     @FXML
-    private MaterialIconView favoritar;
+    private Button favoritar;
 
     @FXML
     private Label nomeLabel;
