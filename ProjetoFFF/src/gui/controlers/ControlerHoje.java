@@ -22,19 +22,6 @@ public class ControlerHoje implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        carregarItens();
-    }
-
-    private void carregarItens() {
-        tarefas.getChildren().clear();
-        for (int i = 0; i < 10; i++) {
-            try {
-                Node item = FXMLLoader.load(getClass().getResource("/gui/telas/Item.fxml"));
-                tarefas.getChildren().add(item);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     @FXML

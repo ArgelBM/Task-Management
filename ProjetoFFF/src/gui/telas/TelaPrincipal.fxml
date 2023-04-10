@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,8 +19,7 @@
    <left>
       <Pane prefHeight="664.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="233.0" style="-fx-background-color: transparent;" />
-            <HBox alignment="CENTER" layoutX="3.0" prefHeight="33.0" prefWidth="256.0" spacing="2.0">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="262.0" spacing="2.0">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +28,7 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="21.0" prefWidth="201.0">
                      <children>
-                        <Label fx:id="nomeDeUsuario" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818">
+                        <Label fx:id="nomeDeUsuario" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818" wrapText="true">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -42,14 +40,6 @@
                         </Label>
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="28.0" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <MaterialIconView glyphName="SETTINGS" size="15" />
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="Configurações" />
-                     </tooltip>
-                  </Button>
                </children>
                <padding>
                   <Insets left="10.0" />
@@ -103,13 +93,28 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Configurações" textFill="#181818">
+                     <graphic>
+                        <MaterialIconView glyphName="SETTINGS" size="15" />
+                     </graphic>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#sair" prefWidth="262.0" style="-fx-background-color: transparent;" text="Sair" textFill="#181818">
+                     <graphic>
+                        <MaterialIconView fill="#687681" glyphName="EXIT_TO_APP" size="15" />
+                     </graphic>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets left="5.0" top="10.0" />
                </padding></VBox>
-            <Separator layoutY="273.0" prefWidth="262.0" style="-fx-background-color: #C1C1C1;" />
-            <ListView layoutY="275.0" prefHeight="207.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" />
-            <Button layoutY="625.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="262.0" style="-fx-background-color: transparent;" />
+            <Separator layoutY="342.0" prefWidth="262.0" style="-fx-background-color: #C1C1C1;" />
+            <ListView layoutY="346.0" prefHeight="279.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" />
             <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="624.0" prefHeight="25.0" prefWidth="262.0" spacing="50.0">
                <children>
                   <MaterialIconView fill="#181818" glyphName="ADD" size="25" />
@@ -123,7 +128,7 @@
                   <Insets left="5.0" />
                </padding>
             </HBox>
-            <Button layoutX="28.0" layoutY="366.0" mnemonicParsing="false" onAction="#sair" text="sair" />
+            <Button layoutY="625.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="262.0" style="-fx-background-color: transparent;" />
          </children>
       </Pane>
    </left>
