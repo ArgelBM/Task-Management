@@ -93,7 +93,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="262.0" style="-fx-background-color: transparent;" text="Configurações" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaConfiguracao" prefWidth="262.0" style="-fx-background-color: transparent;" text="Configurações" textFill="#181818">
                      <graphic>
                         <MaterialIconView glyphName="SETTINGS" size="15" />
                      </graphic>
