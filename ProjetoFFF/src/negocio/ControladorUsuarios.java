@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ControladorUsuarios implements Serializable {
 
+
     private UsuariosRepository repositorio;
     private static ControladorUsuarios instance;
 
@@ -80,6 +81,9 @@ public class ControladorUsuarios implements Serializable {
             throw new ArgumentoInvalidoException("Usuário inválido");
         }
         repositorio.remover(usuario);
+    }
+    public UsuariosRepository getRepositorio() {
+        return repositorio;
     }
 
     public Usuario usuarioAtivo(){

@@ -23,12 +23,12 @@
                         <String fx:value="mark" />
                      </styleClass>
                   </CheckBox>
-                  <Label fx:id="label" prefHeight="17.0" prefWidth="610.0" text="Label" wrapText="true" />
+                  <Label fx:id="nomeLabel" prefHeight="17.0" prefWidth="610.0" text="Label" wrapText="true" />
                </children>
             </HBox>
             <Button mnemonicParsing="false">
                <graphic>
-                  <MaterialIconView glyphName="STAR_BORDER" />
+                  <MaterialIconView fx:id="favoritar" glyphName="STAR_BORDER" />
                </graphic>
             </Button>
          </children>

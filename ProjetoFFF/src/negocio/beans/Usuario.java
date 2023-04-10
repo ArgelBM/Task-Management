@@ -1,5 +1,7 @@
 package negocio.beans;
 
+import dados.TaskRepository;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Usuario implements Serializable {
-    private List<Task> task ;
+    private TaskRepository task ;
     private String nomeUsuario;
     private LocalDate dataNascimento;
     private int id;
@@ -18,7 +20,7 @@ public class Usuario implements Serializable {
     private List<String> status;
 
     public Usuario( String nomeUsuario, LocalDate dataNascimento, int id, String login, String senha) {
-        this.task = new ArrayList<>();
+        this.task = new TaskRepository();
         this.nomeUsuario = nomeUsuario;
         this.dataNascimento = dataNascimento;
         this.id = id;
@@ -31,11 +33,11 @@ public class Usuario implements Serializable {
 
     }
 
-    public List<Task> getTask() {
+    public TaskRepository getTask() {
         return task;
     }
 
-    public void setTask(List<Task> task) {
+    public void setTask(TaskRepository task) {
         this.task = task;
     }
 

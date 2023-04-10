@@ -6,7 +6,11 @@ import negocio.beans.Usuario;
 import java.util.*;
 
 public class UsuariosRepository implements IRepository<Usuario> {
+
     List<Usuario> usuarios;
+
+
+
     String fileName;
 
     private Usuario usuarioAtivo;
@@ -81,19 +85,19 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public void atualizar(Usuario usuario) throws ElementoNaoEncontradoException {
-        int index = usuarios.indexOf(usuario);
-
-        if (index == -1) {
-            throw new ElementoNaoEncontradoException("Usuário não encontrado");
-        }
-
-        Usuario usuarioAntigo = usuarios.get(index);
-
-        usuarioAntigo.setNomeUsuario(usuario.getNomeUsuario());
-        usuarioAntigo.setDataNascimento(usuario.getDataNascimento());
-        usuarioAntigo.setLogin(usuario.getLogin());
-        usuarioAntigo.setSenha(usuario.getSenha());
-        usuarioAntigo.setTask(usuario.getTask());
+//        int index = usuarios.indexOf(usuario);
+//
+//        if (index == -1) {
+//            throw new ElementoNaoEncontradoException("Usuário não encontrado");
+//        }
+//
+//        Usuario usuarioAntigo = usuarios.get(index);
+//
+//        usuarioAntigo.setNomeUsuario(usuario.getNomeUsuario());
+//        usuarioAntigo.setDataNascimento(usuario.getDataNascimento());
+//        usuarioAntigo.setLogin(usuario.getLogin());
+//        usuarioAntigo.setSenha(usuario.getSenha());
+//        usuarioAntigo.setTask(usuario.getTask());
 
         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
@@ -111,11 +115,16 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
          RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
      }
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
 
     public Usuario getUsuarioAtivo() {
         return usuarioAtivo;
     }
-
+    public String getFileName() {
+        return fileName;
+    }
     public void sair(){
         this.usuarioAtivo = null;
     }

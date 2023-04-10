@@ -49,6 +49,7 @@ public class RepositorioFileUtil implements Serializable {
             oos.writeObject(instance);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e);
         } finally {
             if (oos != null) {
                 try {
