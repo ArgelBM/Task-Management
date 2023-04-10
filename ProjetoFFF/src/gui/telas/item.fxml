@@ -16,12 +16,12 @@
             <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="663.0" spacing="10.0">
                <children>
                   <CheckBox fx:id="checkbox" mnemonicParsing="false" styleClass="checkbox" stylesheets="@/gui/styles/checkbox.css" />
-                  <Label fx:id="nomeLabel" prefHeight="17.0" prefWidth="610.0" text="Label" wrapText="true" />
+                  <Label fx:id="nomeLabel" prefHeight="17.0" prefWidth="610.0" text="Label" textFill="#1b1b1b" wrapText="true" />
                </children>
             </HBox>
             <Button fx:id="favoritar" mnemonicParsing="false" style="-fx-background-color: transparent;">
                <graphic>
-                  <MaterialIconView glyphName="STAR_BORDER" size="25" />
+                  <MaterialIconView fill="#5f5f5f" glyphName="STAR_BORDER" size="25" />
                </graphic>
             </Button>
          </children>

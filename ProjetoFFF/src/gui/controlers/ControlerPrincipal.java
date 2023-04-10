@@ -140,6 +140,20 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
+    public void carregarTelaConfiguracao() throws IOException {
+        carregarTela("/gui/telas/Configuracao.fxml", "CENTER");
+    }
+
+    @FXML
+    void telaConfiguracao(){
+        try {
+            carregarTelaConfiguracao();
+        }catch (Exception a){
+            System.out.println("erro");
+            System.out.println(a);
+        }
+    }
+
     public void setContentArea(BorderPane contentArea) {
         this.contentArea = contentArea;
     }
