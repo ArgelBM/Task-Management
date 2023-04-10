@@ -4,20 +4,23 @@ import enums.Filtro;
 import enums.Prioridade;
 import enums.Status;
 import exceptions.*;
+import negocio.ControladorUsuarios;
 import negocio.beans.Task;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskRepository implements IRepository<Task> {
+public class TaskRepository implements IRepository<Task>, Serializable {
 
     private List<Task> listasDeTask;
 
 //    private String fileName;
 
-    public TaskRepository(String fileName){
+    //public TaskRepository(String fileName){
+    public TaskRepository(){
         this.listasDeTask = new ArrayList<>();
 ////        this.fileName = fileName;
 ////
@@ -63,6 +66,10 @@ public class TaskRepository implements IRepository<Task> {
             }
         }
         listasDeTask.add(item);
+
+
+        //ISSO PODE DAR RUIM !!!
+        RepositorioFileUtil.salvarArquivo(ControladorUsuarios.getInstance().getRepositorio().getUsuarios(), ControladorUsuarios.getInstance().getRepositorio().getFileName());
 
 //        RepositorioFileUtil.salvarArquivo(listasDeTask, this.fileName);
     }

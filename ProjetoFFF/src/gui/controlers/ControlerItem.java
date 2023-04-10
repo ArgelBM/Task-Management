@@ -1,4 +1,27 @@
 package gui.controlers;
 
-public class ControlerItem {
+import de.jensd.fx.glyphs.materialicons.MaterialIconView;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ControlerItem  {
+
+    @FXML
+    private CheckBox checkbox;
+
+    @FXML
+    private Button favoritar;
+
+    @FXML
+    private Label nomeLabel;
+
+    public void setNomeLabel(String nome) {
+        nomeLabel.setText(nome);
+    }
 }

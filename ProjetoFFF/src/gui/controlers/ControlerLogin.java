@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
@@ -70,6 +71,14 @@ public class ControlerLogin{
             if (ScreamControl.getInstance().getStage() != null) {
                 ScreamControl.getInstance().fecharTela();
             }
+    }
+
+    public void initialize() {
+        senha.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fazerLogin();
+            }
+        });
     }
 
     @Override

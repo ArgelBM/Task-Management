@@ -1,11 +1,12 @@
 package negocio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Classificacao {
+public class Classificacao implements Serializable {
     private String corDaTask;
     private String prioridadeDaTask;
     private String statusDaTask;

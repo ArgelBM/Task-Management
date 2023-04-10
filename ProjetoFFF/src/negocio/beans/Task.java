@@ -20,7 +20,7 @@ public class Task implements Serializable {
     private Classificacao classificacao;
     //private String cor;
 
-    public Task(String nome, String conteudo, Status status, LocalDate dataCriada, LocalDate dataConclusao, Prioridade prioridade, List<Pomodoro> pomodoros, String cor) {
+    public Task(String nome, String conteudo, LocalDate dataCriada, LocalDate dataConclusao, List<Pomodoro> pomodoros, String cor) {
         this.nome = nome;
         this.conteudo = conteudo;
        // this.status = status;
