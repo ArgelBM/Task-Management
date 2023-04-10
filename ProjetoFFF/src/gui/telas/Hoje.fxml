@@ -29,8 +29,8 @@
                <content>
                   <VBox prefHeight="551.0" prefWidth="696.0">
                      <children>
-                        <VBox fx:id="tarefas" prefHeight="386.0" prefWidth="696.0" />
-                        <TitledPane fx:id="tpConcluidas" animated="false" prefHeight="175.0" prefWidth="696.0" text="Concluídas" />
+                        <VBox fx:id="tarefas" />
+                        <TitledPane fx:id="tpConcluidas" animated="false" text="Concluídas" />
                      </children>
                   </VBox>
                </content>
