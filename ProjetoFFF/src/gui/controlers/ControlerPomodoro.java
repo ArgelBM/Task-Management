@@ -14,47 +14,41 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class ControlerPomodoro{
+public class ControlerPomodoro implements Initializable{
 
-
-    public int segundos = 0;
-    public int minutos = 15;
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    if(ControladorPomodoro.ativo){
+        iniciar();
+    }
+    }
 
     @FXML
     public Label contador;
     @FXML
     void iniciar() {
-        ControladorPomodoro.getInstance().getTempoDescansoLongo();
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                Platform.runLater(() -> {
-
-                    if (segundos == 0) {
-                        minutos--;
-                        segundos = 60;
-                    }
-                    segundos--;
-                    System.out.println("teste no timmer");
-                    try {
-                        ControlerPrincipal.getInstance().carregarTelaPomodoro(String.format("%02d:%02d", minutos, segundos));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
-                    if (!ControladorPomodoro.ativo) {
-                        timer.cancel();
-                        System.out.println("parou");
-                    }
-                });
-            }
-        },0 , 1000);
-    }
-
+        if (!ControladorPomodoro.ativo) {
+            ControladorPomodoro.getInstance().getTempoDescansoLongo();
+        }
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    Platform.runLater(() -> {
+                        if (ControladorPomodoro.ativo) {
+                            contador.setText(String.format("%02d:%02d", ControladorPomodoro.minutos
+                                    , ControladorPomodoro.segundos));
+                        }
+                        if (!ControladorPomodoro.ativo) {
+                            timer.cancel();
+                        }
+                    });
+                }
+            }, 0, 1000);
+        }
     @FXML
     void parar() {
         ControladorPomodoro.getInstance().pare();
-
+        contador.setText(String.format("%02d:%02d", ControladorPomodoro.minutos
+                , ControladorPomodoro.segundos));
     }
 
 }

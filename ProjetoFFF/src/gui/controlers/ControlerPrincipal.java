@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 
 public class ControlerPrincipal implements Initializable {
 
+    public ControlerPomodoro controlerTelaPomodoro;
+
     @FXML
     private BorderPane contentArea;
 

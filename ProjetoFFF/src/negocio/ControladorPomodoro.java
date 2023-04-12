@@ -2,9 +2,11 @@ package negocio;
 
 import dados.IRepository;
 import dados.PomodoroRepository;
+import gui.controlers.ControlerPrincipal;
 import javafx.application.Platform;
 import negocio.beans.Pomodoro;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,13 +18,12 @@ public class ControladorPomodoro {
 //        this.repositorio = new PomodoroRepository("repositoriopomodoro.dat");
 //    }
 
+    public static int segundos = 0;
+    public static int minutos = 15;
+
     private static ControladorPomodoro instance;
 
     public static boolean ativo = false;
-
-
-
-    //teste
 
 
     public static ControladorPomodoro getInstance(){
@@ -67,19 +68,27 @@ public class ControladorPomodoro {
     public void getTempoDescansoLongo() {
         ativo = true;
 
-        Timer cronometro = new Timer();
-        TimerTask tarefa = new TimerTask() {
-            @Override
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 Platform.runLater(() -> {
-
-                    ativo = false;
-                System.out.println( "passou 5 min");
+                    if (!ControladorPomodoro.ativo) {
+                        timer.cancel();
+                    }
+                    if (minutos == 0 && segundos == 0){
+                        System.out.println("teste");
+                        pare();
+                        timer.cancel();
+                    }
+                    if (segundos == 0) {
+                        minutos--;
+                        segundos += 60;
+                    }
+                    segundos--;
+                    System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
                 });
             }
-        };
-        int milissegundos = 15*60000; //25 min
-        cronometro.schedule(tarefa, milissegundos);
+        },0 , 1000);
     }
 
 
@@ -88,6 +97,8 @@ public class ControladorPomodoro {
     }
 
     public void pare() {
-        this.ativo = false;
+        ativo = false;
+        segundos = 0;
+        minutos = 15;
     }
 }
