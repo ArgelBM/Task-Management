@@ -61,7 +61,6 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="239.0" prefWidth="350.0" spacing="15.0">
                <children>
-                  <Label fx:id="testador" alignment="CENTER" prefHeight="17.0" prefWidth="185.0" text="NÃO MEXER NA LABEL!!!!" textFill="#e10000" />
                   <Button mnemonicParsing="false" onAction="#fazerLogin" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #8A2BE2; -fx-border-radius: 5;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
@@ -107,5 +106,6 @@
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
          </graphic>
       </Button>
+      <Label fx:id="testador" alignment="CENTER" layoutX="76.0" layoutY="285.0" prefHeight="17.0" prefWidth="185.0" textFill="#e10000" />
    </children>
 </AnchorPane>

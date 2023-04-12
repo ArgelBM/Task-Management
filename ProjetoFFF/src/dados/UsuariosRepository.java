@@ -1,6 +1,7 @@
 package dados;
 
 import exceptions.*;
+import negocio.ControladorTasks;
 import negocio.beans.Usuario;
 
 import java.util.*;
@@ -9,11 +10,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     List<Usuario> usuarios;
 
-
-
     String fileName;
-
-    private Usuario usuarioAtivo;
 
     public UsuariosRepository(String fileName){
         this.usuarios = new ArrayList<>();
@@ -31,7 +28,6 @@ public class UsuariosRepository implements IRepository<Usuario> {
         }
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
-                usuarioAtivo = usuario;
                 return usuario;
             }
         }
@@ -78,15 +74,12 @@ public class UsuariosRepository implements IRepository<Usuario> {
             }
         }
         usuarios.add(usuario);
-        RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
-
+        salvar();
     }
 
 
     @Override
     public void atualizar(Usuario usuario) throws ElementoNaoEncontradoException {
-
-        RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
 
      @Override
@@ -100,19 +93,17 @@ public class UsuariosRepository implements IRepository<Usuario> {
              throw new ElementoNaoEncontradoException("Usuário não encontrado.");
          }
 
-         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
+         salvar();
      }
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
-
-    public Usuario getUsuarioAtivo() {
-        return usuarioAtivo;
-    }
     public String getFileName() {
         return fileName;
     }
-    public void sair(){
-        this.usuarioAtivo = null;
+
+    public void salvar(){
+        RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
+
 }

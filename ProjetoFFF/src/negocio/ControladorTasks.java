@@ -1,62 +1,65 @@
-//package negocio;
-//
-//import dados.IRepository;
-//import dados.TaskRepository;
-//import enums.Filtro;
-//import exceptions.ArgumentoInvalidoException;
-//import exceptions.DeletarFalhouException;
-//import exceptions.ElementoJaExisteException;
-//import exceptions.ElementoNaoEncontradoException;
-//import negocio.beans.Task;
-//
-//import java.time.Month;
-//import java.util.List;
-//
-//
-//public class ControladorTasks {
-//
-//    private TaskRepository repositorio;
-//    private static ControladorTasks instance;
-//
-//    public ControladorTasks(){
-//        this.repositorio = new TaskRepository("taskrepositorio.dat");
-//    }
-//
-//    public static ControladorTasks getInstance(){
-//        if(instance == null){
-//            instance = new ControladorTasks();
-//        }
-//        return instance;
-//    }
-//
-//
-//    public List<Task> listarTarefas() {
-//        return this.repositorio.listarTodos();
-//    }
-//
-//    public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
-//        validarTask(task);
-//        repositorio.adicionar(task);
-//    }
-//
-//    public  void atualizar(Task task) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-//        validarTask(task);
-//        repositorio.atualizar(task);
-//    }
-//
-//    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
-//        validarTask(task);
-//        repositorio.remover(task);
-//    }
-//
+package negocio;
+
+import dados.TaskRepository;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.DeletarFalhouException;
+import exceptions.ElementoJaExisteException;
+import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Task;
+import negocio.beans.Usuario;
+
+import java.util.List;
+
+
+public class ControladorTasks {
+    private static ControladorTasks instance;
+    private Usuario usuarioAtivo;
+
+    public static ControladorTasks getInstance(){
+        if(instance == null){
+            instance = new ControladorTasks();
+        }
+
+        return instance;
+    }
+
+    public TaskRepository getRepositorio() {
+        return usuarioAtivo.getTask();
+    }
+
+    public Usuario getUsuarioAtivo() {
+        return usuarioAtivo;
+    }
+
+    public void setUsuarioAtivo(Usuario usuarioAtivo) {
+        this.usuarioAtivo = usuarioAtivo;
+    }
+
+
+    public List<Task> listarTarefas() {
+        return usuarioAtivo.getTask().listarTodos();
+    }
+
+    public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        usuarioAtivo.getTask().adicionar(task);
+    }
+
+    public  void atualizar(Task task) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        usuarioAtivo.getTask().atualizar(task);
+    }
+
+    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        usuarioAtivo.getTask().remover(task);
+    }
+
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
 //        return repositorio.listarPor(filtro, valor);
 //    }
-//
+
 //    public void relatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
 //        repositorio.gerarRelatorioPorMes(mes);
 //    }
-//
+
 //    private void validarTask(Task task) throws ArgumentoInvalidoException {
 //        if (task == null || task.getNome() == null || task.getNome().trim().isEmpty()
 //                || task.getConteudo() == null || task.getConteudo().trim().isEmpty() || task.getStatus() == null
@@ -64,4 +67,4 @@
 //            throw new ArgumentoInvalidoException(task);
 //        }
 //    }
-//}
+}

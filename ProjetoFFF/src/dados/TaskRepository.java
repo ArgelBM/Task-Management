@@ -18,7 +18,37 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         this.listasDeTask = new ArrayList<>();
 
     }
+    @Override
+    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+        if ((item == null)){
+            throw new ArgumentoInvalidoException(null);
+        }
+        if(item.getNome() == null || item.getNome().trim().isEmpty()){
+            throw new ArgumentoInvalidoException(item);
+        }
+        for(Task a: listasDeTask){
+            if(a.getNome().equals(item.getNome())){
+                throw new ArgumentoInvalidoException(item);
+            }
+        }
+        listasDeTask.add(item);
+        ControladorUsuarios.getInstance().salvarMudancas();
+    }
+    @Override
+    public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        if (item == null) {
+            throw new ArgumentoInvalidoException(null);
+        }
+        int index = listasDeTask.indexOf(item);
+        if (index == -1) {
+            throw new ElementoNaoEncontradoException(item);
+        }
+        if (!listasDeTask.remove(item)) {
+            throw new DeletarFalhouException(item);
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
 
+    }
     @Override
     public List<Task> listarTodos() {
         return listasDeTask;
@@ -35,45 +65,11 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if ((item == null)){
-            throw new ArgumentoInvalidoException(null);
-        }
-        if(item.getNome() == null || item.getNome().trim().isEmpty()){
-            throw new ArgumentoInvalidoException(item);
-        }
-        for(Task a: listasDeTask){
-            if(a.getNome().equals(item.getNome())){
-                throw new ArgumentoInvalidoException(item);
-            }
-        }
-        listasDeTask.add(item);
-
-
-        //ISSO PODE DAR RUIM !!!
-        RepositorioFileUtil.salvarArquivo(ControladorUsuarios.getInstance().getRepositorio().getUsuarios(), ControladorUsuarios.getInstance().getRepositorio().getFileName());
-
-    }
-
-    @Override
     public void atualizar(Task item) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
     }
 
-    @Override
-    public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if (item == null) {
-            throw new ArgumentoInvalidoException(null);
-        }
-        int index = listasDeTask.indexOf(item);
-        if (index == -1) {
-            throw new ElementoNaoEncontradoException(item);
-        }
-        if (!listasDeTask.remove(item)) {
-            throw new DeletarFalhouException(item);
-        }
 
-    }
-    public List<Task> listarPor(String cor, String prioridade, String status) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
         List<Task> tasksFiltradas = new ArrayList<>();
         for(Task n: listasDeTask){
             if(n.getClassificacao().getCorDaTask().equals(cor) && n.getClassificacao().getPrioridadeDaTask().equals(prioridade)
@@ -101,8 +97,10 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         for(Task a : listasDeTask){
             if(task == a){
                 a.setDataConclusao(LocalDate.now());
-                a.getClassificacao().setStatusDaTask("concluida");            }
+                a.getClassificacao().setStatusDaTask("concluida");
+            }
         }
+        ControladorUsuarios.getInstance().salvarMudancas();
     }
 
 }

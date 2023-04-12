@@ -27,11 +27,11 @@ public class ControladorUsuarios implements Serializable {
         return instance;
     }
 
-    public Usuario fazerLogin(String login, String senha) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void fazerLogin(String login, String senha) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         if (login == null || senha == null) {
             throw new ArgumentoInvalidoException("Login ou senha inválidos");
         }
-        return repositorio.fazerLogin(login, senha);
+        ControladorTasks.getInstance().setUsuarioAtivo(repositorio.fazerLogin(login, senha));
     }
 
     public List<Usuario> listarPorTodos() {
@@ -57,6 +57,13 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
+    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        if (usuario == null) {
+            throw new ArgumentoInvalidoException("Usuário inválido");
+        }
+        repositorio.remover(usuario);
+    }
+
     public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         if (usuario == null) {
             throw new ArgumentoInvalidoException("Usuário inválido");
@@ -76,17 +83,13 @@ public class ControladorUsuarios implements Serializable {
         repositorio.atualizar(usuario);
     }
 
-    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        if (usuario == null) {
-            throw new ArgumentoInvalidoException("Usuário inválido");
-        }
-        repositorio.remover(usuario);
-    }
+
     public UsuariosRepository getRepositorio() {
         return repositorio;
     }
 
-    public Usuario usuarioAtivo(){
-        return repositorio.getUsuarioAtivo();
+    public void salvarMudancas(){
+        repositorio.salvar();
     }
+
 }

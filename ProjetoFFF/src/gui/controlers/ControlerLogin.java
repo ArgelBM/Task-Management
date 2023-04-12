@@ -30,26 +30,18 @@ public class ControlerLogin{
 
     @FXML
     void fazerLogin() {
-
-
         String usuario = login.getText();
         String key = senha.getText();
-
         try {
-
             ControladorUsuarios.getInstance().fazerLogin(usuario, key);
-            testador.setText("*Bem vindo "+ usuario);
-//            Main.mudarTela("telaPrincipal");
-
             ScreamControl.getInstance().telaPrincipal();
-
         }
         catch (Exception a ){
-            testador.setText("*usurio ou senha errados");
+            testador.setText("*usuario ou senha errados");
             System.out.println("erro ao fazer login");
             System.out.println(a);
         }
-        }
+    }
 
     @FXML
     void criaNovaConta() {

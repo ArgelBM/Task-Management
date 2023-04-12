@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
 import negocio.beans.Task;
 
@@ -26,7 +27,7 @@ public class ControlerHoje implements Initializable {
     @FXML
     private TextField novaTarefa;
 
-    private List<Task> repository = ControladorUsuarios.getInstance().usuarioAtivo().getTask().listarTodos();
+    private List<Task> repository = ControladorTasks.getInstance().listarTarefas();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,7 +58,7 @@ public class ControlerHoje implements Initializable {
 
         if (!novaTarefa.getText().isEmpty()) {
             try {
-                ControladorUsuarios.getInstance().usuarioAtivo().getTask().adicionar(new Task(novaTarefa.getText(),"", LocalDate.now(),null, null, ""));
+                ControladorTasks.getInstance().adicionar(new Task(novaTarefa.getText(),"", LocalDate.now(),null, null, ""));
 
                 FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
                 Node item = tela.load();

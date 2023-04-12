@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
 
 import java.io.IOException;
@@ -40,8 +41,8 @@ public class ControlerPrincipal implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             carregarTelaHoje();
-            nomeDeUsuario.setText(ControladorUsuarios.getInstance().usuarioAtivo().getNomeUsuario());
-            login.setText(ControladorUsuarios.getInstance().usuarioAtivo().getLogin());
+            nomeDeUsuario.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
+            login.setText(ControladorTasks.getInstance().getUsuarioAtivo().getLogin());
         } catch (Exception e) {
             e.printStackTrace();
         }
