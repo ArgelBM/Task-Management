@@ -3,12 +3,16 @@ package gui.controlers;
 import gui.Main;
 import gui.ScreamControl;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
@@ -31,6 +35,9 @@ public class ControlerPrincipal implements Initializable {
     @FXML
     private Label nomeDeUsuario;
 
+    @FXML
+    private ContextMenu cm;
+
     private static ControlerPrincipal instance;
 
     public static ControlerPrincipal getInstance(){
@@ -42,6 +49,15 @@ public class ControlerPrincipal implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        login.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+        login.setOnMousePressed(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                double posx = login.localToScreen(login.getBoundsInLocal()).getCenterX();
+                double posy = login.localToScreen(login.getBoundsInLocal()).getMaxY();
+                cm.show(login, posx, posy);
+            }
+        });
+
         try {
             carregarTelaHoje();
             nomeDeUsuario.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
