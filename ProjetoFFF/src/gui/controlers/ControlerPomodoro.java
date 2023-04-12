@@ -42,7 +42,7 @@ public class ControlerPomodoro implements Initializable{
                         }
                     });
                 }
-            }, 0, 1000);
+            }, 0, 200);
         }
     @FXML
     void parar() {

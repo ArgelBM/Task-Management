@@ -3,12 +3,16 @@
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -17,33 +21,62 @@
 
 <BorderPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerPrincipal">
    <left>
-      <Pane prefHeight="664.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
+      <Pane style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="262.0" spacing="2.0">
+            <HBox prefWidth="270.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/img/account.png" />
-                     </image>
-                  </ImageView>
-                  <VBox alignment="CENTER" prefHeight="21.0" prefWidth="201.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="nomeDeUsuario" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="login" alignment="CENTER" prefHeight="15.0" prefWidth="204.0" text="email.do.usuario@email.com" textFill="#636363">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" layoutX="11.0" prefHeight="33.0" prefWidth="246.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/img/account.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER" prefHeight="21.0" prefWidth="201.0">
+                                 <children>
+                                    <Label fx:id="nomeDeUsuario" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Nome do Usuario" textFill="#181818" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="login" alignment="CENTER" contentDisplay="RIGHT" prefHeight="15.0" prefWidth="204.0" text="email.do.usuario@email.com" textFill="#636363">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                       <graphic>
+                                          <MaterialIconView fill="#636363" glyphName="UNFOLD_MORE" />
+                                       </graphic>
+                                       <contextMenu>
+                                          <ContextMenu fx:id="cm" style="-fx-background-color: #FFFFFF;">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#telaConfiguracao" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;" text="Configurações">
+                                                   <graphic>
+                                                      <MaterialIconView glyphName="SETTINGS" size="15" />
+                                                   </graphic>
+                                                </MenuItem>
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                       <tooltip>
+                                          <Tooltip style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Abre as configurações">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Tooltip>
+                                       </tooltip>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                  </VBox>
+                  </AnchorPane>
                </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
             </HBox>
             <TextField layoutX="13.0" layoutY="36.0" prefHeight="27.0" prefWidth="239.0" promptText="Search" style="-fx-border-width: 0 0 2 0; -fx-border-color: #727272; -fx-background-color: #F1F1F1; -fx-background-radius: 5px; -fx-border-radius: 5px;" />
             <Button layoutX="224.0" layoutY="36.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent;">
@@ -51,7 +84,7 @@
                   <MaterialIconView fill="#a6a6a6" glyphName="SEARCH" />
                </graphic>
             </Button>
-            <VBox layoutY="69.0" prefHeight="206.0" prefWidth="262.0" spacing="10.0">
+            <VBox layoutY="69.0" prefHeight="206.0" prefWidth="262.0" spacing="15.0">
                <children>
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaHoje" prefWidth="262.0" style="-fx-background-color: transparent;" text="Hoje" textFill="#181818">
                      <graphic>
@@ -93,14 +126,6 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaConfiguracao" prefWidth="262.0" style="-fx-background-color: transparent;" text="Configurações" textFill="#181818">
-                     <graphic>
-                        <MaterialIconView glyphName="SETTINGS" size="15" />
-                     </graphic>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#sair" prefWidth="262.0" style="-fx-background-color: transparent;" text="Sair" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#687681" glyphName="EXIT_TO_APP" size="15" />
@@ -113,7 +138,7 @@
                <padding>
                   <Insets left="5.0" top="10.0" />
                </padding></VBox>
-            <Separator layoutY="342.0" prefWidth="262.0" style="-fx-background-color: #C1C1C1;" />
+            <Separator layoutX="3.0" layoutY="334.0" prefWidth="262.0" style="-fx-background-color: #C1C1C1;" />
             <ListView layoutY="346.0" prefHeight="279.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" />
             <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="624.0" prefHeight="25.0" prefWidth="262.0" spacing="50.0">
                <children>
