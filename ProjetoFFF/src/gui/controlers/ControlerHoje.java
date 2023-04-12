@@ -72,5 +72,4 @@ public class ControlerHoje implements Initializable {
             novaTarefa.clear();
         }
     }
-
 }

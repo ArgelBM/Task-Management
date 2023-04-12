@@ -17,7 +17,7 @@
 
 <BorderPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerPrincipal">
    <left>
-      <Pane prefHeight="664.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
+      <Pane style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="262.0" spacing="2.0">
                <children>

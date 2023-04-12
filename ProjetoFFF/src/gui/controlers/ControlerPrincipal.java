@@ -172,4 +172,15 @@ public class ControlerPrincipal implements Initializable {
         this.contentArea = contentArea;
     }
 
+    public void fecharTela(String posicao){
+        switch (posicao) {
+            case "TOP" -> contentArea.setTop(null);
+            case "LEFT" -> contentArea.setLeft(null);
+            case "BOTTOM" -> contentArea.setBottom(null);
+            case "RIGHT" -> contentArea.setRight(null);
+            case "CENTER" -> contentArea.setCenter(null);
+            default -> throw new IllegalArgumentException("Posição inválida");
+        }
+    }
+
 }

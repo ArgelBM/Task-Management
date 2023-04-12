@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+
+<BorderPane maxWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerModificarTarefa">
+   <center>
+      <VBox spacing="10.0" style="-fx-background-color: #FAFAFA;">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#fecha" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <MaterialIconView fill="#636363" glyphName="CLOSE" size="17" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox fx:id="tarefa" style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS" />
+            <VBox style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ColorPicker style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                           <value>
+                              <Color />
+                           </value>
+                        </ColorPicker>
+                     </children>
+                  </HBox>
+                  <HBox style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Adicionar data de conclusão" textFill="#636363" HBox.hgrow="ALWAYS">
+                           <contextMenu>
+                              <ContextMenu fx:id="cm" style="-fx-background-color: #FDFDFD;">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Hoje">
+                                       <graphic>
+                                          <MaterialIconView glyphName="TODAY" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false" text="Amanhã">
+                                       <graphic>
+                                          <MaterialIconView glyphName="EVENT" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false" text="Próxima semana" visible="false">
+                                       <graphic>
+                                          <MaterialIconView glyphName="NEXT_WEEK" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false" text="Escolher uma data">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CALENDAR" />
+                                       </graphic>
+                                    </MenuItem>
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <graphic>
+                              <MaterialIconView glyphName="EVENT_AVAILABLE" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS">
+               <children>
+                  <TextArea promptText="Adicionar anotação" style="-fx-background-color: transparent;" wrapText="true" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" spacing="50.0" style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid; -fx-border-width: 1 0 0 0;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Criado em semana, dia de mes" textFill="#636363" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <MaterialIconView fill="#fafafa" glyphName="DELETE" stroke="#636363" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
