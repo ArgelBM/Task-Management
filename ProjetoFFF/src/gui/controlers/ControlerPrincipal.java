@@ -2,6 +2,7 @@ package gui.controlers;
 
 import gui.Main;
 import gui.ScreamControl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -61,6 +62,7 @@ public class ControlerPrincipal implements Initializable {
     public void carregarTela(String caminhoFXML, String posicao) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
         Parent root = loader.load();
+
         switch (posicao) {
             case "TOP" -> contentArea.setTop(root);
             case "LEFT" -> contentArea.setLeft(root);
@@ -101,6 +103,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaHoje() throws IOException {
         carregarTela("/gui/telas/Hoje.fxml", "CENTER");
+
     }
 
     @FXML
@@ -127,14 +130,22 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    public void carregarTelaPomodoro() throws IOException {
-        carregarTela("/gui/telas/Pomodoro.fxml", "CENTER");
+    @FXML
+    public void carregarTelaPomodoro(String a) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/telas/Pomodoro.fxml"));
+        Parent root = loader.load();
+
+        ControlerPomodoro b = loader.getController();
+        b.contador.setText(a);
+        contentArea.setCenter(root);
+
+
     }
 
     @FXML
     void telaPomodoro(){
         try {
-            carregarTelaPomodoro();
+            carregarTela("/gui/telas/Pomodoro.fxml", "CENTER");
         }catch (Exception a){
             System.out.println("erro");
             System.out.println(a);
@@ -158,4 +169,5 @@ public class ControlerPrincipal implements Initializable {
     public void setContentArea(BorderPane contentArea) {
         this.contentArea = contentArea;
     }
+
 }

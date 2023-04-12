@@ -34,19 +34,19 @@
                   </Label>
                   <VBox alignment="CENTER" prefWidth="698.0" spacing="20.0">
                      <children>
-                        <Label text="TIMER" textFill="WHITE">
+                        <Label fx:id="contador" text="TIMER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                              <Button mnemonicParsing="false" onAction="#iniciar" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <MaterialIconView fill="WHITE" glyphName="PLAY_ARROW" size="25" />
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                              <Button mnemonicParsing="false" onAction="#parar" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <MaterialIconView fill="WHITE" glyphName="STOP" size="25" />
                                  </graphic>
