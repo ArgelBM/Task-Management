@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import negocio.ControladorUsuarios;
 import negocio.beans.Task;
@@ -31,7 +32,6 @@ public class ControlerHoje implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inciarTarefas();
-        System.out.println("teste");
     }
 
 
@@ -41,7 +41,7 @@ public class ControlerHoje implements Initializable {
         for (Task task : repository){
             try {
                 FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
-                Node item = tela.load();
+                HBox item = tela.load();
                 ControlerItem controlerItem = tela.getController();
                 controlerItem.setNomeLabel(task.getNome());
 
@@ -60,7 +60,7 @@ public class ControlerHoje implements Initializable {
                 ControladorUsuarios.getInstance().usuarioAtivo().getTask().adicionar(new Task(novaTarefa.getText(),"", LocalDate.now(),null, null, ""));
 
                 FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
-                Node item = tela.load();
+                HBox item = tela.load();
                 ControlerItem controlerItem = tela.getController();
                 controlerItem.setNomeLabel(novaTarefa.getText());
 
