@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -29,6 +30,8 @@ public class Main extends Application {
         //faz o stage apontar para o stagePrimary
         stage = stagePrimary;
 
+        stage.setTitle("Task Management");
+
         //carrega tela de login
         FXMLLoader loader = new FXMLLoader(getClass().getResource("telas//TelaInicial.fxml"));
         Parent fxmlMain = loader.load();
@@ -47,7 +50,7 @@ public class Main extends Application {
 
         // escolhe a scene
         stage.setScene(mainScene);
-
+        stage.getIcons().add(new Image("img/logocor.png"));
         //mostra a tela
         stage.show();
 

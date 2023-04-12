@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -15,7 +16,11 @@
                   <Font size="29.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fill="WHITE" glyphName="LIST_ALT" layoutX="145.0" layoutY="185.0" size="60" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="106.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/logobranco.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </left>
