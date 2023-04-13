@@ -8,10 +8,12 @@ import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.function.Consumer;
 
 
-public class ControladorTasks {
+public class ControladorTasks implements Serializable {
     private static ControladorTasks instance;
     private Usuario usuarioAtivo;
 
@@ -56,8 +58,12 @@ public class ControladorTasks {
         usuarioAtivo.getTask().marcaComoConcluida(task);
     }
 
-    public void desmarcarComoConcluida(Task task){
+    public void marcarComoPendente(Task task){
         usuarioAtivo.getTask().marcaComoPendente(task);
+    }
+
+    public void desmarcarComoConcluida(Task task){
+        usuarioAtivo.getTask().desmarcaComoConcluida(task);
     }
 
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {

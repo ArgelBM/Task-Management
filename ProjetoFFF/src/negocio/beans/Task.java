@@ -14,7 +14,7 @@ public class Task implements Serializable {
     private List<Pomodoro> pomodoros;
     private Classificacao classificacao;
 
-    public Task(String nome, String conteudo, LocalDate dataCriada, LocalDate dataConclusao, List<Pomodoro> pomodoros, String cor) {
+    public Task(String nome, String conteudo, LocalDate dataCriada, LocalDate dataConclusao, List<Pomodoro> pomodoros) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.dataCriada = dataCriada;

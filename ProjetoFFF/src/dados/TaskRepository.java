@@ -123,13 +123,27 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     public void marcaComoPendente (Task task){
         for(Task a : listasDeTask){
             if(task == a){
+                //salva a dataconclusao na dataconclusaoanterior
+                a.setDataConclusaoAnterior(a.getDataConclusao());
+                //atualiza a dataconclusao pra agora
+                a.setDataConclusao(LocalDate.now());
+                a.getClassificacao().setStatusDaTask("pendente");
+            }
+        }
+        notifyChangeListeners();
+        ControladorUsuarios.getInstance().salvarMudancas();
+    }
+
+    public void desmarcaComoConcluida (Task task){
+        for(Task a : listasDeTask){
+            if(task == a){
                 //recupera a data de conclusao antes de marcar como concluido
                 a.setDataConclusao(a.getDataConclusaoAnterior());
                 a.getClassificacao().setStatusDaTask("pendente");
             }
         }
-        ControladorUsuarios.getInstance().salvarMudancas();
         notifyChangeListeners();
+        ControladorUsuarios.getInstance().salvarMudancas();
     }
 
 }
