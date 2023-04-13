@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 public class TaskRepository implements IRepository<Task>, Serializable {
 
     private List<Task> listasDeTask;
-    private List<Consumer<List<Task>>> changeListeners;
+    private transient List<Consumer<List<Task>>> changeListeners;
 
     public TaskRepository(){
         this.listasDeTask = new ArrayList<>();
@@ -21,6 +21,9 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     public void addChangeListener(Consumer<List<Task>> listener) {
+        if (changeListeners == null) {
+            changeListeners = new ArrayList<>();
+        }
         changeListeners.add(listener);
     }
 

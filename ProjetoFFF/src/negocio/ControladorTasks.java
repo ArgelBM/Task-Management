@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 
-public class ControladorTasks implements Serializable {
+public class ControladorTasks{
     private static ControladorTasks instance;
     private Usuario usuarioAtivo;
 
@@ -64,6 +64,10 @@ public class ControladorTasks implements Serializable {
 
     public void desmarcarComoConcluida(Task task){
         usuarioAtivo.getTask().desmarcaComoConcluida(task);
+    }
+
+    public void addChangeListener(Consumer<List<Task>> listener){
+        usuarioAtivo.getTask().addChangeListener(listener);
     }
 
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {

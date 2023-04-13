@@ -41,12 +41,18 @@ public class ControlerHoje implements Initializable{
         iniciarTarefas();
         carregarTarefasConcluidas();
 
-        ControladorTasks.getInstance().getRepositorio().addChangeListener(tasks -> {
+        ControladorTasks.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             tpConcluidas.getChildren().clear();
             iniciarTarefas();
             carregarTarefasConcluidas();
         });
+//        ControladorTasks.getInstance().getRepositorio().addChangeListener(tasks -> {
+//            tarefas.getChildren().clear();
+//            tpConcluidas.getChildren().clear();
+//            iniciarTarefas();
+//            carregarTarefasConcluidas();
+//        });
     }
 
 
