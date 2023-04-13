@@ -70,6 +70,14 @@ public class ControladorTasks{
         usuarioAtivo.getTask().addChangeListener(listener);
     }
 
+    public void marcarComoImportante(Task task){
+        usuarioAtivo.getTask().marcaComoImportante(task);
+    }
+
+    public void desmarcarComoImportante(Task task){
+        usuarioAtivo.getTask().desmarcaComoImportante(task);
+    }
+
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
 //        return repositorio.listarPor(filtro, valor);
 //    }

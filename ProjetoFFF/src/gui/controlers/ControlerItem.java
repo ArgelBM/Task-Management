@@ -49,9 +49,9 @@ public class ControlerItem  {
     @FXML
     public void setFavoritar() {
         if (star.getGlyphName().equals("STAR_BORDER")) {
-            star.setGlyphName("STAR");
+            gravaStar("STAR");
         } else {
-            star.setGlyphName("STAR_BORDER");
+            gravaStar("STAR_BORDER");
         }
     }
 
@@ -77,5 +77,21 @@ public class ControlerItem  {
 
     public CheckBox getCheckbox() {
         return checkbox;
+    }
+
+    public void gravaStar(String glyphName) {
+        setStar(glyphName);
+        if ("STAR".equals(glyphName)) {
+            ControladorTasks.getInstance().marcarComoImportante(task);
+            System.out.println("marcou como importante");
+        }
+        else {
+            ControladorTasks.getInstance().desmarcarComoImportante(task);
+            System.out.println("desmarcou como importante");
+        }
+    }
+
+    public void setStar(String glyphName) {
+        star.setGlyphName(glyphName);
     }
 }

@@ -149,6 +149,26 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         ControladorUsuarios.getInstance().salvarMudancas();
     }
 
+    public void marcaComoImportante (Task task){
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.getClassificacao().setPrioridadeDaTask("importante");
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
+
+    public void desmarcaComoImportante (Task task){
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.getClassificacao().setPrioridadeDaTask(" ");
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
+
 }
 
 

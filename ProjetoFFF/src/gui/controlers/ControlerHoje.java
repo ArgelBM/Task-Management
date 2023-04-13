@@ -41,18 +41,18 @@ public class ControlerHoje implements Initializable{
         iniciarTarefas();
         carregarTarefasConcluidas();
 
+        tpConcluidas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            if (event.getTarget() instanceof CheckBox) {
+                ((CheckBox) event.getTarget()).fire();
+            }
+        });
+
         ControladorTasks.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             tpConcluidas.getChildren().clear();
             iniciarTarefas();
             carregarTarefasConcluidas();
         });
-//        ControladorTasks.getInstance().getRepositorio().addChangeListener(tasks -> {
-//            tarefas.getChildren().clear();
-//            tpConcluidas.getChildren().clear();
-//            iniciarTarefas();
-//            carregarTarefasConcluidas();
-//        });
     }
 
 
@@ -69,7 +69,12 @@ public class ControlerHoje implements Initializable{
                 HBox item = tela.load();
                 ControlerItem controlerItem = tela.getController();
                 controlerItem.setTask(task);
-
+                if("importante".equals(task.getClassificacao().getPrioridadeDaTask())){
+                    controlerItem.setStar("STAR");
+                }
+                else {
+                    controlerItem.setStar("STAR_BORDER");
+                }
                 tarefas.getChildren().add(item);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -89,6 +94,13 @@ public class ControlerHoje implements Initializable{
                 HBox item = tela.load();
                 ControlerItem controlerItem = tela.getController();
                 controlerItem.setTask(task);
+                if("importante".equals(task.getClassificacao().getPrioridadeDaTask())){
+                    controlerItem.setStar("STAR");
+                }
+                else {
+                    controlerItem.setStar("STAR_BORDER");
+                }
+                controlerItem.getCheckbox().setSelected(true);
 
                 tpConcluidas.getChildren().add(item);
             } catch (IOException e) {
