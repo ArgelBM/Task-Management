@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import negocio.ControladorTasks;
+import negocio.beans.Task;
 
 import java.io.IOException;
 
@@ -25,6 +27,24 @@ public class ControlerItem  {
 
     @FXML
     private HBox item;
+
+    private Task task;
+
+    public void setTask(Task task){
+        this.task = task;
+        setNomeLabel(task.getNome());
+    }
+
+    @FXML
+    public void setConcluida(){
+        if (checkbox.isSelected()) {
+            ControladorTasks.getInstance().marcarComoConcluida(task);
+            System.out.println("marcou como concluida");
+        } else {
+            ControladorTasks.getInstance().desmarcarComoConcluida(task);
+            System.out.println("desmarcou como concluida");
+        }
+    }
 
     @FXML
     public void setFavoritar() {
@@ -53,5 +73,9 @@ public class ControlerItem  {
     @FXML
     void mudaCorDeVolta() {
         item.setStyle("-fx-background-color: #F2EEF2;");
+    }
+
+    public CheckBox getCheckbox() {
+        return checkbox;
     }
 }

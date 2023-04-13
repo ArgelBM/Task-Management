@@ -10,6 +10,7 @@ public class Task implements Serializable {
     private String conteudo;
     private LocalDate dataCriada;
     private LocalDate dataConclusao;
+    private LocalDate dataConclusaoAnterior;
     private List<Pomodoro> pomodoros;
     private Classificacao classificacao;
 
@@ -71,4 +72,11 @@ public class Task implements Serializable {
         this.dataCriada = dataCriada;
     }
 
+    public LocalDate getDataConclusaoAnterior() {
+        return this.dataConclusaoAnterior;
+    }
+
+    public void setDataConclusaoAnterior(LocalDate dataConclusaoAnterior) {
+        this.dataConclusaoAnterior = dataConclusaoAnterior;
+    }
 }

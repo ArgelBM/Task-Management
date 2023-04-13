@@ -6,18 +6,30 @@ import negocio.beans.Task;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TaskRepository implements IRepository<Task>, Serializable {
 
     private List<Task> listasDeTask;
+    private List<Consumer<List<Task>>> changeListeners;
 
     public TaskRepository(){
         this.listasDeTask = new ArrayList<>();
-
+        this.changeListeners = new ArrayList<>();
     }
+
+    public void addChangeListener(Consumer<List<Task>> listener) {
+        changeListeners.add(listener);
+    }
+
+    private void notifyChangeListeners() {
+        for (Consumer<List<Task>> listener : changeListeners) {
+            listener.accept(listasDeTask);
+        }
+    }
+
     @Override
     public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         if ((item == null)){
@@ -33,6 +45,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         }
         listasDeTask.add(item);
         ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
     }
     @Override
     public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
@@ -47,7 +60,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
             throw new DeletarFalhouException(item);
         }
         ControladorUsuarios.getInstance().salvarMudancas();
-
+        notifyChangeListeners();
     }
     @Override
     public List<Task> listarTodos() {
@@ -96,11 +109,27 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     public void marcaComoConcluida (Task task){
         for(Task a : listasDeTask){
             if(task == a){
+                //salva a dataconclusao na dataconclusaoanterior
+                a.setDataConclusaoAnterior(a.getDataConclusao());
+                //atualiza a dataconclusao pra agora
                 a.setDataConclusao(LocalDate.now());
                 a.getClassificacao().setStatusDaTask("concluida");
             }
         }
         ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
+
+    public void marcaComoPendente (Task task){
+        for(Task a : listasDeTask){
+            if(task == a){
+                //recupera a data de conclusao antes de marcar como concluido
+                a.setDataConclusao(a.getDataConclusaoAnterior());
+                a.getClassificacao().setStatusDaTask("pendente");
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
     }
 
 }

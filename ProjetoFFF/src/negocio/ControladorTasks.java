@@ -52,6 +52,14 @@ public class ControladorTasks {
         usuarioAtivo.getTask().remover(task);
     }
 
+    public void marcarComoConcluida(Task task){
+        usuarioAtivo.getTask().marcaComoConcluida(task);
+    }
+
+    public void desmarcarComoConcluida(Task task){
+        usuarioAtivo.getTask().marcaComoPendente(task);
+    }
+
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
 //        return repositorio.listarPor(filtro, valor);
 //    }

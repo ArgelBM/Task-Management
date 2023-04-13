@@ -16,7 +16,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                      <children>
-                        <CheckBox fx:id="checkbox" mnemonicParsing="false" styleClass="checkbox" stylesheets="@/gui/styles/checkbox.css" HBox.hgrow="ALWAYS" />
+                        <CheckBox fx:id="checkbox" mnemonicParsing="false" onAction="#setConcluida" styleClass="checkbox" stylesheets="@/gui/styles/checkbox.css" HBox.hgrow="ALWAYS" />
                         <Label fx:id="nomeLabel" style="-fx-background-color: transparent;" text="Label" textFill="#1b1b1b" wrapText="true" />
                      </children>
                   </HBox>
