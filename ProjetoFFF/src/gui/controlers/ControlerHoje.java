@@ -41,12 +41,14 @@ public class ControlerHoje implements Initializable{
         iniciarTarefas();
         carregarTarefasConcluidas();
 
+        //permitir clicar dentro dos itens da TitledPane
         tpConcluidas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             if (event.getTarget() instanceof CheckBox) {
                 ((CheckBox) event.getTarget()).fire();
             }
         });
 
+        //Ficar checando se mudou algo no repositorio
         ControladorTasks.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             tpConcluidas.getChildren().clear();
