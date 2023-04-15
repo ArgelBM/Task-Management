@@ -102,6 +102,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaEmbreve() throws IOException {
         carregarTela("/gui/telas/Embreve.fxml", "CENTER");
+        fecharTela("RIGHT");
     }
 
     @FXML
@@ -116,6 +117,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaFiltro() throws IOException {
         carregarTela("/gui/telas/Filtro.fxml", "CENTER");
+        fecharTela("RIGHT");
     }
 
     @FXML
@@ -130,6 +132,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaHoje() throws IOException {
         carregarTela("/gui/telas/Hoje.fxml", "CENTER");
+        fecharTela("RIGHT");
 
     }
 
@@ -145,6 +148,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaImportante() throws IOException {
         carregarTela("/gui/telas/Importante.fxml", "CENTER");
+        fecharTela("RIGHT");
     }
 
     @FXML
@@ -157,7 +161,6 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    @FXML
     public void carregarTelaPomodoro(String a) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/telas/Pomodoro.fxml"));
         Parent root = loader.load();
@@ -165,7 +168,7 @@ public class ControlerPrincipal implements Initializable {
         ControlerPomodoro b = loader.getController();
         b.contador.setText(a);
         contentArea.setCenter(root);
-
+        fecharTela("RIGHT");
 
     }
 
@@ -181,6 +184,7 @@ public class ControlerPrincipal implements Initializable {
 
     public void carregarTelaConfiguracao() throws IOException {
         carregarTela("/gui/telas/Configuracao.fxml", "CENTER");
+        fecharTela("RIGHT");
     }
 
     @FXML

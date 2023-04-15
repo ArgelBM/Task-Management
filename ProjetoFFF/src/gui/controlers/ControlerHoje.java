@@ -124,6 +124,7 @@ public class ControlerHoje implements Initializable{
                 e.printStackTrace();
             }
             novaTarefa.clear();
+            ControlerPrincipal.getInstance().fecharTela("RIGHT");
         }
     }
 }
