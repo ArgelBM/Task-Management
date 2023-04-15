@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ControlerHoje implements Initializable{
+public class ControlerEmBreve implements Initializable{
 
 
     @FXML
@@ -41,8 +41,9 @@ public class ControlerHoje implements Initializable{
     private void iniciarTarefas() {
 
         List<Task> tarefasPendentesOuHoje = repository.stream()
-                .filter(t -> (t.getDataConclusao() == null || t.getDataConclusao().isEqual(LocalDate.now())) &&
+                .filter(t -> (t.getDataConclusao() != null && !t.getDataConclusao().isEqual(LocalDate.now())) &&
                         "pendente".equals(t.getClassificacao().getStatusDaTask()))
+
                 .toList();
 
         for (Task task : tarefasPendentesOuHoje){

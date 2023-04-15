@@ -24,10 +24,6 @@ import java.util.ResourceBundle;
 
 public class ControlerPrincipal implements Initializable {
 
-    public static Object ultimoControlador;
-
-    public ControlerPomodoro controlerTelaPomodoro;
-
     @FXML
     private BorderPane contentArea;
 
@@ -37,8 +33,7 @@ public class ControlerPrincipal implements Initializable {
     @FXML
     private Label nomeDeUsuario;
 
-    @FXML
-    private ContextMenu cm;
+    public static Object ultimoControlador;
 
     private static ControlerPrincipal instance;
 
@@ -57,15 +52,6 @@ public class ControlerPrincipal implements Initializable {
             contentArea.requestFocus();
         });
 
-        login.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
-        login.setOnMousePressed(event -> {
-            if (event.getButton() == MouseButton.PRIMARY) {
-                double posx = login.localToScreen(login.getBoundsInLocal()).getCenterX();
-                double posy = login.localToScreen(login.getBoundsInLocal()).getMaxY();
-                cm.show(login, posx, posy);
-            }
-        });
-
         try {
             carregarTelaHoje();
             nomeDeUsuario.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
@@ -73,12 +59,6 @@ public class ControlerPrincipal implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void sair() throws IOException {
-        ScreamControl.getInstance().telaLogin();
-
     }
 
     public BorderPane getContentArea() {
@@ -115,15 +95,15 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    public void carregarTelaFiltro() throws IOException {
+    public void carregarTelaFiltros() throws IOException {
         carregarTela("/gui/telas/Filtro.fxml", "CENTER");
         fecharTela("RIGHT");
     }
 
     @FXML
-    void telaFiltro(){
+    void telaFiltros(){
         try {
-            carregarTelaFiltro();
+            carregarTelaFiltros();
         }catch (Exception a){
             System.out.println("erro");
             System.out.println(a);
@@ -161,13 +141,8 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    public void carregarTelaPomodoro(String a) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/telas/Pomodoro.fxml"));
-        Parent root = loader.load();
-
-        ControlerPomodoro b = loader.getController();
-        b.contador.setText(a);
-        contentArea.setCenter(root);
+    public void carregarTelaPomodoro() throws IOException {
+        carregarTela("/gui/telas/Pomodoro.fxml", "CENTER");
         fecharTela("RIGHT");
 
     }
@@ -175,7 +150,7 @@ public class ControlerPrincipal implements Initializable {
     @FXML
     void telaPomodoro(){
         try {
-            carregarTela("/gui/telas/Pomodoro.fxml", "CENTER");
+            carregarTelaPomodoro();
         }catch (Exception a){
             System.out.println("erro");
             System.out.println(a);
@@ -191,6 +166,21 @@ public class ControlerPrincipal implements Initializable {
     void telaConfiguracao(){
         try {
             carregarTelaConfiguracao();
+        }catch (Exception a){
+            System.out.println("erro");
+            System.out.println(a);
+        }
+    }
+
+    public void carregarTelaTarefas() throws IOException {
+        carregarTela("/gui/telas/Tarefas.fxml", "CENTER");
+        fecharTela("RIGHT");
+    }
+
+    @FXML
+    void telaTarefas(){
+        try {
+            carregarTelaTarefas();
         }catch (Exception a){
             System.out.println("erro");
             System.out.println(a);

@@ -5,19 +5,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerEmBreve">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerTarefas">
    <center>
       <VBox style="-fx-background-color: #73818C;">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <MaterialIconView fill="#5297ff" glyphName="EVENT_NOTE" size="30" />
-                  <Label text="Em Breve" textFill="WHITE">
+                  <MaterialIconView fill="BLUEVIOLET" glyphName="DESCRIPTION" size="30" />
+                  <Label text="Tarefas" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
@@ -29,6 +30,10 @@
                   <VBox style="-fx-background-color: transparent;">
                      <children>
                         <VBox fx:id="tarefas" spacing="5.0" style="-fx-background-color: #73818C;" />
+                        <TitledPane fx:id="tp" animated="false" style="-fx-background-color: transparent;" text="Concluídas">
+                           <content>
+                              <VBox fx:id="tpConcluidas" />
+                           </content></TitledPane>
                      </children>
                   </VBox>
                </content>

@@ -3,7 +3,10 @@ package gui.controlers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import negocio.ControladorTasks;
@@ -15,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ControlerHoje implements Initializable{
+public class ControlerTarefas implements Initializable{
 
 
     @FXML
@@ -24,16 +27,32 @@ public class ControlerHoje implements Initializable{
     @FXML
     private TextField novaTarefa;
 
+    @FXML
+    private VBox tpConcluidas;
+
+    @FXML
+    private TitledPane tp;
+
     private List<Task> repository = ControladorTasks.getInstance().listarTarefas();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniciarTarefas();
+        carregarTarefasConcluidas();
+
+        //permitir clicar dentro dos itens da TitledPane
+        tpConcluidas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            if (event.getTarget() instanceof CheckBox) {
+                ((CheckBox) event.getTarget()).fire();
+            }
+        });
 
         //Ficar checando se mudou algo no repositorio
         ControladorTasks.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
+            tpConcluidas.getChildren().clear();
             iniciarTarefas();
+            carregarTarefasConcluidas();
         });
     }
 
@@ -41,8 +60,7 @@ public class ControlerHoje implements Initializable{
     private void iniciarTarefas() {
 
         List<Task> tarefasPendentesOuHoje = repository.stream()
-                .filter(t -> (t.getDataConclusao() == null || t.getDataConclusao().isEqual(LocalDate.now())) &&
-                        "pendente".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> "pendente".equals(t.getClassificacao().getStatusDaTask()))
                 .toList();
 
         for (Task task : tarefasPendentesOuHoje){
@@ -62,6 +80,34 @@ public class ControlerHoje implements Initializable{
                 e.printStackTrace();
             }
         }
+    }
+
+    private void carregarTarefasConcluidas() {
+
+        List<Task> tarefasConcluidas = repository.stream()
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .toList();
+
+        for (Task task : tarefasConcluidas){
+            try {
+                FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
+                HBox item = tela.load();
+                ControlerItem controlerItem = tela.getController();
+                controlerItem.setTask(task);
+                if("importante".equals(task.getClassificacao().getPrioridadeDaTask())){
+                    controlerItem.setStar("STAR");
+                }
+                else {
+                    controlerItem.setStar("STAR_BORDER");
+                }
+                controlerItem.getCheckbox().setSelected(true);
+
+                tpConcluidas.getChildren().add(item);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("chamou o metodo carregarTarefasConcluidas");
     }
 
     @FXML

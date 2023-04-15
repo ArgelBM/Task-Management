@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -30,10 +29,6 @@
                   <VBox style="-fx-background-color: transparent;">
                      <children>
                         <VBox fx:id="tarefas" spacing="5.0" style="-fx-background-color: #73818C;" />
-                        <TitledPane fx:id="tp" animated="false" style="-fx-background-color: transparent;" text="Concluídas">
-                           <content>
-                              <VBox fx:id="tpConcluidas" />
-                           </content></TitledPane>
                      </children>
                   </VBox>
                </content>
