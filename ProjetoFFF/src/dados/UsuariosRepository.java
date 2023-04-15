@@ -77,7 +77,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
 
     @Override
-    public void atualizar(Usuario usuario) throws ElementoNaoEncontradoException {
+    public void mudarNome(Usuario usuario, String nome) throws ElementoNaoEncontradoException {
     }
 
      @Override

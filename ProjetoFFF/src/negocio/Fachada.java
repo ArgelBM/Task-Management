@@ -6,11 +6,9 @@ import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
-import java.time.Month;
 import java.util.List;
 
 public class Fachada {
@@ -54,9 +52,9 @@ public class Fachada {
         controladorUsuarios.remover(usuario);
     }
 
-    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        controladorUsuarios.atualizar(usuario);
-    }
+//    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+//        controladorUsuarios.atualizar(usuario);
+//    }
 
     public UsuariosRepository getRepositorio() {
         return controladorUsuarios.getRepositorio();
@@ -85,8 +83,8 @@ public class Fachada {
         controladorTasks.adicionar(task);
     }
 
-    public void atualizar(Task task) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        controladorTasks.atualizar(task);
+    public void mudarNome(Task task, String nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorTasks.mudarNome(task, nome);
     }
 
     public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {

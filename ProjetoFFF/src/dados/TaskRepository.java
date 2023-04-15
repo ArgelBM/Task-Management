@@ -89,7 +89,19 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void atualizar(Task item) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void mudarNome(Task task, String novoNome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+        if(task == null){
+            throw new ArgumentoInvalidoException(task);
+        }
+        String nome = task.getNome();
+        Optional<Task> tarefa = listasDeTask.stream()
+                .filter(u -> nome.equalsIgnoreCase(u.getNome()))
+                .findAny();
+        if (tarefa.isPresent()) {
+            task.setNome(novoNome);
+        } else {
+            throw new ElementoNaoEncontradoException(tarefa);
+        }
     }
 
 

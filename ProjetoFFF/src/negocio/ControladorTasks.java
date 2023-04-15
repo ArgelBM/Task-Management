@@ -45,8 +45,8 @@ public class ControladorTasks{
         usuarioAtivo.getTask().adicionar(task);
     }
 
-    public  void atualizar(Task task) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        usuarioAtivo.getTask().atualizar(task);
+    public  void mudarNome(Task task, String nome) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        usuarioAtivo.getTask().mudarNome(task, nome);
     }
 
     public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {

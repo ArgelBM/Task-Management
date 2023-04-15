@@ -1,6 +1,5 @@
 package negocio;
 
-import dados.IRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
@@ -64,24 +63,27 @@ public class ControladorUsuarios implements Serializable {
         repositorio.remover(usuario);
     }
 
-    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        if (usuario == null) {
-            throw new ArgumentoInvalidoException("Usuário inválido");
-        }
-        if (usuario.getNomeUsuario() == null || usuario.getNomeUsuario().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Nome de usuário inválido");
-        }
-        if (usuario.getDataNascimento() == null) {
-            throw new ArgumentoInvalidoException("Data de nascimento inválida");
-        }
-        if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Login inválido");
-        }
-        if (usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Senha inválida");
-        }
-        repositorio.atualizar(usuario);
-    }
+//    Tem que ajeitar o mudarNome de UsuariosRepository, ele ta pegando o de TaskRepo, porque o
+//    de UsuariosRepository esta vazio.
+
+//    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+//        if (usuario == null) {
+//            throw new ArgumentoInvalidoException("Usuário inválido");
+//        }
+//        if (usuario.getNomeUsuario() == null || usuario.getNomeUsuario().trim().isEmpty()) {
+//            throw new ArgumentoInvalidoException("Nome de usuário inválido");
+//        }
+//        if (usuario.getDataNascimento() == null) {
+//            throw new ArgumentoInvalidoException("Data de nascimento inválida");
+//        }
+//        if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty()) {
+//            throw new ArgumentoInvalidoException("Login inválido");
+//        }
+//        if (usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
+//            throw new ArgumentoInvalidoException("Senha inválida");
+//        }
+//        repositorio.mudarNome(usuario);
+//    }
 
 
     public UsuariosRepository getRepositorio() {

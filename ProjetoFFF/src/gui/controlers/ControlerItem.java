@@ -87,11 +87,12 @@ public class ControlerItem  {
         try{
             Task tarefaEspecifica = ControladorTasks.getInstance().procurarPorNome(nomeTarefa);
             System.out.println("Nome da tarefa: " + tarefaEspecifica.getNome());
-            controlerModificarTarefa.modificatarefa(tarefaEspecifica);
+            controlerModificarTarefa.setTask(tarefaEspecifica);
             System.out.println("chamou modifica");
         }catch (ElementoNaoEncontradoException e){
             e.printStackTrace();
         }
+
     }
 
     @FXML

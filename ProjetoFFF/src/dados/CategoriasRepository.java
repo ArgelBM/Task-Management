@@ -42,7 +42,7 @@
 //        }
 //
 //    @Override
-//    public void atualizar(Categoria item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+//    public void mudarNome(Categoria item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 //
 //    }
 //

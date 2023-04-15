@@ -41,7 +41,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     }
 
     @Override
-    public void atualizar(Pomodoro item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void mudarNome(Pomodoro item, String nome) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
 
     }
 

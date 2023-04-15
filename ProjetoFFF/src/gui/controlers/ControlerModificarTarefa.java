@@ -1,35 +1,36 @@
 package gui.controlers;
 
 
+import de.jensd.fx.glyphs.materialicons.MaterialIconView;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ElementoNaoEncontradoException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import negocio.ControladorTasks;
 import negocio.beans.Task;
 
 
-import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControlerModificarTarefa implements Initializable {
 
     @FXML
-    private VBox tarefa;
+    private CheckBox checkbox;
 
     @FXML
-    private AnchorPane teste;
+    private TextField label;
+
+    @FXML
+    private MaterialIconView star;
 
     @FXML
     private ContextMenu cm;
@@ -37,17 +38,30 @@ public class ControlerModificarTarefa implements Initializable {
     @FXML
     private Button data;
 
-//    private static ControlerModificarTarefa instance;
-//
-//    public static ControlerModificarTarefa getInstance() {
-//        if(instance == null){
-//            instance = new ControlerModificarTarefa();
-//        }
-//        return instance;
-//    }
+    private Task task;
+
+    public void setTask(Task task){
+        this.task = task;
+        mudarNome(task.getNome());
+        checarStar();
+        checarCheckbox();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        label.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                registrarNovoValor(label);
+            }
+        });
+
+        label.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                registrarNovoValor(label);
+            }
+        });
+
         data.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         data.setOnMousePressed(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
@@ -56,6 +70,11 @@ public class ControlerModificarTarefa implements Initializable {
                 cm.show(data, posx, posy);
             }
         });
+
+        ControladorTasks.getInstance().addChangeListener(tasks -> {
+            checarStar();
+            checarCheckbox();
+        });
     }
 
     @FXML
@@ -63,22 +82,78 @@ public class ControlerModificarTarefa implements Initializable {
         ControlerPrincipal.getInstance().fecharTela("RIGHT");
     }
 
-    public void modificatarefa(Task task) {
-        try {
-            FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
-            HBox item = tela.load();
-            ControlerItem controlerItem = tela.getController();
-            controlerItem.setTask(task);
-            if("importante".equals(task.getClassificacao().getPrioridadeDaTask())){
-                controlerItem.setStar("STAR");
-            }
-            else {
-                controlerItem.setStar("STAR_BORDER");
-            }
-            teste.getChildren().add(item);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @FXML
+    public void setConcluida(){
+        if (checkbox.isSelected()) {
+            ControladorTasks.getInstance().marcarComoConcluida(task);
+            System.out.println("marcou como concluida");
+        } else {
+            ControladorTasks.getInstance().desmarcarComoConcluida(task);
+            System.out.println("desmarcou como concluida");
         }
     }
+
+    @FXML
+    public void setFavoritar() {
+        if (star.getGlyphName().equals("STAR_BORDER")) {
+            gravaStar("STAR");
+        } else {
+            gravaStar("STAR_BORDER");
+        }
+    }
+
+    public void mudarNome(String nome) {
+        label.setText(nome);
+    }
+
+    public void gravaStar(String glyphName) {
+        setStar(glyphName);
+        if ("STAR".equals(glyphName)) {
+            ControladorTasks.getInstance().marcarComoImportante(task);
+            System.out.println("marcou como importante");
+        }
+        else {
+            ControladorTasks.getInstance().desmarcarComoImportante(task);
+            System.out.println("desmarcou como importante");
+        }
+    }
+
+    public void setStar(String glyphName) {
+        star.setGlyphName(glyphName);
+    }
+
+    private void checarStar(){
+        if("importante".equals(task.getClassificacao().getPrioridadeDaTask())){
+            setStar("STAR");
+        }
+        else {
+            setStar("STAR_BORDER");
+        }
+    }
+
+    private void checarCheckbox(){
+        if("concluida".equals(task.getClassificacao().getStatusDaTask())){
+            checkbox.setSelected(true);
+        }
+        else {
+            checkbox.setSelected(false);
+        }
+    }
+
+    private void registrarNovoValor(TextField textField) {
+        String novoValor = textField.getText();
+        task.setNome(novoValor);
+        try {
+            ControladorTasks.getInstance().mudarNome(task, novoValor);
+        } catch (ArgumentoInvalidoException e) {
+            System.out.println("Argumento invalido");
+        } catch (ElementoNaoEncontradoException e) {
+            System.out.println("task nao encontrada");
+        }
+        textField.setText(novoValor);
+    }
+
+
+
 }
 

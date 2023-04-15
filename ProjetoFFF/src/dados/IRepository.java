@@ -16,8 +16,8 @@ public interface IRepository <T> {
 //    adicionar(T item): adiciona um novo item à lista.
     void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;
 
-//    atualizar(T item): atualiza os dados de um item já existente na lista.
-    void atualizar(T item) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
+//    mudarNome(T item): muda o nome do usuario ou task.
+    void mudarNome(T item, String nome) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    remover(T item): remove um item da lista.
     void remover(T item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
