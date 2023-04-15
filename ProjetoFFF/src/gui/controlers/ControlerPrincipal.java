@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class ControlerPrincipal implements Initializable {
 
+    public static Object ultimoControlador;
+
     public ControlerPomodoro controlerTelaPomodoro;
 
     @FXML
@@ -80,6 +82,7 @@ public class ControlerPrincipal implements Initializable {
     public void carregarTela(String caminhoFXML, String posicao) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
         Parent root = loader.load();
+        ultimoControlador = loader.getController();
 
         switch (posicao) {
             case "TOP" -> contentArea.setTop(root);
@@ -199,4 +202,7 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
+    public static Object getUltimoControlador() {
+        return ultimoControlador;
+    }
 }

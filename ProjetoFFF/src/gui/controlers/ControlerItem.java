@@ -2,6 +2,7 @@ package gui.controlers;
 
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import exceptions.ElementoNaoEncontradoException;
+import gui.ScreamControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -13,6 +14,15 @@ import negocio.beans.Task;
 import java.io.IOException;
 
 public class ControlerItem  {
+
+    private static ControlerItem instance;
+
+    public static ControlerItem getInstance(){
+        if(instance == null){
+            instance = new ControlerItem();
+        }
+        return instance;
+    }
 
     @FXML
     private CheckBox checkbox;
@@ -70,7 +80,8 @@ public class ControlerItem  {
         controlerPrincipal.carregarTela("/gui/telas/ModificarTarefa.fxml", "RIGHT");
         System.out.println("carregou a tela a direita");
 
-        ControlerModificarTarefa controlerModificarTarefa = new ControlerModificarTarefa();
+
+       ControlerModificarTarefa controlerModificarTarefa = (ControlerModificarTarefa) controlerPrincipal.getUltimoControlador();
         System.out.println("Pegou a instancia de modifica");
 
         try{
