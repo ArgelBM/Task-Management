@@ -1,6 +1,7 @@
 package gui.controlers;
 
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
+import exceptions.ElementoNaoEncontradoException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -61,8 +62,25 @@ public class ControlerItem  {
 
     @FXML
     void modifica() throws IOException {
+        String nomeTarefa = nomeLabel.getText();
+        System.out.println("Nome da label: " + nomeTarefa);
+
         ControlerPrincipal controlerPrincipal = ControlerPrincipal.getInstance();
+        System.out.println("Pegou a instancia de principal");
         controlerPrincipal.carregarTela("/gui/telas/ModificarTarefa.fxml", "RIGHT");
+        System.out.println("carregou a tela a direita");
+
+        ControlerModificarTarefa controlerModificarTarefa = new ControlerModificarTarefa();
+        System.out.println("Pegou a instancia de modifica");
+
+        try{
+            Task tarefaEspecifica = ControladorTasks.getInstance().procurarPorNome(nomeTarefa);
+            System.out.println("Nome da tarefa: " + tarefaEspecifica.getNome());
+            controlerModificarTarefa.modificatarefa(tarefaEspecifica);
+            System.out.println("chamou modifica");
+        }catch (ElementoNaoEncontradoException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

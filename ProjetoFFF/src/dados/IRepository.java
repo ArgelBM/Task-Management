@@ -11,7 +11,7 @@ public interface IRepository <T> {
     T listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    listarPorNome(String nome): retorna uma lista com os itens que possuem o nome especificado.
-    List<T> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException;
+    T listarPorNome(String nome) throws ElementoNaoEncontradoException;
 
 //    adicionar(T item): adiciona um novo item à lista.
     void adicionar(T item) throws ElementoJaExisteException, ArgumentoInvalidoException;

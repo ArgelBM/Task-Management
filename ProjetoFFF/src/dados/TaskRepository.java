@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class TaskRepository implements IRepository<Task>, Serializable {
@@ -76,8 +77,15 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public List<Task> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        return null;
+    public Task listarPorNome(String nome) throws ElementoNaoEncontradoException {
+        Optional<Task> tarefa = listasDeTask.stream()
+                .filter(u -> nome.equalsIgnoreCase(u.getNome()))
+                .findAny();
+        if (tarefa.isPresent()) {
+            return tarefa.get();
+        } else {
+            throw new ElementoNaoEncontradoException(tarefa);
+        }
     }
 
     @Override

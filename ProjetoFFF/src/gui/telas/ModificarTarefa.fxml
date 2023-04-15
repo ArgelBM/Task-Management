@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -31,7 +32,8 @@
                   </Button>
                </children>
             </HBox>
-            <VBox fx:id="tarefa" style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS" />
+            <VBox fx:id="tarefa" style="-fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS" />
+            <AnchorPane fx:id="teste" VBox.vgrow="ALWAYS" />
             <VBox style="-fx-background-color: transparent; -fx-border-color: #ECECEC; -fx-border-style: solid;" VBox.vgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER_LEFT" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">

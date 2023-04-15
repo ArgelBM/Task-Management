@@ -1,7 +1,6 @@
 package dados;
 
 import exceptions.*;
-import negocio.ControladorTasks;
 import negocio.beans.Usuario;
 
 import java.util.*;
@@ -50,16 +49,15 @@ public class UsuariosRepository implements IRepository<Usuario> {
         }
 
     @Override
-    public List<Usuario> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        List<Usuario> usuariosEncontrados = new ArrayList<>();
-
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNomeUsuario().equalsIgnoreCase(nome)) {
-                usuariosEncontrados.add(usuario);
-            }
+    public Usuario listarPorNome(String nome) throws ElementoNaoEncontradoException {
+        Optional<Usuario> usuariosEncontrados = usuarios.stream()
+                .filter(u -> nome.equalsIgnoreCase(u.getNomeUsuario()))
+                .findAny();
+        if (usuariosEncontrados.isPresent()) {
+            return usuariosEncontrados.get();
+        } else {
+            throw new ElementoNaoEncontradoException(usuariosEncontrados);
         }
-
-        return usuariosEncontrados;
     }
 
     @Override

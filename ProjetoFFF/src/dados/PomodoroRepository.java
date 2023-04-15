@@ -31,7 +31,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     }
 
     @Override
-    public List<Pomodoro> listarPorNome(String nome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Pomodoro listarPorNome(String nome) throws ElementoNaoEncontradoException {
         return null;
     }
 

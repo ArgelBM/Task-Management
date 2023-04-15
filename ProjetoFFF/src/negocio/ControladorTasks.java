@@ -8,7 +8,6 @@ import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -76,6 +75,10 @@ public class ControladorTasks{
 
     public void desmarcarComoImportante(Task task){
         usuarioAtivo.getTask().desmarcaComoImportante(task);
+    }
+
+    public Task procurarPorNome(String nome) throws ElementoNaoEncontradoException {
+        return usuarioAtivo.getTask().listarPorNome(nome);
     }
 
 //    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
