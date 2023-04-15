@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.BorderPane;
 import negocio.ControladorTasks;
 import negocio.beans.Task;
 
@@ -42,6 +43,9 @@ public class ControlerModificarTarefa implements Initializable {
     @FXML
     private Button data;
 
+    @FXML
+    private BorderPane telamodifica;
+
     private Task task;
 
     public void setTask(Task task){
@@ -53,6 +57,15 @@ public class ControlerModificarTarefa implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //Se o textfield perder o foco chama registrarNovoValor
+        label.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                registrarNovoValor(label);
+                System.out.println("TextField perdeu foco");
+            }
+        });
+
 
         //Se der enter atualiza a tarefa
         label.setOnKeyPressed(event -> {

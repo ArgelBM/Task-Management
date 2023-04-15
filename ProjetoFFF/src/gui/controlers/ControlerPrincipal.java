@@ -51,6 +51,12 @@ public class ControlerPrincipal implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //requisita foco no clique pra o textfield de modificaTarefa funcionar
+        contentArea.setOnMouseClicked(event->{
+            contentArea.requestFocus();
+        });
+
         login.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         login.setOnMousePressed(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
