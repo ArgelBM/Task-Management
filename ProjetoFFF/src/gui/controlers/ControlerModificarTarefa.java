@@ -18,8 +18,12 @@ import negocio.ControladorTasks;
 import negocio.beans.Task;
 
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static java.awt.event.FocusEvent.*;
 
 public class ControlerModificarTarefa implements Initializable {
 
@@ -50,12 +54,7 @@ public class ControlerModificarTarefa implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        label.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {
-                registrarNovoValor(label);
-            }
-        });
-
+        //Se der enter atualiza a tarefa
         label.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 registrarNovoValor(label);
@@ -151,6 +150,7 @@ public class ControlerModificarTarefa implements Initializable {
             System.out.println("task nao encontrada");
         }
         textField.setText(novoValor);
+        label.getParent().requestFocus();
     }
 
 

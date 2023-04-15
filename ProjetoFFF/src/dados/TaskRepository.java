@@ -102,6 +102,8 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         } else {
             throw new ElementoNaoEncontradoException(tarefa);
         }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
     }
 
 
