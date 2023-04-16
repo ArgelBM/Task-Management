@@ -16,6 +16,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
+import negocio.Fachada;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,8 +55,8 @@ public class ControlerPrincipal implements Initializable {
 
         try {
             carregarTelaHoje();
-            nomeDeUsuario.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
-            login.setText(ControladorTasks.getInstance().getUsuarioAtivo().getLogin());
+            nomeDeUsuario.setText(Fachada.getInstance().getUsuarioAtivo().getNomeUsuario());
+            login.setText(Fachada.getInstance().getUsuarioAtivo().getLogin());
         } catch (Exception e) {
             e.printStackTrace();
         }

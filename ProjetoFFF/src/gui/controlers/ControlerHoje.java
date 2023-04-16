@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import negocio.ControladorTasks;
+import negocio.Fachada;
 import negocio.beans.Task;
 
 import java.io.IOException;
@@ -24,14 +25,14 @@ public class ControlerHoje implements Initializable{
     @FXML
     private TextField novaTarefa;
 
-    private List<Task> repository = ControladorTasks.getInstance().listarTarefas();
+    private List<Task> repository = Fachada.getInstance().listarTarefas();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniciarTarefas();
 
         //Ficar checando se mudou algo no repositorio
-        ControladorTasks.getInstance().addChangeListener(tasks -> {
+        Fachada.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             iniciarTarefas();
         });
@@ -70,8 +71,8 @@ public class ControlerHoje implements Initializable{
         if (!novaTarefa.getText().isEmpty()) {
             try {
                 Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
-                ControladorTasks.getInstance().adicionar(tarefa);
-                ControladorTasks.getInstance().marcarComoPendente(tarefa);
+                Fachada.getInstance().adicionar(tarefa);
+                Fachada.getInstance().marcarComoPendente(tarefa);
             } catch (Exception e) {
                 e.printStackTrace();
             }
