@@ -42,7 +42,7 @@ public class ControlerHoje implements Initializable{
     private void iniciarTarefas() {
 
         List<Task> tarefasPendentesOuHoje = repository.stream()
-                .filter(t -> (t.getDataConclusao() == null || t.getDataConclusao().isEqual(LocalDate.now())) &&
+                .filter(t -> (t.getDataPrevisao() == null || t.getDataPrevisao().isEqual(LocalDate.now())) &&
                         "pendente".equals(t.getClassificacao().getStatusDaTask()))
                 .toList();
 
@@ -70,7 +70,7 @@ public class ControlerHoje implements Initializable{
 
         if (!novaTarefa.getText().isEmpty()) {
             try {
-                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
+                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(), null, null, null);
                 Fachada.getInstance().adicionar(tarefa);
                 Fachada.getInstance().marcarComoPendente(tarefa);
             } catch (Exception e) {

@@ -9,15 +9,17 @@ public class Task implements Serializable {
     private String nome;
     private String conteudo;
     private LocalDate dataCriada;
+    private LocalDate dataPrevisao;
     private LocalDate dataConclusao;
     private LocalDate dataConclusaoAnterior;
     private List<Pomodoro> pomodoros;
     private Classificacao classificacao;
 
-    public Task(String nome, String conteudo, LocalDate dataCriada, LocalDate dataConclusao, List<Pomodoro> pomodoros) {
+    public Task(String nome, String conteudo, LocalDate dataCriada, LocalDate dataPrevisao, LocalDate dataConclusao, List<Pomodoro> pomodoros) {
         this.nome = nome;
         this.conteudo = conteudo;
         this.dataCriada = dataCriada;
+        this.dataPrevisao = dataPrevisao;
         this.dataConclusao = dataConclusao;
         this.pomodoros = pomodoros;
         classificacao = new Classificacao("","","");
@@ -78,5 +80,13 @@ public class Task implements Serializable {
 
     public void setDataConclusaoAnterior(LocalDate dataConclusaoAnterior) {
         this.dataConclusaoAnterior = dataConclusaoAnterior;
+    }
+
+    public LocalDate getDataPrevisao() {
+        return dataPrevisao;
+    }
+
+    public void setDataPrevisao(LocalDate dataPrevisao) {
+        this.dataPrevisao = dataPrevisao;
     }
 }

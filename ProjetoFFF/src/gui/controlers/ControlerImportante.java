@@ -67,7 +67,7 @@ public class ControlerImportante implements Initializable {
 
         if (!novaTarefa.getText().isEmpty()) {
             try {
-                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
+                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(), null ,null, null);
                 Fachada.getInstance().adicionar(tarefa);
                 Fachada.getInstance().marcarComoImportante(tarefa);
                 Fachada.getInstance().marcarComoPendente(tarefa);
