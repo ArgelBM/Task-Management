@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import negocio.ControladorTasks;
+import negocio.Fachada;
 import negocio.beans.Task;
 
 
@@ -83,7 +84,7 @@ public class ControlerModificarTarefa implements Initializable {
             }
         });
 
-        ControladorTasks.getInstance().addChangeListener(tasks -> {
+        Fachada.getInstance().addChangeListener(tasks -> {
             checarStar();
             checarCheckbox();
         });
@@ -97,10 +98,10 @@ public class ControlerModificarTarefa implements Initializable {
     @FXML
     public void setConcluida(){
         if (checkbox.isSelected()) {
-            ControladorTasks.getInstance().marcarComoConcluida(task);
+            Fachada.getInstance().marcarComoConcluida(task);
             System.out.println("marcou como concluida");
         } else {
-            ControladorTasks.getInstance().desmarcarComoConcluida(task);
+            Fachada.getInstance().desmarcarComoConcluida(task);
             System.out.println("desmarcou como concluida");
         }
     }
@@ -121,11 +122,11 @@ public class ControlerModificarTarefa implements Initializable {
     public void gravaStar(String glyphName) {
         setStar(glyphName);
         if ("STAR".equals(glyphName)) {
-            ControladorTasks.getInstance().marcarComoImportante(task);
+            Fachada.getInstance().marcarComoImportante(task);
             System.out.println("marcou como importante");
         }
         else {
-            ControladorTasks.getInstance().desmarcarComoImportante(task);
+            Fachada.getInstance().desmarcarComoImportante(task);
             System.out.println("desmarcou como importante");
         }
     }
@@ -156,7 +157,7 @@ public class ControlerModificarTarefa implements Initializable {
         String novoValor = textField.getText();
         task.setNome(novoValor);
         try {
-            ControladorTasks.getInstance().mudarNome(task, novoValor);
+            Fachada.getInstance().mudarNome(task, novoValor);
         } catch (ArgumentoInvalidoException e) {
             System.out.println("Argumento invalido");
         } catch (ElementoNaoEncontradoException e) {
@@ -165,8 +166,6 @@ public class ControlerModificarTarefa implements Initializable {
         textField.setText(novoValor);
         label.getParent().requestFocus();
     }
-
-
 
 }
 

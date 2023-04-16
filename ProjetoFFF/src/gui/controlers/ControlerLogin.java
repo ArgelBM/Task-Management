@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
+import negocio.Fachada;
 
 import java.util.Objects;
 
@@ -33,7 +34,7 @@ public class ControlerLogin{
         String usuario = login.getText();
         String key = senha.getText();
         try {
-            ControladorUsuarios.getInstance().fazerLogin(usuario, key);
+            Fachada.getInstance().fazerLogin(usuario, key);
             ScreamControl.getInstance().telaPrincipal();
         }
         catch (Exception a ){
@@ -55,7 +56,6 @@ public class ControlerLogin{
             System.out.println(a);
         }
     }
-
 
     @FXML
     void fecha(){

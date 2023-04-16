@@ -6,10 +6,12 @@ import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Fachada {
     private static Fachada instance;
@@ -66,7 +68,6 @@ public class Fachada {
 
     //Listas
 
-
     public Usuario getUsuarioAtivo() {
         return controladorTasks.getUsuarioAtivo();
     }
@@ -79,6 +80,7 @@ public class Fachada {
         return controladorTasks.listarTarefas();
     }
 
+    // tarefas
     public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
         controladorTasks.adicionar(task);
     }
@@ -90,6 +92,59 @@ public class Fachada {
     public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
         controladorTasks.remover(task);
     }
+    public void addChangeListener(Consumer<List<Task>> listener){
+        controladorTasks.addChangeListener(listener);
+    }
+    public void marcarComoPendente(Task task){
+        controladorTasks.marcarComoPendente(task);
+    }
+    public void marcarComoImportante(Task task){
+        controladorTasks.marcarComoImportante(task);
+    }
+    public void marcarComoConcluida(Task task){
+        controladorTasks.marcarComoConcluida(task);
+    }
+    public void desmarcarComoConcluida(Task task){
+        controladorTasks.desmarcarComoConcluida(task);}
 
+    public Task procurarPorNome(String nome) throws ElementoNaoEncontradoException {
+        return controladorTasks.procurarPorNome(nome);
+    }
 
+   // pomodoro
+    public void desmarcarComoImportante(Task task) {
+        controladorTasks.desmarcarComoImportante(task);
+    }
+
+    public void getTempoPomodoro() {
+        controladorPomodoro.getTempoPomodoro();
+    }
+
+    public void getTempoDescanso() {
+        controladorPomodoro.getTempoDescanso();
+    }
+
+    public void getTempoDescansoLongo() {
+        controladorPomodoro.getTempoDescansoLongo();
+    }
+
+    public void iniciarPomodoro(Pomodoro pomodoro) {
+        controladorPomodoro.iniciarPomodoro(pomodoro);
+    }
+
+    public void pare() {
+        controladorPomodoro.pare();
+    }
+
+    public boolean getAtivo(){
+        return controladorPomodoro.ativo;
+    }
+
+    public int getMinutos(){
+      return controladorPomodoro.minutos;
+    }
+
+    public int getSegundos(){
+        return controladorPomodoro.segundos;
+    }
 }

@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import negocio.ControladorTasks;
+import negocio.Fachada;
 import negocio.beans.Task;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ public class ControlerTarefas implements Initializable{
     @FXML
     private TitledPane tp;
 
-    private List<Task> repository = ControladorTasks.getInstance().listarTarefas();
+    private List<Task> repository = Fachada.getInstance().listarTarefas();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,7 +49,7 @@ public class ControlerTarefas implements Initializable{
         });
 
         //Ficar checando se mudou algo no repositorio
-        ControladorTasks.getInstance().addChangeListener(tasks -> {
+        Fachada.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             tpConcluidas.getChildren().clear();
             iniciarTarefas();
@@ -116,8 +117,8 @@ public class ControlerTarefas implements Initializable{
         if (!novaTarefa.getText().isEmpty()) {
             try {
                 Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
-                ControladorTasks.getInstance().adicionar(tarefa);
-                ControladorTasks.getInstance().marcarComoPendente(tarefa);
+                Fachada.getInstance().adicionar(tarefa);
+                Fachada.getInstance().marcarComoPendente(tarefa);
             } catch (Exception e) {
                 e.printStackTrace();
             }

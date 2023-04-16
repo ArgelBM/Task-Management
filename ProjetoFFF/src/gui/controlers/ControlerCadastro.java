@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import negocio.ControladorUsuarios;
+import negocio.Fachada;
 import negocio.beans.Usuario;
 
 import java.io.IOException;
@@ -72,7 +73,7 @@ public class ControlerCadastro {
     void cadastrar() {
 
         try {
-            ControladorUsuarios.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
+            Fachada.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
             System.out.println("conta criada");
             ControlerInicial.getInstance().carregarTelaLogin();
         }
