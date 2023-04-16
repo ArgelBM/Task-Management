@@ -43,7 +43,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
                            <children>
-                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Usuário" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                               <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </VBox>
