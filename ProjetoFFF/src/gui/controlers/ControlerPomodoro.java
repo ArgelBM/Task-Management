@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import negocio.ControladorPomodoro;
+import negocio.Fachada;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +18,7 @@ import java.util.TimerTask;
 public class ControlerPomodoro implements Initializable{
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    if(ControladorPomodoro.ativo){
+    if(Fachada.getInstance().getAtivo()){
         iniciar();
     }
     }
@@ -26,18 +27,18 @@ public class ControlerPomodoro implements Initializable{
     public Label contador;
     @FXML
     void iniciar() {
-        if (!ControladorPomodoro.ativo) {
-            ControladorPomodoro.getInstance().getTempoDescansoLongo();
+        if (!Fachada.getInstance().getAtivo()) {
+            Fachada.getInstance().getTempoDescansoLongo();
         }
             Timer timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
                     Platform.runLater(() -> {
-                        if (ControladorPomodoro.ativo) {
-                            contador.setText(String.format("%02d:%02d", ControladorPomodoro.minutos
-                                    , ControladorPomodoro.segundos));
+                        if (Fachada.getInstance().getAtivo()) {
+                            contador.setText(String.format("%02d:%02d", Fachada.getInstance().getMinutos()
+                                    ,Fachada.getInstance().getSegundos()));
                         }
-                        if (!ControladorPomodoro.ativo) {
+                        if (!Fachada.getInstance().getAtivo()) {
                             timer.cancel();
                         }
                     });
@@ -48,7 +49,7 @@ public class ControlerPomodoro implements Initializable{
     void parar() {
         ControladorPomodoro.getInstance().pare();
         contador.setText(String.format("%02d:%02d", ControladorPomodoro.minutos
-                , ControladorPomodoro.segundos));
+                , Fachada.getInstance().getSegundos()));
     }
 
 }

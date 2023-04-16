@@ -9,6 +9,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import negocio.ControladorTasks;
+import negocio.Fachada;
 import negocio.beans.Task;
 
 import java.io.IOException;
@@ -49,10 +50,10 @@ public class ControlerItem  {
     @FXML
     public void setConcluida(){
         if (checkbox.isSelected()) {
-            ControladorTasks.getInstance().marcarComoConcluida(task);
+            Fachada.getInstance().marcarComoConcluida(task);
             System.out.println("marcou como concluida");
         } else {
-            ControladorTasks.getInstance().desmarcarComoConcluida(task);
+            Fachada.getInstance().desmarcarComoConcluida(task);
             System.out.println("desmarcou como concluida");
         }
     }
@@ -85,7 +86,7 @@ public class ControlerItem  {
         System.out.println("Pegou a instancia de modifica");
 
         try{
-            Task tarefaEspecifica = ControladorTasks.getInstance().procurarPorNome(nomeTarefa);
+            Task tarefaEspecifica = Fachada.getInstance().procurarPorNome(nomeTarefa);
             System.out.println("Nome da tarefa: " + tarefaEspecifica.getNome());
             controlerModificarTarefa.setTask(tarefaEspecifica);
             System.out.println("chamou modifica");
@@ -112,11 +113,11 @@ public class ControlerItem  {
     public void gravaStar(String glyphName) {
         setStar(glyphName);
         if ("STAR".equals(glyphName)) {
-            ControladorTasks.getInstance().marcarComoImportante(task);
+            Fachada.getInstance().marcarComoImportante(task);
             System.out.println("marcou como importante");
         }
         else {
-            ControladorTasks.getInstance().desmarcarComoImportante(task);
+            Fachada.getInstance().desmarcarComoImportante(task);
             System.out.println("desmarcou como importante");
         }
     }
