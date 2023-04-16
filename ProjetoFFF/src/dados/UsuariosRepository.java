@@ -78,6 +78,8 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     @Override
     public void mudarNome(Usuario usuario, String nome) throws ElementoNaoEncontradoException {
+        usuario.setNomeUsuario(nome);
+        salvar();
     }
 
      @Override

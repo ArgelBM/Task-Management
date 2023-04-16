@@ -70,7 +70,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton buttonType="RAISED" style="-fx-background-color: red; -fx-background-radius: 5px;" text="Deletar Conta" textFill="WHITE">
+                                          <JFXButton buttonType="RAISED" onAction="#excluirConta" style="-fx-background-color: red; -fx-background-radius: 5px;" text="Deletar Conta" textFill="WHITE">
                                              <graphic>
                                                 <MaterialIconView fill="WHITE" glyphName="DELETE" size="20" />
                                              </graphic>
@@ -78,7 +78,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton buttonType="RAISED" minWidth="120.0" style="-fx-background-color: green; -fx-background-radius: 5px;" text="Mudar Senha" textFill="WHITE">
+                                          <JFXButton buttonType="RAISED" minWidth="120.0" onAction="#mudarSenha" style="-fx-background-color: green; -fx-background-radius: 5px;" text="Mudar Senha" textFill="WHITE">
                                              <graphic>
                                                 <MaterialIconView glyphName="LOCK" size="20" />
                                              </graphic>
@@ -122,7 +122,7 @@
                                        <children>
                                           <TextField fx:id="nome" VBox.vgrow="ALWAYS" />
                                           <DatePicker fx:id="data" editable="false" minWidth="204.0" VBox.vgrow="ALWAYS" />
-                                          <PasswordField fx:id="senhaAntiga" VBox.vgrow="ALWAYS" />
+                                          <PasswordField fx:id="confirmacaoDaSenha" promptText="Confirme sua senha" VBox.vgrow="ALWAYS" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -130,7 +130,7 @@
                               <Label fx:id="exceptions" />
                               <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <JFXButton buttonType="RAISED" style="-fx-background-color: #5865F2; -fx-background-radius: 5px;" text="Salvar Alterações" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                    <JFXButton buttonType="RAISED" onAction="#salvarMudancas" style="-fx-background-color: #5865F2; -fx-background-radius: 5px;" text="Salvar Alterações" textFill="WHITE" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
