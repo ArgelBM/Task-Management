@@ -158,6 +158,21 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
+    public void carregarTelaRelatorios() throws IOException {
+        carregarTela("/gui/telas/Relatorios.fxml", "CENTER");
+        fecharTela("RIGHT");
+    }
+
+    @FXML
+    void telaRelatorios(){
+        try {
+            carregarTelaRelatorios();
+        }catch (Exception a){
+            System.out.println("erro");
+            System.out.println(a);
+        }
+    }
+
     public void carregarTelaTarefas() throws IOException {
         carregarTela("/gui/telas/Tarefas.fxml", "CENTER");
         fecharTela("RIGHT");

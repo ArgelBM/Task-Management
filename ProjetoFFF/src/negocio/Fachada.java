@@ -1,6 +1,7 @@
 package negocio;
 
 
+import dados.TaskRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
@@ -12,7 +13,12 @@ import negocio.beans.Usuario;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 public class Fachada {
@@ -36,7 +42,7 @@ public class Fachada {
 
 
     //Usuario
-    public void fazerLogin(String login, String senha, boolean marcada) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void fazerLogin(String login, String senha, boolean marcada) throws NullPointerException, IllegalArgumentException {
         controladorUsuarios.fazerLogin(login, senha, marcada);
         System.out.println("fachada");
     }
@@ -45,19 +51,19 @@ public class Fachada {
         return controladorUsuarios.listarPorTodos();
     }
 
-    public Usuario listarPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public Usuario listarPorId(int id) throws IllegalArgumentException {
         return controladorUsuarios.listarPorId(id);
     }
 
-    public Usuario procuraPorLogin(String nome) throws ElementoNaoEncontradoException {
+    public Usuario procuraPorLogin(String nome) throws NoSuchElementException {
         return controladorUsuarios.procuraPorLogin(nome);
     }
 
-    public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Usuario usuario) throws NullPointerException, IllegalArgumentException {
         controladorUsuarios.adicionar(usuario);
     }
 
-    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Usuario usuario) {
         controladorUsuarios.remover(usuario);
     }
 
@@ -96,7 +102,7 @@ public class Fachada {
         controladorTasks.mudarNome(task, nome);
     }
 
-    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Task task) {
         controladorTasks.remover(task);
     }
     public void addChangeListener(Consumer<List<Task>> listener){
@@ -118,7 +124,23 @@ public class Fachada {
         return controladorTasks.procurarPorNome(nome);
     }
 
-   // pomodoro
+    public int contarTarefasConcluidasNoMes(int mes) {
+        return controladorTasks.contarTarefasConcluidasNoMes(mes);
+    }
+
+    public int contarTarefasConcluidasNaUltimaSemanaPorDia(DayOfWeek dia) {
+        return controladorTasks.contarTarefasConcluidasNaUltimaSemanaPorDia(dia);
+    }
+
+    public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes) {
+        return controladorTasks.contarTarefasConcluidasNoDiaPorMes(dia, mes);
+    }
+
+    public void setDataPrevisao(Task task, LocalDate data) {
+        controladorTasks.setDataPrevisao(task, data);
+    }
+
+    // pomodoro
     public void desmarcarComoImportante(Task task) {
         controladorTasks.desmarcarComoImportante(task);
     }

@@ -5,7 +5,9 @@ import negocio.ControladorUsuarios;
 import negocio.beans.Task;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,16 +37,16 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Task item) throws ElementoJaExisteException,IllegalArgumentException {
         if ((item == null)){
-            throw new ArgumentoInvalidoException(null);
+            throw new IllegalArgumentException("tarefa não pode ser nula!");
         }
         if(item.getNome() == null || item.getNome().trim().isEmpty()){
-            throw new ArgumentoInvalidoException(item);
+            throw new IllegalArgumentException("O nome da tarefa é invalido!");
         }
         for(Task a: listasDeTask){
             if(a.getNome().equals(item.getNome())){
-                throw new ArgumentoInvalidoException(item);
+                throw new IllegalArgumentException("Essa tarefa já existe na lista!");
             }
         }
         listasDeTask.add(item);
@@ -52,17 +54,8 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         notifyChangeListeners();
     }
     @Override
-    public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if (item == null) {
-            throw new ArgumentoInvalidoException(null);
-        }
-        int index = listasDeTask.indexOf(item);
-        if (index == -1) {
-            throw new ElementoNaoEncontradoException(item);
-        }
-        if (!listasDeTask.remove(item)) {
-            throw new DeletarFalhouException(item);
-        }
+    public void remover(Task item) {
+        listasDeTask.remove(item);
         ControladorUsuarios.getInstance().salvarMudancas();
         notifyChangeListeners();
     }
@@ -72,7 +65,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public Task listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Task listarPorId(int id) {
         return null;
     }
 
@@ -100,9 +93,9 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void mudarNome(Task task, String novoNome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void mudarNome(Task task, String novoNome) throws ElementoNaoEncontradoException, NullPointerException {
         if(task == null){
-            throw new ArgumentoInvalidoException(task);
+            throw new NullPointerException("Tarefa não pod ser nula!");
         }
         String nome = task.getNome();
         Optional<Task> tarefa = listasDeTask.stream()
@@ -118,7 +111,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
 
-    public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException,IllegalArgumentException {
         List<Task> tasksFiltradas = new ArrayList<>();
         for(Task n: listasDeTask){
             if(n.getClassificacao().getCorDaTask().equals(cor) && n.getClassificacao().getPrioridadeDaTask().equals(prioridade)
@@ -130,16 +123,31 @@ public class TaskRepository implements IRepository<Task>, Serializable {
 
     }
 
-    public List<Task> gerarRelatorioPorMes(int mes) throws ElementoNaoEncontradoException {
-        List<Task> tarefasConcluidasNoMes = new ArrayList<>();
-
-        for (Task task : listasDeTask) {
-            if (task.getClassificacao().getStatusDaTask().equals("concluida") && task.getDataConclusao().getMonthValue() == mes) {
-                tarefasConcluidasNoMes.add(task);
-            }
-        }
-        return tarefasConcluidasNoMes;
+    public int contarTarefasConcluidasNoMes(int mes) {
+        return (int) listasDeTask.stream()
+                .filter(t -> mes == t.getDataConclusao().getMonthValue())
+                .count();
     }
+
+    public int contarTarefasConcluidasNaUltimaSemanaPorDia(DayOfWeek diaDaSemana) {
+        LocalDate hoje = LocalDate.now();
+        LocalDate umaSemanaAtras = hoje.minusDays(7);
+        return (int) listasDeTask.stream()
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> t.getDataConclusao().isAfter(umaSemanaAtras))
+                .filter(t -> t.getDataConclusao().getDayOfWeek() == diaDaSemana)
+                .count();
+    }
+
+    public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes) {
+        LocalDate dataEspecifica = LocalDate.now().withMonth(mes.getValue()).withDayOfMonth(dia);
+        return (int) listasDeTask.stream()
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> t.getDataConclusao().getMonth() == mes)
+                .filter(t -> t.getDataConclusao().isEqual(dataEspecifica))
+                .count();
+    }
+
 
 
     public void marcaComoConcluida (Task task){
@@ -202,7 +210,15 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         notifyChangeListeners();
     }
 
-
+    public void setDataPrevisao(Task task, LocalDate data) {
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.setDataPrevisao(data);
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
 
 }
 

@@ -8,6 +8,9 @@ import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -50,7 +53,7 @@ public class ControladorTasks{
         usuarioAtivo.getTask().mudarNome(task, nome);
     }
 
-    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Task task) {
         usuarioAtivo.getTask().remover(task);
     }
 
@@ -82,19 +85,19 @@ public class ControladorTasks{
         return usuarioAtivo.getTask().litarPorNomeDaTaskA(nome);
     }
 
-//    public List<Task> listarPor(Filtro filtro, Object valor) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
-//        return repositorio.listarPor(filtro, valor);
-//    }
+    public int contarTarefasConcluidasNoMes(int mes) {
+        return usuarioAtivo.getTask().contarTarefasConcluidasNoMes(mes);
+    }
 
-//    public void relatorioPorMes(Month mes) throws ElementoNaoEncontradoException {
-//        repositorio.gerarRelatorioPorMes(mes);
-//    }
+    public int contarTarefasConcluidasNaUltimaSemanaPorDia(DayOfWeek dia){
+        return usuarioAtivo.getTask().contarTarefasConcluidasNaUltimaSemanaPorDia(dia);
+    }
 
-//    private void validarTask(Task task) throws ArgumentoInvalidoException {
-//        if (task == null || task.getNome() == null || task.getNome().trim().isEmpty()
-//                || task.getConteudo() == null || task.getConteudo().trim().isEmpty() || task.getStatus() == null
-//                || task.getPrioridades() == null) {
-//            throw new ArgumentoInvalidoException(task);
-//        }
-//    }
+    public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes){
+        return usuarioAtivo.getTask().contarTarefasConcluidasNoDiaPorMes(dia, mes);
+    }
+
+    public void setDataPrevisao(Task task, LocalDate data) {
+        usuarioAtivo.getTask().setDataPrevisao(task, data);
+    }
 }

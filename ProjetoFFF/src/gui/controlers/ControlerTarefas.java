@@ -126,4 +126,6 @@ public class ControlerTarefas implements Initializable{
             ControlerPrincipal.getInstance().fecharTela("RIGHT");
         }
     }
+
+
 }
