@@ -65,7 +65,11 @@
                            <children>
                               <TextField fx:id="userName" prefHeight="25.0" prefWidth="150.0" />
                               <DatePicker fx:id="dataDeNascimento" editable="false" prefHeight="25.0" prefWidth="150.0" promptText="Selecione uma data" />
-                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" />
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="login" prefHeight="25.0" prefWidth="91.0" />
+                                 </children>
+                              </HBox>
                               <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" />
                            </children>
                         </VBox>

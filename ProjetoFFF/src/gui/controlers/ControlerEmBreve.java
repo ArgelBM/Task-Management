@@ -41,13 +41,11 @@ public class ControlerEmBreve implements Initializable{
 
     private void iniciarTarefas() {
 
-        List<Task> tarefasPendentesOuHoje = repository.stream()
-                .filter(t -> (t.getDataConclusao() != null && !t.getDataConclusao().isEqual(LocalDate.now())) &&
-                        "pendente".equals(t.getClassificacao().getStatusDaTask()))
-
+        List<Task> tarefasAgendadas = repository.stream()
+                .filter(t -> t.getDataPrevisao() != null)
                 .toList();
 
-        for (Task task : tarefasPendentesOuHoje){
+        for (Task task : tarefasAgendadas){
             try {
                 FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
                 HBox item = tela.load();
@@ -71,7 +69,7 @@ public class ControlerEmBreve implements Initializable{
 
         if (!novaTarefa.getText().isEmpty()) {
             try {
-                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
+                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(), LocalDate.now(),null, null);
                 Fachada.getInstance().adicionar(tarefa);
                 Fachada.getInstance().marcarComoPendente(tarefa);
             } catch (Exception e) {

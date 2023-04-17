@@ -96,21 +96,6 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    public void carregarTelaFiltros() throws IOException {
-        carregarTela("/gui/telas/Filtro.fxml", "CENTER");
-        fecharTela("RIGHT");
-    }
-
-    @FXML
-    void telaFiltros(){
-        try {
-            carregarTelaFiltros();
-        }catch (Exception a){
-            System.out.println("erro");
-            System.out.println(a);
-        }
-    }
-
     public void carregarTelaHoje() throws IOException {
         carregarTela("/gui/telas/Hoje.fxml", "CENTER");
         fecharTela("RIGHT");

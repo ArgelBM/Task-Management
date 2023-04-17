@@ -116,7 +116,7 @@ public class ControlerTarefas implements Initializable{
 
         if (!novaTarefa.getText().isEmpty()) {
             try {
-                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(),null, null);
+                Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(), null,null, null);
                 Fachada.getInstance().adicionar(tarefa);
                 Fachada.getInstance().marcarComoPendente(tarefa);
             } catch (Exception e) {
