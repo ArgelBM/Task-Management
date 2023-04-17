@@ -5,7 +5,9 @@ import negocio.ControladorUsuarios;
 import negocio.beans.Task;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -119,16 +121,31 @@ public class TaskRepository implements IRepository<Task>, Serializable {
 
     }
 
-    public List<Task> gerarRelatorioPorMes(int mes) throws ElementoNaoEncontradoException {
-        List<Task> tarefasConcluidasNoMes = new ArrayList<>();
-
-        for (Task task : listasDeTask) {
-            if (task.getClassificacao().getStatusDaTask().equals("concluida") && task.getDataConclusao().getMonthValue() == mes) {
-                tarefasConcluidasNoMes.add(task);
-            }
-        }
-        return tarefasConcluidasNoMes;
+    public int contarTarefasConcluidasNoMes(int mes) {
+        return (int) listasDeTask.stream()
+                .filter(t -> mes == t.getDataConclusao().getMonthValue())
+                .count();
     }
+
+    public int contarTarefasConcluidasNaUltimaSemanaPorDia(DayOfWeek diaDaSemana) {
+        LocalDate hoje = LocalDate.now();
+        LocalDate umaSemanaAtras = hoje.minusDays(7);
+        return (int) listasDeTask.stream()
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> t.getDataConclusao().isAfter(umaSemanaAtras))
+                .filter(t -> t.getDataConclusao().getDayOfWeek() == diaDaSemana)
+                .count();
+    }
+
+    public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes) {
+        LocalDate dataEspecifica = LocalDate.now().withMonth(mes.getValue()).withDayOfMonth(dia);
+        return (int) listasDeTask.stream()
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> t.getDataConclusao().getMonth() == mes)
+                .filter(t -> t.getDataConclusao().isEqual(dataEspecifica))
+                .count();
+    }
+
 
 
     public void marcaComoConcluida (Task task){
