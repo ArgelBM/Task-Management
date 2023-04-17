@@ -1,29 +1,34 @@
 package negocio;
 
+import alerta.AlertaSonoro;
 import dados.IRepository;
 import dados.PomodoroRepository;
-import gui.controlers.ControlerPrincipal;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ElementoJaExisteException;
 import javafx.application.Platform;
 import negocio.beans.Pomodoro;
-
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ControladorPomodoro {
 
-    public IRepository<Pomodoro> repositorio;
+    private PomodoroRepository repositorio;
 
-//    public ControladorPomodoro(){
-//        this.repositorio = new PomodoroRepository("repositoriopomodoro.dat");
-//    }
+   public ControladorPomodoro(){
+    this.repositorio = new PomodoroRepository("repositoriopomodoro.dat");
+}
 
-    public static int segundos = 0;
-    public static int minutos = 15;
-
+    public static int segundos = 25;
+    public static int minutos = 0;
     private static ControladorPomodoro instance;
-
     public static boolean ativo = false;
+
+    private Pomodoro ultimoDosPomodoros;
+
+    public void addPomodoro(Pomodoro pomodoro) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        repositorio.adicionar(pomodoro);
+        ultimoDosPomodoros = repositorio.listarTodos().get(repositorio.listarTodos().size() -1);
+    }
 
 
     public static ControladorPomodoro getInstance(){
@@ -33,41 +38,87 @@ public class ControladorPomodoro {
         return instance;
     }
 
-    public void getTempoPomodoro( ) {
-
-        Timer cronometro = new Timer();
-        TimerTask tarefa = new TimerTask() {
-            @Override
-            public void run() {
-                ativo = false;
-                System.out.println( "Descanso de 5 min");
-                //executar ação aqui
-            }
-        };
-        int milissegundos = 25*60000; //25 min
-        cronometro.schedule(tarefa, milissegundos);
-
+    public PomodoroRepository getRepositorio() {
+        return repositorio;
     }
 
-    public void getTempoDescanso() {
-
-        Timer cronometro = new Timer();
-        TimerTask tarefa = new TimerTask() {
-            @Override
-            public void run() {
-                ativo = false;
-                System.out.println( "passou 5 min");
-                //executar ação aqui
-            }
-        };
-        int milissegundos = 5*60000; //5 min
-        cronometro.schedule(tarefa, milissegundos);
-
-    }
-
-    public void getTempoDescansoLongo() {
+    public void getTempoPomodoro(Pomodoro pomodoro) {
         ativo = true;
+        pause(25);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Platform.runLater(() -> {
+                    if (!ControladorPomodoro.ativo) {
+                        timer.cancel();
+                    }
+//                    if (segundos == 0) {
+//                        minutos--;
+//                        segundos += 60;
+//                    }
+                    segundos--;
+                    System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
 
+                    if (minutos == 0 && segundos == 0){
+                        timer.cancel();
+                        if(pomodoro.getVinteCincoMin() - pomodoro.getTrintaMin()*4 <= 4 ){
+                            pomodoro.addVinteCincoMin();
+                            System.out.println("fez 25 min : " + pomodoro.getVinteCincoMin());
+                            System.out.println("fez uma pausa de 5 e mudou para descansocurto");
+                            getTempoDescanso(pomodoro);
+                            System.out.println("iniciou pomodoro descanso");
+                        }
+                        else{
+                            System.out.println("fez uma pausa de 5 e mudou para descansoLONGO");
+                            pomodoro.addTrintaMin();
+                            System.out.println("fez 30 min : " + pomodoro.getVinteCincoMin());
+                            getTempoDescansoLongo(pomodoro);
+                            System.out.println("iniciou pomodoro descansoLONGO");
+                        }
+                        try {
+                            AlertaSonoro.getInstance().iniciarAlerta();
+                        } catch (Exception e) {
+                            e.getStackTrace();
+                        }
+                    }
+                });
+            }
+        },0 , 1000);
+    }
+
+    public void getTempoDescanso(Pomodoro pomodoro) {
+        ativo = true;
+        pause(5);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Platform.runLater(() -> {
+//                    if (segundos == 0) {
+//                        minutos--;
+//                        segundos += 60;
+//                    }
+                    segundos--;
+                    System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
+                    if (!ControladorPomodoro.ativo) {
+                        timer.cancel();
+                    }
+                    if (minutos == 0 && segundos == 0){
+                        timer.cancel();
+                        try {
+                            AlertaSonoro.getInstance().iniciarAlerta();
+                        } catch (Exception e) {
+                            e.getStackTrace();
+                        }
+                        getTempoPomodoro(pomodoro);
+                    }
+                });
+            }
+        },0 , 1000);
+    }
+
+    public void getTempoDescansoLongo(Pomodoro pomodoro) {
+        ativo = true;
+        pause(30);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -76,14 +127,19 @@ public class ControladorPomodoro {
                         timer.cancel();
                     }
                     if (minutos == 0 && segundos == 0){
-                        System.out.println("teste");
-                        pare();
+                        pause(25);
+                        try {
+                            AlertaSonoro.getInstance().iniciarAlerta();
+                        } catch (Exception e) {
+                            e.getStackTrace();
+                        }
+                        getTempoPomodoro(pomodoro);
                         timer.cancel();
                     }
-                    if (segundos == 0) {
-                        minutos--;
-                        segundos += 60;
-                    }
+//                    if (segundos == 0) {
+//                        minutos--;
+//                        segundos += 60;
+//                    }
                     segundos--;
                     System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
                 });
@@ -92,13 +148,30 @@ public class ControladorPomodoro {
     }
 
 
-    public void iniciarPomodoro(Pomodoro pomodoro){
-
+    public void iniciarPomodoro(){
+        getTempoPomodoro(this.ultimoDosPomodoros);
     }
 
-    public void pare() {
+    public void pare(int minutos){
+        //Minutos no local errado para testes!!!
         ativo = false;
-        segundos = 0;
-        minutos = 15;
+        //segundos = 0;
+        //minutos = minutos;
+        segundos = minutos;
+        minutos = 0;
     }
+
+    public void pause(int minutos){
+        //segundos = 0;
+        //minutos = minutos;
+
+        segundos = minutos;
+    }
+    public void resume(int minutos){
+        //segundos = 0;
+        //minutos = minutos;
+
+        segundos = minutos;
+    }
+
 }

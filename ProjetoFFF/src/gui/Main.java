@@ -1,5 +1,6 @@
 package gui;
 
+import alerta.AlertaSonoro;
 import gui.controlers.ControlerInicial;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Objects;
 

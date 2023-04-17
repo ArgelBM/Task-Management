@@ -77,15 +77,26 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public Task listarPorNome(String nome) throws ElementoNaoEncontradoException {
+    public Task listarPorNome(String nome){
+        System.out.println("taskrepository");
         Optional<Task> tarefa = listasDeTask.stream()
                 .filter(u -> nome.equalsIgnoreCase(u.getNome()))
                 .findAny();
         if (tarefa.isPresent()) {
+            System.out.println(tarefa.get().getNome());
             return tarefa.get();
         } else {
-            throw new ElementoNaoEncontradoException(tarefa);
+            return null;
         }
+    }
+
+    public Task litarPorNomeDaTaskA(String nome){
+        for(Task task : listasDeTask){
+            if (task.getNome().equals(nome)){
+                return task;
+            }
+        }
+        return null;
     }
 
     @Override
