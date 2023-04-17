@@ -184,5 +184,8 @@ public class ControladorPomodoro {
         segundos = minutos;
     }
 
+    public int contarPomodorosConcluidasNoMes(int mes) {
+        return repositorio.contarPomodorosConcluidasNoMes(mes);
+    }
 
 }
