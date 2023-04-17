@@ -10,12 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import negocio.ControladorTasks;
 import negocio.Fachada;
 import negocio.beans.Usuario;
-
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControlerEsqueceuSenha implements Initializable {
