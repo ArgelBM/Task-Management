@@ -78,7 +78,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton buttonType="RAISED" minWidth="120.0" onAction="#mudarSenha" style="-fx-background-color: green; -fx-background-radius: 5px;" text="Mudar Senha" textFill="WHITE">
+                                          <JFXButton buttonType="RAISED" minWidth="120.0" onAction="#senhaNova" style="-fx-background-color: green; -fx-background-radius: 5px;" text="Mudar Senha" textFill="WHITE">
                                              <graphic>
                                                 <MaterialIconView glyphName="LOCK" size="20" />
                                              </graphic>

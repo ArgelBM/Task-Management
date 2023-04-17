@@ -4,6 +4,7 @@ import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.io.Serializable;
@@ -61,6 +62,10 @@ public class ControladorUsuarios implements Serializable {
             throw new ArgumentoInvalidoException("Usuário inválido");
         }
         repositorio.remover(usuario);
+    }
+
+    public Usuario procuraPorLogin(String nome) throws ElementoNaoEncontradoException {
+        return repositorio.procurarPorLogin(nome);
     }
 
 //    Tem que ajeitar o mudarNome de UsuariosRepository, ele ta pegando o de TaskRepo, porque o

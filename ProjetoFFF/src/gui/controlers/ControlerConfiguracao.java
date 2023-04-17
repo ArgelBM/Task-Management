@@ -56,9 +56,6 @@ public class ControlerConfiguracao implements Initializable {
             a.getStackTrace();
         }
     }
-    @FXML
-    void mudarSenha(ActionEvent event) {
-    }
 
     @FXML
     void salvarMudancas(ActionEvent event) {
@@ -84,7 +81,17 @@ public class ControlerConfiguracao implements Initializable {
     @FXML
     void sair() throws IOException {
         ScreamControl.getInstance().telaLogin();
+    }
 
+    @FXML
+    void senhaNova(){
+        try {
+            ControlerPrincipal.getInstance().carregarTela("/gui/telas/SenhaNova.fxml", "CENTER");
+        }
+        catch (Exception a){
+            System.out.println("erro");
+            System.out.println(a);
+        }
     }
 
 }

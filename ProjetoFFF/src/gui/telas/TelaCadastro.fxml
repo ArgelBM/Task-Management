@@ -121,6 +121,6 @@
             <FontAwesomeIconView fill="BLUEVIOLET" glyphName="CLOSE" size="25" />
          </graphic>
       </Button>
-      <ChoiceBox layoutX="255.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" />
+      <ChoiceBox fx:id="email" layoutX="255.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" />
    </children>
 </AnchorPane>

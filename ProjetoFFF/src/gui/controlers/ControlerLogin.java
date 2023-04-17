@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.Fachada;
 
+import java.io.IOException;
 import java.util.Objects;
 
 
@@ -48,7 +49,6 @@ public class ControlerLogin{
     void criaNovaConta() {
 
         try {
-            BorderPane contentArea = ControlerInicial.getInstance().getContentArea();
             ControlerInicial.getInstance().carregarTelaCadastro();
         }
         catch (Exception a){
@@ -63,6 +63,12 @@ public class ControlerLogin{
             if (ScreamControl.getInstance().getStage() != null) {
                 ScreamControl.getInstance().fecharTela();
             }
+    }
+
+    @FXML
+    void esqueceuSenha() throws IOException {
+        ControlerInicial controlerInicial = ControlerInicial.getInstance();
+        controlerInicial.carregarTela("/gui/telas/EsqueceuSenha.fxml", "RIGHT");
     }
 
     public void initialize() {

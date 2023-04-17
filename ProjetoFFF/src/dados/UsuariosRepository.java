@@ -106,4 +106,15 @@ public class UsuariosRepository implements IRepository<Usuario> {
         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
 
+    public Usuario procurarPorLogin(String nome) throws ElementoNaoEncontradoException {
+        Optional<Usuario> usuariosEncontrados = usuarios.stream()
+                .filter(u -> nome.equalsIgnoreCase(u.getLogin()))
+                .findAny();
+        if (usuariosEncontrados.isPresent()) {
+            return usuariosEncontrados.get();
+        } else {
+            throw new ElementoNaoEncontradoException(usuariosEncontrados);
+        }
+    }
+
 }

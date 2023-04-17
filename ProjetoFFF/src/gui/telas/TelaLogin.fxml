@@ -71,7 +71,7 @@
                   </Button>
                   <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="350.0">
                      <children>
-                        <Hyperlink text="Esqueceu a senha?">
+                        <Hyperlink onAction="#esqueceuSenha" text="Esqueceu a senha?">
                            <padding>
                               <Insets left="20.0" />
                            </padding>

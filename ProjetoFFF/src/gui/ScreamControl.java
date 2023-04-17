@@ -59,6 +59,8 @@ public void telaPrincipal() throws IOException {
 
 public void telaLogin() throws IOException {
 
+    ControlerPrincipal.getInstance().setUltimoControlador(null);
+
         stage.close();
         stage = new Stage();
 
@@ -75,6 +77,8 @@ public void telaLogin() throws IOException {
 
     // escolhe a scene
     stage.setScene(mainScene);
+    stage.setTitle("Task Management");
+    stage.getIcons().add(new Image("img/logocor.png"));
 
     //mostra a tela
     stage.show();

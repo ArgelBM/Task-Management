@@ -188,7 +188,11 @@ public class ControlerPrincipal implements Initializable {
         }
     }
 
-    public static Object getUltimoControlador() {
+    public Object getUltimoControlador() {
         return ultimoControlador;
+    }
+
+    public void setUltimoControlador(Object ultimoControlador) {
+        ControlerPrincipal.ultimoControlador = ultimoControlador;
     }
 }

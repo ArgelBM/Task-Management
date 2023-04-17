@@ -1,7 +1,11 @@
 package gui.controlers;
 
 import gui.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,8 +16,10 @@ import negocio.Fachada;
 import negocio.beans.Usuario;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ControlerCadastro {
+public class ControlerCadastro implements Initializable {
     @FXML
     private Label erro;
 
@@ -22,6 +28,15 @@ public class ControlerCadastro {
 
     @FXML
     private TextField login;
+
+    @FXML
+    private ChoiceBox<String> email;
+
+    private ObservableList<String> emailsMaisUsados = FXCollections.observableArrayList(
+            "@gmail.com",
+            "@hotmail.com",
+            "@outlook.com"
+    );
 
     @FXML
     private TextField senha;
@@ -73,7 +88,8 @@ public class ControlerCadastro {
     void cadastrar() {
 
         try {
-            Fachada.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(), 123, login.getText(), senha.getText()));
+            Fachada.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(),
+                    123, login.getText() + email.getValue(), senha.getText()));
             System.out.println("conta criada");
             ControlerInicial.getInstance().carregarTelaLogin();
         }
@@ -101,7 +117,9 @@ public class ControlerCadastro {
         }
     }
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        email.setItems(emailsMaisUsados);
         senha.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 cadastrar();

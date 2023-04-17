@@ -46,6 +46,10 @@ public class Fachada {
         return controladorUsuarios.listarPorId(id);
     }
 
+    public Usuario procuraPorLogin(String nome) throws ElementoNaoEncontradoException {
+        return controladorUsuarios.procuraPorLogin(nome);
+    }
+
     public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
         controladorUsuarios.adicionar(usuario);
     }
