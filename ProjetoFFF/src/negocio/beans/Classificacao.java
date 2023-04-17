@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Classificacao implements Serializable {
-    private String corDaTask;
+    private String filtro;
     private String prioridadeDaTask;
     private String statusDaTask;
 
-    public Classificacao(String corDaTask, String prioridadeDaTask, String statusDaTask) {
-        this.corDaTask = corDaTask;
+    public Classificacao(String filtro, String prioridadeDaTask, String statusDaTask) {
+        this.filtro = filtro;
         this.prioridadeDaTask = prioridadeDaTask;
         this.statusDaTask = statusDaTask;
         if (statusDaTask.equals("")){
@@ -17,12 +17,12 @@ public class Classificacao implements Serializable {
         }
     }
 
-    public String getCorDaTask() {
-        return corDaTask;
+    public String getFiltro() {
+        return filtro;
     }
 
-    public void setCorDaTask(String corDaTask) {
-        this.corDaTask = corDaTask;
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
     public String getPrioridadeDaTask() {
@@ -46,7 +46,7 @@ public class Classificacao implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Classificacao that = (Classificacao) o;
-        return Objects.equals(corDaTask, that.corDaTask) && Objects.equals(prioridadeDaTask, that.prioridadeDaTask) && Objects.equals(statusDaTask, that.statusDaTask);
+        return Objects.equals(filtro, that.filtro) && Objects.equals(prioridadeDaTask, that.prioridadeDaTask) && Objects.equals(statusDaTask, that.statusDaTask);
     }
 
 }

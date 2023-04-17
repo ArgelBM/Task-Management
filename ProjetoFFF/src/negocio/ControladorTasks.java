@@ -99,4 +99,9 @@ public class ControladorTasks{
     public void setDataPrevisao(Task task, LocalDate data) {
         usuarioAtivo.getTask().setDataPrevisao(task, data);
     }
+
+    public void setFiltro (Task task, String nome) {
+        usuarioAtivo.getTask().setFiltro(task, nome);
+    }
+
 }

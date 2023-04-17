@@ -137,6 +137,10 @@ public class Fachada {
         controladorTasks.setDataPrevisao(task, data);
     }
 
+    public void setFiltro(Task task, String nome) {
+        controladorTasks.setFiltro(task, nome);
+    }
+
     // pomodoro
     public void desmarcarComoImportante(Task task) {
         controladorTasks.desmarcarComoImportante(task);
