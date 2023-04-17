@@ -14,12 +14,10 @@ public class RepositorioFileUtil implements Serializable {
             fis = new FileInputStream(in);
             ois = new ObjectInputStream(fis);
 
-            System.out.println("falta ler");
             
             // Se alguma exceção ocorrer, um objeto NULL será retornado
             instanciaLocal = ois.readObject();
 
-            System.out.println("leu");
         } catch (Exception e) {
             System.out.println("Não há arquivo com o nome '" + filename + "' para ser processado. Um novo arquivo será criado");
             System.out.println(e);

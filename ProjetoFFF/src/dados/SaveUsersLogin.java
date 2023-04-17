@@ -28,7 +28,6 @@ public class SaveUsersLogin implements Serializable {
         save();
     }
 
-
     public void save(){
         RepositorioFileUtil.salvarArquivo(ultimoUsuario, fileName);
     }

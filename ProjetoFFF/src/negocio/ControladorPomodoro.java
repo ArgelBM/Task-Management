@@ -103,10 +103,6 @@ public class ControladorPomodoro {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 Platform.runLater(() -> {
-//                    if (segundos == 0) {
-//                        minutos--;
-//                        segundos += 60;
-//                    }
                     segundos--;
                     System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
                     if (!ControladorPomodoro.ativo) {
@@ -163,18 +159,12 @@ public class ControladorPomodoro {
     }
 
     public void pare(int minutos){
-        //Minutos no local errado para testes!!!
         ativo = false;
-        //segundos = 0;
-        //minutos = minutos;
         segundos = minutos;
         minutos = 0;
     }
 
     public void pause(int minutos){
-        //segundos = 0;
-        //minutos = minutos;
-
         segundos = minutos;
     }
     public void resume(int minutos){

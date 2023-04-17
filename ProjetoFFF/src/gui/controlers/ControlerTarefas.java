@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 
 public class ControlerTarefas implements Initializable{
 
-
     @FXML
     private VBox tarefas;
 
@@ -55,7 +54,6 @@ public class ControlerTarefas implements Initializable{
             carregarTarefasConcluidas();
         });
     }
-
 
     private void iniciarTarefas() {
 

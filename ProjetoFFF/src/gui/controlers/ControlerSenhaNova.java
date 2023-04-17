@@ -15,21 +15,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControlerSenhaNova implements Initializable {
-
     @FXML
     private PasswordField confirmacaoDaSenha;
-
     @FXML
     private PasswordField confirmacaoDaSenha1;
-
     @FXML
     private Label exceptions;
-
     @FXML
     private Button fechar;
-
     boolean principal;
-
 
     @FXML
     void fecha() {

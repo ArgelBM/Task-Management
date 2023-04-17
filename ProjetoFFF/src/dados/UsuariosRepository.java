@@ -1,7 +1,6 @@
 package dados;
 
 import negocio.beans.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -34,7 +33,6 @@ public class UsuariosRepository implements IRepository<Usuario> {
             this.usuarios = (List<Usuario>) listaElementos;
         }
     }
-
     public Usuario fazerLogin(String login, String senha, boolean marcado) throws NullPointerException, IllegalArgumentException {
         if (login == null || senha == null) {
             throw new NullPointerException("Credenciais inválidas");

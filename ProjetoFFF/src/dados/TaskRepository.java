@@ -149,8 +149,6 @@ public class TaskRepository implements IRepository<Task>, Serializable {
                 .count();
     }
 
-
-
     public void marcaComoConcluida (Task task){
         for(Task a : listasDeTask){
             if(task == a){

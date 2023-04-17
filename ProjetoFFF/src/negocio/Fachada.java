@@ -72,7 +72,6 @@ public class Fachada {
         controladorUsuarios.salvarMudancas();
     }
 
-    //Listas
 
     public Usuario getUsuarioAtivo() {
         return controladorTasks.getUsuarioAtivo();
@@ -82,11 +81,11 @@ public class Fachada {
         controladorTasks.setUsuarioAtivo(usuarioAtivo);
     }
 
+    // tarefas
     public List<Task> listarTarefas() {
         return controladorTasks.listarTarefas();
     }
 
-    // tarefas
     public void adicionar(Task task) throws ArgumentoInvalidoException, ElementoJaExisteException {
         controladorTasks.adicionar(task);
     }

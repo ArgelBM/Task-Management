@@ -19,32 +19,23 @@ import java.util.ResourceBundle;
 
 
 public class ControlerPrincipal implements Initializable {
-
     @FXML
     private BorderPane contentArea;
-
     @FXML
     private VBox filtros;
-
     @FXML
     private Label login;
-
     @FXML
     private Label nomeDeUsuario;
-
     public static Object ultimoControlador;
-
     private static ControlerPrincipal instance;
-
     private List<Task> repository = Fachada.getInstance().listarTarefas();
-
     public static ControlerPrincipal getInstance(){
         if(instance == null){
             instance = new ControlerPrincipal();
         }
         return instance;
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -20,22 +20,16 @@ import java.util.ResourceBundle;
 
 
 public class ControlerRelatorios implements Initializable {
-
     @FXML
     private ChoiceBox<String> choicebox;
-
     @FXML
     private ChoiceBox<String> choicebox2;
-
     @FXML
     private BarChart<String, Number> graf1;
-
     @FXML
     private BarChart<String, Number> graf2;
-
     @FXML
     private ChoiceBox<String> mes1;
-
     @FXML
     private ChoiceBox<String> mes2;
 
@@ -44,7 +38,6 @@ public class ControlerRelatorios implements Initializable {
             "Mensal",
             "Semanal"
     );
-
     private ObservableList<String> meses = FXCollections.observableArrayList(
             "Janeiro",
             "Fevereiro",
