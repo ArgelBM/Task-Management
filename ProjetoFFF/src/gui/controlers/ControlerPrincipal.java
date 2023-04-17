@@ -9,17 +9,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
 import negocio.Fachada;
+import negocio.beans.Classificacao;
+import negocio.beans.Task;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -27,6 +32,9 @@ public class ControlerPrincipal implements Initializable {
 
     @FXML
     private BorderPane contentArea;
+
+    @FXML
+    private VBox filtros;
 
     @FXML
     private Label login;
@@ -37,6 +45,8 @@ public class ControlerPrincipal implements Initializable {
     public static Object ultimoControlador;
 
     private static ControlerPrincipal instance;
+
+    private List<Task> repository = Fachada.getInstance().listarTarefas();
 
     public static ControlerPrincipal getInstance(){
         if(instance == null){
@@ -54,6 +64,7 @@ public class ControlerPrincipal implements Initializable {
         });
 
         try {
+            checarFiltro();
             carregarTelaHoje();
             nomeDeUsuario.setText(Fachada.getInstance().getUsuarioAtivo().getNomeUsuario());
             login.setText(Fachada.getInstance().getUsuarioAtivo().getLogin());
@@ -210,4 +221,38 @@ public class ControlerPrincipal implements Initializable {
     public void setUltimoControlador(Object ultimoControlador) {
         ControlerPrincipal.ultimoControlador = ultimoControlador;
     }
+
+    @FXML
+    void adicionarFiltro(){
+        try {
+            FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Lista.fxml"));
+            HBox item = tela.load();
+            ultimoControlador = tela.getController();
+            filtros.getChildren().add(item);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checarFiltro(){
+        filtros.getChildren().clear();
+        repository.stream()
+                .map(Task::getClassificacao)
+                .filter(c -> c.getFiltro() != null && !c.getFiltro().isEmpty())
+                .map(Classificacao::getFiltro)
+                .distinct()
+                .forEach(nome -> {
+                    try {
+                        FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Lista.fxml"));
+                        HBox item = tela.load();
+                        ultimoControlador = tela.getController();
+                        ControlerLista controlerLista = tela.getController();
+                        controlerLista.setTitulo(nome);
+                        filtros.getChildren().add(item);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+    }
+
 }

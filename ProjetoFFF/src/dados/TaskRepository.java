@@ -114,7 +114,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException,IllegalArgumentException {
         List<Task> tasksFiltradas = new ArrayList<>();
         for(Task n: listasDeTask){
-            if(n.getClassificacao().getCorDaTask().equals(cor) && n.getClassificacao().getPrioridadeDaTask().equals(prioridade)
+            if(n.getClassificacao().getFiltro().equals(cor) && n.getClassificacao().getPrioridadeDaTask().equals(prioridade)
             && n.getClassificacao().getStatusDaTask().equals(status)){
                 tasksFiltradas.add(n);
             }
@@ -214,6 +214,16 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         for(Task a : listasDeTask){
             if(task == a){
                 a.setDataPrevisao(data);
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
+
+    public void setFiltro (Task task, String nome) {
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.getClassificacao().setFiltro(nome);
             }
         }
         ControladorUsuarios.getInstance().salvarMudancas();

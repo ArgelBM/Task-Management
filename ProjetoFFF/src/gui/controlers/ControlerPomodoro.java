@@ -39,7 +39,7 @@ public class ControlerPomodoro implements Initializable{
                 else {
                     ControladorPomodoro.getInstance().addPomodoro(new Pomodoro());
                 }
-                ControladorPomodoro.getInstance().iniciarPomodoro();
+                Fachada.getInstance().iniciarPomodoro();
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -58,7 +58,7 @@ public class ControlerPomodoro implements Initializable{
                         }
                     });
                 }
-            }, 0, 200);
+            }, 0, 100);
         }
 
         public void pause(){

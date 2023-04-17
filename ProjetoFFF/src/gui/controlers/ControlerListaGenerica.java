@@ -3,9 +3,7 @@ package gui.controlers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,36 +16,42 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ControlerTarefas implements Initializable{
+public class ControlerListaGenerica implements Initializable {
+    @FXML
+    private TextField novaTarefa;
 
+    @FXML
+    private ScrollPane scrollpane;
 
     @FXML
     private VBox tarefas;
 
     @FXML
-    private TextField novaTarefa;
-
-    @FXML
-    private VBox tpConcluidas;
+    private Label titulo;
 
     @FXML
     private TitledPane tp;
+
+    @FXML
+    private VBox tpConcluidas;
 
     private List<Task> repository = Fachada.getInstance().listarTarefas();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ControlerLista controlerLista = ControlerLista.getInstance();
+        String titulo = controlerLista.getTitulo();
+        setTitulo(titulo);
+        System.out.println(getTitulo());
         iniciarTarefas();
         carregarTarefasConcluidas();
 
-        //permitir clicar dentro dos itens da TitledPane
         tpConcluidas.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             if (event.getTarget() instanceof CheckBox) {
                 ((CheckBox) event.getTarget()).fire();
             }
         });
 
-        //Ficar checando se mudou algo no repositorio
         Fachada.getInstance().addChangeListener(tasks -> {
             tarefas.getChildren().clear();
             tpConcluidas.getChildren().clear();
@@ -56,14 +60,13 @@ public class ControlerTarefas implements Initializable{
         });
     }
 
-
     private void iniciarTarefas() {
-
-        List<Task> tarefasPendentesOuHoje = repository.stream()
-                .filter(t -> "pendente".equals(t.getClassificacao().getStatusDaTask()))
+        List<Task> tarefasPendentesFiltro = repository.stream()
+                .filter(t -> "pendente".equals(t.getClassificacao().getStatusDaTask()) &&
+                        getTitulo().equals(t.getClassificacao().getFiltro()))
                 .toList();
 
-        for (Task task : tarefasPendentesOuHoje){
+        for (Task task : tarefasPendentesFiltro){
             try {
                 FXMLLoader tela = new FXMLLoader(getClass().getResource("/gui/telas/Item.fxml"));
                 HBox item = tela.load();
@@ -83,9 +86,9 @@ public class ControlerTarefas implements Initializable{
     }
 
     private void carregarTarefasConcluidas() {
-
         List<Task> tarefasConcluidas = repository.stream()
-                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()))
+                .filter(t -> "concluida".equals(t.getClassificacao().getStatusDaTask()) &&
+                        getTitulo().equals(t.getClassificacao().getFiltro()))
                 .toList();
 
         for (Task task : tarefasConcluidas){
@@ -107,17 +110,16 @@ public class ControlerTarefas implements Initializable{
                 e.printStackTrace();
             }
         }
-        System.out.println("chamou o metodo carregarTarefasConcluidas");
     }
 
     @FXML
     void adicionarTarefa() {
-
         if (!novaTarefa.getText().isEmpty()) {
             try {
                 Task tarefa = new Task(novaTarefa.getText(),"", LocalDate.now(), null,null, null);
                 Fachada.getInstance().adicionar(tarefa);
                 Fachada.getInstance().marcarComoPendente(tarefa);
+                Fachada.getInstance().setFiltro(tarefa,getTitulo());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -126,5 +128,11 @@ public class ControlerTarefas implements Initializable{
         }
     }
 
+    public void setTitulo(String nome) {
+        titulo.setText(nome);
+    }
 
+    public String getTitulo() {
+        return titulo.getText();
+    }
 }

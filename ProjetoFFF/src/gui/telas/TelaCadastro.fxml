@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.Insets?>
@@ -11,8 +10,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -91,18 +88,6 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" size="25" />
                      </graphic>
                   </Button>
-                  <JFXButton prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: white; -fx-border-radius: 5;" text="Continue com Google">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="76.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/img/google-37.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
                   <HBox alignment="CENTER" prefHeight="37.0" prefWidth="350.0">
                      <children>
                         <Text fill="BLUEVIOLET" strokeType="OUTSIDE" strokeWidth="0.0" text="Já é um usuário?" />
