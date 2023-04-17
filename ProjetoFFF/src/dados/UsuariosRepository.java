@@ -104,16 +104,8 @@ public class UsuariosRepository implements IRepository<Usuario> {
     }
 
      @Override
-     public void remover(Usuario usuario) throws ElementoNaoEncontradoException {
-         if (usuario == null) {
-             throw new IllegalArgumentException("Usuário não pode ser nulo.");
-         }
-
-         boolean removido = usuarios.remove(usuario);
-         if (!removido) {
-             throw new ElementoNaoEncontradoException("Usuário não encontrado.");
-         }
-
+     public void remover(Usuario usuario) {
+         usuarios.remove(usuario);
          salvar();
      }
     public List<Usuario> getUsuarios() {

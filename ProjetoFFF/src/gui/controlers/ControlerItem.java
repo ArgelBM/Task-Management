@@ -8,11 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 import negocio.ControladorTasks;
 import negocio.Fachada;
 import negocio.beans.Task;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ControlerItem  {
 
@@ -35,16 +38,26 @@ public class ControlerItem  {
     private Label nomeLabel;
 
     @FXML
+    private Label data;
+
+    @FXML
+    private Label lista;
+
+    @FXML
     private MaterialIconView star;
 
     @FXML
     private HBox item;
+
+    @FXML
+    private Circle bola;
 
     private Task task;
 
     public void setTask(Task task){
         this.task = task;
         setNomeLabel(task.getNome());
+        setData(dataDaTask());
     }
 
     @FXML
@@ -124,5 +137,33 @@ public class ControlerItem  {
 
     public void setStar(String glyphName) {
         star.setGlyphName(glyphName);
+    }
+
+    public void setData(String nome) {
+        if(" ".equals(nome)){
+            data.setVisible(false);
+            bola.setVisible(false);
+        }
+        data.setText(nome);
+    }
+
+    public String dataDaTask(){
+        if(task.getDataPrevisao() == null){
+            return " ";
+        }
+        LocalDate data = task.getDataPrevisao();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
+        String dataFormat = data.format(formatter);
+        if (data.isEqual(LocalDate.now())){
+            return "Hoje";
+        } else if (data.isEqual(LocalDate.now().plusDays(1))) {
+            return "Amanhã";
+        } else{
+            return dataFormat;
+        }
+    }
+
+    public void setLista(Label lista) {
+        this.lista = lista;
     }
 }

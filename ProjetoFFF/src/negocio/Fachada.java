@@ -12,6 +12,7 @@ import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.function.Consumer;
@@ -58,7 +59,7 @@ public class Fachada {
         controladorUsuarios.adicionar(usuario);
     }
 
-    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Usuario usuario) {
         controladorUsuarios.remover(usuario);
     }
 
@@ -97,7 +98,7 @@ public class Fachada {
         controladorTasks.mudarNome(task, nome);
     }
 
-    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Task task) {
         controladorTasks.remover(task);
     }
     public void addChangeListener(Consumer<List<Task>> listener){
@@ -129,6 +130,10 @@ public class Fachada {
 
     public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes) {
         return controladorTasks.contarTarefasConcluidasNoDiaPorMes(dia, mes);
+    }
+
+    public void setDataPrevisao(Task task, LocalDate data) {
+        controladorTasks.setDataPrevisao(task, data);
     }
 
     // pomodoro

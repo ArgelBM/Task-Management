@@ -4,7 +4,7 @@ public class ElementoNaoEncontradoException extends Exception {
     private Object elemento;
 
     public ElementoNaoEncontradoException(Object obj){
-        super("Objeto nao existe no repositorio");
+        super(obj + "Objeto nao existe no repositorio");
         this.elemento = obj;
     }
 

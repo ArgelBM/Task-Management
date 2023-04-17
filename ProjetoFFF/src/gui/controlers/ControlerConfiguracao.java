@@ -55,11 +55,7 @@ public class ControlerConfiguracao implements Initializable {
         if(result.isEmpty()){
             System.out.println("Alerta fechado");
         } else if(result.get() == ButtonType.OK){
-            try {
             ControladorUsuarios.getInstance().remover(ControladorTasks.getInstance().getUsuarioAtivo());
-        } catch (Exception a) {
-            a.printStackTrace();
-        }
             ScreamControl.getInstance().telaLogin();
         }else if(result.get() == ButtonType.CANCEL){
             System.out.println("Nunca!");

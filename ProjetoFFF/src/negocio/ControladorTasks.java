@@ -9,6 +9,7 @@ import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.function.Consumer;
@@ -51,7 +52,7 @@ public class ControladorTasks{
         usuarioAtivo.getTask().mudarNome(task, nome);
     }
 
-    public void remover(Task task) throws DeletarFalhouException, ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void remover(Task task) {
         usuarioAtivo.getTask().remover(task);
     }
 
@@ -93,5 +94,9 @@ public class ControladorTasks{
 
     public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes){
         return usuarioAtivo.getTask().contarTarefasConcluidasNoDiaPorMes(dia, mes);
+    }
+
+    public void setDataPrevisao(Task task, LocalDate data) {
+        usuarioAtivo.getTask().setDataPrevisao(task, data);
     }
 }

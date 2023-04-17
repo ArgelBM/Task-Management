@@ -46,7 +46,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     }
 
     @Override
-    public void remover(Pomodoro item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void remover(Pomodoro item) {
 
     }
 }

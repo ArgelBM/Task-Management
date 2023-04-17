@@ -4,7 +4,6 @@ import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.io.Serializable;
@@ -57,10 +56,7 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
-    public void remover(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        if (usuario == null) {
-            throw new ArgumentoInvalidoException("Usuário inválido");
-        }
+    public void remover(Usuario usuario) {
         repositorio.remover(usuario);
     }
 

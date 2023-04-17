@@ -20,6 +20,6 @@ public interface IRepository <T> {
     void mudarNome(T item, String nome) throws AtualizacaoFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
 
 //    remover(T item): remove um item da lista.
-    void remover(T item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException;
+    void remover(T item);
 
 }

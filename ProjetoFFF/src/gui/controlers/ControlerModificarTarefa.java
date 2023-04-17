@@ -7,10 +7,7 @@ import exceptions.ElementoNaoEncontradoException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -23,6 +20,7 @@ import negocio.beans.Task;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import static java.awt.event.FocusEvent.*;
@@ -47,11 +45,25 @@ public class ControlerModificarTarefa implements Initializable {
     @FXML
     private BorderPane telamodifica;
 
+    @FXML
+    private TextArea conteudo;
+
+    @FXML
+    private Label dataCriada;
+
+    @FXML
+    private Button favoritar;
+
+    @FXML
+    private DatePicker dataEscolhida;
+
     private Task task;
 
     public void setTask(Task task){
         this.task = task;
         mudarNome(task.getNome());
+        dataCriada.setText("Criado em: " + task.getDataCriada().toString());
+        conteudo.setText(task.getConteudo());
         checarStar();
         checarCheckbox();
     }
@@ -165,6 +177,38 @@ public class ControlerModificarTarefa implements Initializable {
         }
         textField.setText(novoValor);
         label.getParent().requestFocus();
+    }
+
+    @FXML
+    void dataAmanha() {
+        LocalDate amanha = LocalDate.now().plusDays(1);
+        Fachada.getInstance().setDataPrevisao(task, amanha);
+    }
+
+    @FXML
+    void dataEscolher() {
+        dataEscolhida.setDisable(false);
+        dataEscolhida.setVisible(true);
+        dataEscolhida.setOnAction(event -> {
+            Fachada.getInstance().setDataPrevisao(task, dataEscolhida.getValue());
+        });
+    }
+    @FXML
+    void dataHoje() {
+        LocalDate hoje = LocalDate.now();
+        Fachada.getInstance().setDataPrevisao(task, hoje);
+    }
+
+    @FXML
+    void dataProxSem() {
+        LocalDate proxSem = LocalDate.now().plusDays(7);
+        Fachada.getInstance().setDataPrevisao(task, proxSem);
+    }
+
+    @FXML
+    void apagar(){
+        Fachada.getInstance().remover(task);
+        ControlerPrincipal.getInstance().fecharTela("RIGHT");
     }
 
 }

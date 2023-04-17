@@ -54,17 +54,8 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         notifyChangeListeners();
     }
     @Override
-    public void remover(Task item) throws DeletarFalhouException, ElementoNaoEncontradoException, ArgumentoInvalidoException {
-        if (item == null) {
-            throw new ArgumentoInvalidoException(null);
-        }
-        int index = listasDeTask.indexOf(item);
-        if (index == -1) {
-            throw new ElementoNaoEncontradoException(item);
-        }
-        if (!listasDeTask.remove(item)) {
-            throw new DeletarFalhouException(item);
-        }
+    public void remover(Task item) {
+        listasDeTask.remove(item);
         ControladorUsuarios.getInstance().salvarMudancas();
         notifyChangeListeners();
     }
@@ -208,7 +199,15 @@ public class TaskRepository implements IRepository<Task>, Serializable {
         notifyChangeListeners();
     }
 
-
+    public void setDataPrevisao(Task task, LocalDate data) {
+        for(Task a : listasDeTask){
+            if(task == a){
+                a.setDataPrevisao(data);
+            }
+        }
+        ControladorUsuarios.getInstance().salvarMudancas();
+        notifyChangeListeners();
+    }
 
 }
 
