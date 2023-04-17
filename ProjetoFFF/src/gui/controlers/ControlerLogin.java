@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.Fachada;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -26,6 +27,13 @@ public class ControlerLogin implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        senha.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fazerLogin();
+            }
+        });
+
         System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
        if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
            checkBox.setSelected(true);
@@ -68,7 +76,6 @@ public class ControlerLogin implements Initializable {
     void criaNovaConta() {
 
         try {
-            BorderPane contentArea = ControlerInicial.getInstance().getContentArea();
             ControlerInicial.getInstance().carregarTelaCadastro();
         }
         catch (Exception a){
@@ -85,12 +92,10 @@ public class ControlerLogin implements Initializable {
             }
     }
 
-    public void initialize() {
-        senha.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                fazerLogin();
-            }
-        });
+    @FXML
+    void esqueceuSenha() throws IOException {
+        ControlerInicial controlerInicial = ControlerInicial.getInstance();
+        controlerInicial.carregarTela("/gui/telas/EsqueceuSenha.fxml", "RIGHT");
     }
 
     @Override
