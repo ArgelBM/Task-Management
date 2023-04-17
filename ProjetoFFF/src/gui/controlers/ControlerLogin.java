@@ -25,23 +25,6 @@ import java.util.ResourceBundle;
 
 public class ControlerLogin implements Initializable {
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        senha.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                fazerLogin();
-            }
-        });
-
-        System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
-       if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
-           checkBox.setSelected(true);
-           login.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getLogin());
-           senha.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getSenha());
-       }
-    }
-
     @FXML
     private Label testador;
 
@@ -53,6 +36,29 @@ public class ControlerLogin implements Initializable {
 
     @FXML
     private CheckBox checkBox;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        senha.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fazerLogin();
+            }
+        });
+
+        login.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                fazerLogin();
+            }
+        });
+
+        System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
+        if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
+            checkBox.setSelected(true);
+            login.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getLogin());
+            senha.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getSenha());
+        }
+    }
 
     @FXML
     void fazerLogin() {
