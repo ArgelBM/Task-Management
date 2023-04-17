@@ -4,8 +4,10 @@ import gui.Main;
 import gui.ScreamControl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,11 +17,22 @@ import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.Fachada;
 
-import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
-public class ControlerLogin{
+public class ControlerLogin implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
+       if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
+           checkBox.setSelected(true);
+           login.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getLogin());
+           senha.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getSenha());
+       }
+    }
 
     @FXML
     private Label testador;
@@ -31,11 +44,17 @@ public class ControlerLogin{
     private PasswordField senha;
 
     @FXML
+    private CheckBox checkBox;
+
+    @FXML
     void fazerLogin() {
         String usuario = login.getText();
+        System.out.println(usuario);
         String key = senha.getText();
+        boolean b = checkBox.isSelected();
+        System.out.println(b);
         try {
-            Fachada.getInstance().fazerLogin(usuario, key);
+            Fachada.getInstance().fazerLogin(usuario, key, b);
             ScreamControl.getInstance().telaPrincipal();
         }
         catch (Exception a ){
@@ -49,6 +68,7 @@ public class ControlerLogin{
     void criaNovaConta() {
 
         try {
+            BorderPane contentArea = ControlerInicial.getInstance().getContentArea();
             ControlerInicial.getInstance().carregarTelaCadastro();
         }
         catch (Exception a){
@@ -63,12 +83,6 @@ public class ControlerLogin{
             if (ScreamControl.getInstance().getStage() != null) {
                 ScreamControl.getInstance().fecharTela();
             }
-    }
-
-    @FXML
-    void esqueceuSenha() throws IOException {
-        ControlerInicial controlerInicial = ControlerInicial.getInstance();
-        controlerInicial.carregarTela("/gui/telas/EsqueceuSenha.fxml", "RIGHT");
     }
 
     public void initialize() {
@@ -86,5 +100,7 @@ public class ControlerLogin{
         ControlerLogin that = (ControlerLogin) o;
         return Objects.equals(testador, that.testador) && Objects.equals(login, that.login) && Objects.equals(senha, that.senha);
     }
+
+
 
 }

@@ -11,6 +11,18 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
     String fileName;
 
+    private Usuario ultimoUsuario;
+
+    public boolean lembreDeMim = false;
+
+    public Usuario getUltimoUsuario() {
+        return ultimoUsuario;
+    }
+
+    public boolean isLembreDeMim() {
+        return lembreDeMim;
+    }
+
     public UsuariosRepository(String fileName){
         this.usuarios = new ArrayList<>();
         this.fileName = fileName;
@@ -21,12 +33,21 @@ public class UsuariosRepository implements IRepository<Usuario> {
         }
     }
 
-    public Usuario fazerLogin(String login, String senha) throws ArgumentoInvalidoException {
+    public Usuario fazerLogin(String login, String senha, boolean marcado) throws ArgumentoInvalidoException {
         if (login == null || senha == null) {
             throw new ArgumentoInvalidoException("Credenciais inválidas");
         }
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+                if(marcado){
+                    ultimoUsuario = usuario;
+                    lembreDeMim = true;
+                }
+                else{
+                    ultimoUsuario = null;
+                    lembreDeMim = false;
+                }
+                salvar();
                 return usuario;
             }
         }
