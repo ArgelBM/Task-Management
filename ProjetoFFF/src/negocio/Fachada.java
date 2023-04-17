@@ -1,19 +1,15 @@
 package negocio;
 
 
-import dados.TaskRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
-import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

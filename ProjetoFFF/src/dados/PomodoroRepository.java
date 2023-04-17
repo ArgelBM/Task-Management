@@ -33,6 +33,11 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
 
     @Override
     public Pomodoro listarPorNome(String nome) throws ElementoNaoEncontradoException {
+        for (Pomodoro pomodoro : pomodoros){
+            if (pomodoro.getTask().getNome().equals(nome)){
+                return pomodoro;
+            }
+        }
         return null;
     }
 
@@ -49,16 +54,22 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
 
     @Override
     public void remover(Pomodoro item) {
-
+        try {
+            pomodoros.remove(item);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public Pomodoro pomodoroBuscarPorTask(Task task){
+    public List<?> pomodoroBuscarPorTask(Task task){
+        List<Pomodoro> lista = new ArrayList<>();
         for (Pomodoro pomodoro : pomodoros){
             if (pomodoro.getTask().equals(task)){
-                return pomodoro;
+                lista.add(pomodoro);
             }
         }
-        return null;
+        return lista;
     }
 
     public void salvar(){

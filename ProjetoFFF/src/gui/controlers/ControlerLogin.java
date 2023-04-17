@@ -52,29 +52,37 @@ public class ControlerLogin implements Initializable {
             }
         });
 
-        System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
+
         if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
             checkBox.setSelected(true);
             login.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getLogin());
             senha.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getSenha());
         }
+        try {
+            if (ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario() != null &&
+                    !checkBox.isSelected()){
+                checkBox.setSelected(true);
+                login.setText(ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario().getLogin());
+                senha.setText(ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario().getSenha());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     @FXML
     void fazerLogin() {
         String usuario = login.getText();
-        System.out.println(usuario);
         String key = senha.getText();
         boolean b = checkBox.isSelected();
-        System.out.println(b);
         try {
             Fachada.getInstance().fazerLogin(usuario, key, b);
             ScreamControl.getInstance().telaPrincipal();
         }
         catch (Exception a ){
             testador.setText("*usuario ou senha errados");
-            System.out.println("erro ao fazer login");
-            System.out.println(a);
         }
     }
 
