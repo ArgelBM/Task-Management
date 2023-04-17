@@ -84,7 +84,7 @@
                <children>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaHoje" style="-fx-background-color: transparent;" text="Hoje" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaHoje" style="-fx-background-color: transparent;" text="Hoje" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="#25b84c" glyphName="TODAY" size="15" />
                            </graphic>
@@ -96,7 +96,7 @@
                   </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaEmbreve" style="-fx-background-color: transparent;" text="Em Breve" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaEmbreve" style="-fx-background-color: transparent;" text="Em Breve" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="#5297ff" glyphName="EVENT_NOTE" size="15" />
                            </graphic>
@@ -108,7 +108,7 @@
                   </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaImportante" style="-fx-background-color: transparent;" text="Importante" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaImportante" style="-fx-background-color: transparent;" text="Importante" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="#f2f25f" glyphName="STAR_BORDER" size="15" />
                            </graphic>
@@ -120,7 +120,7 @@
                   </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaPomodoro" style="-fx-background-color: transparent;" text="Pomodoro" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaPomodoro" style="-fx-background-color: transparent;" text="Pomodoro" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="#f44336" glyphName="TIMER" size="15" />
                            </graphic>
@@ -132,7 +132,7 @@
                   </HBox>
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Relatórios" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaRelatorios" style="-fx-background-color: transparent;" text="Relatórios" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="#ff9a14" glyphName="SHOW_CHART" size="15" />
                            </graphic>
@@ -147,7 +147,7 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaTarefas" prefWidth="262.0" style="-fx-background-color: transparent;" text="Tarefas" textFill="#181818">
+                        <Button alignment="TOP_LEFT" minWidth="262.0" mnemonicParsing="false" onAction="#telaTarefas" style="-fx-background-color: transparent;" text="Tarefas" textFill="#181818" HBox.hgrow="ALWAYS">
                            <graphic>
                               <MaterialIconView fill="BLUEVIOLET" glyphName="DESCRIPTION" size="15" />
                            </graphic>

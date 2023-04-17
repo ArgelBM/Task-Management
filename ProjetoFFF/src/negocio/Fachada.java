@@ -1,6 +1,7 @@
 package negocio;
 
 
+import dados.TaskRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.DeletarFalhouException;
@@ -10,6 +11,8 @@ import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
+import java.time.DayOfWeek;
+import java.time.Month;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -116,7 +119,19 @@ public class Fachada {
         return controladorTasks.procurarPorNome(nome);
     }
 
-   // pomodoro
+    public int contarTarefasConcluidasNoMes(int mes) {
+        return controladorTasks.contarTarefasConcluidasNoMes(mes);
+    }
+
+    public int contarTarefasConcluidasNaUltimaSemanaPorDia(DayOfWeek dia) {
+        return controladorTasks.contarTarefasConcluidasNaUltimaSemanaPorDia(dia);
+    }
+
+    public int contarTarefasConcluidasNoDiaPorMes(int dia, Month mes) {
+        return controladorTasks.contarTarefasConcluidasNoDiaPorMes(dia, mes);
+    }
+
+    // pomodoro
     public void desmarcarComoImportante(Task task) {
         controladorTasks.desmarcarComoImportante(task);
     }
