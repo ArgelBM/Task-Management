@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controlers.ControlerListaGenerica">
+   <center>
+      <VBox style="-fx-background-color: #73818C;">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#1bc9b6" glyphName="BARS" size="30" />
+                  <Label fx:id="titulo" text="Titulo" textFill="#1bc9b6">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollpane" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: #73818C;" stylesheets="@/gui/styles/scrollpane.css">
+               <content>
+                  <VBox style="-fx-background-color: transparent;">
+                     <children>
+                        <VBox fx:id="tarefas" spacing="5.0" style="-fx-background-color: #73818C;" />
+                        <TitledPane fx:id="tp" animated="false" style="-fx-background-color: transparent;" text="Concluídas">
+                           <content>
+                              <VBox fx:id="tpConcluidas" />
+                           </content></TitledPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <TextField fx:id="novaTarefa" alignment="CENTER" onAction="#adicionarTarefa" promptText="Nova Tarefa" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

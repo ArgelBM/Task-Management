@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import negocio.Fachada;
 import negocio.beans.Usuario;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

@@ -8,7 +8,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import negocio.Fachada;
 import negocio.beans.Task;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;

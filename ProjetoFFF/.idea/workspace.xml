@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bc42315c-4f4d-40c2-ba1a-019753bd845b" name="Changes" comment="modificação das exceções">
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/PomodoroRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/PomodoroRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/RepositorioFileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/RepositorioFileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/TaskRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/dados/TaskRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/controlers/ControlerPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/controlers/ControlerPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaCadastro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaCadastro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/gui/telas/TelaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorPomodoro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorTasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/ControladorTasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/Fachada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/Fachada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/beans/Pomodoro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetoFFF/negocio/beans/Pomodoro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controlers/ControlerCadastro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controlers/ControlerCadastro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controlers/ControlerEmBreve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controlers/ControlerEmBreve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controlers/ControlerEsqueceuSenha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controlers/ControlerEsqueceuSenha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controlers/ControlerHoje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controlers/ControlerHoje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controlers/ControlerImportante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controlers/ControlerImportante.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2ODuGzSmih7XeHxsy8WGtDXiJmB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Documents/javafx-sdk-17.0.6/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2908046&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="gui.controlers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="gui.Main" />
+      <module name="ProjetoFFF" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\user\Documents\javafx-sdk-17.0.6\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc42315c-4f4d-40c2-ba1a-019753bd845b" name="Changes" comment="" />
+      <created>1681107412597</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681107412597</updated>
+      <workItem from="1681107426604" duration="8997000" />
+      <workItem from="1681424523041" duration="832000" />
+      <workItem from="1681665993159" duration="21386000" />
+      <workItem from="1681697510520" duration="1091000" />
+      <workItem from="1681700797581" duration="41598000" />
+    </task>
+    <task id="LOCAL-00001" summary="enter no cadastro">
+      <created>1681112420612</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681112420613</updated>
+    </task>
+    <task id="LOCAL-00002" summary="enter no cadastro">
+      <created>1681115885718</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681115885718</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Modificando os controladores para a fachada">
+      <created>1681680459481</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681680459482</updated>
+    </task>
+    <task id="LOCAL-00004" summary="checkbox lembre de mim?">
+      <created>1681692833666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681692833666</updated>
+    </task>
+    <task id="LOCAL-00005" summary="excluir conta com popup de confirmação">
+      <created>1681706189279</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681706189279</updated>
+    </task>
+    <task id="LOCAL-00006" summary="modificação das exceções">
+      <created>1681726126393</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681726126393</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="enter no cadastro" />
+    <MESSAGE value="Modificando os controladores para a fachada" />
+    <MESSAGE value="checkbox lembre de mim?" />
+    <MESSAGE value="excluir conta com popup de confirmação" />
+    <MESSAGE value="modificação das exceções" />
+    <option name="LAST_COMMIT_MESSAGE" value="modificação das exceções" />
+  </component>
+</project>
