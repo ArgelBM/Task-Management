@@ -1,12 +1,15 @@
 package negocio;
 
 import alerta.AlertaSonoro;
-import dados.IRepository;
 import dados.PomodoroRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import negocio.beans.Pomodoro;
+
+import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -59,14 +62,21 @@ public class ControladorPomodoro {
                     segundos--;
                     System.out.println("Tempo decorrido: " + segundos + " segundos " + minutos + " minutos ");
 
+
                     if (minutos == 0 && segundos == 0){
                         timer.cancel();
                         if(pomodoro.getVinteCincoMin() - pomodoro.getTrintaMin()*4 <= 4 ){
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Pomodoro Terminado");
+                            alert.setContentText("Pomodoro terminado! É hora de fazer uma pausa e alongar-se.");
+                            Optional<ButtonType> result = alert.showAndWait();
                             pomodoro.addVinteCincoMin();
                             System.out.println("fez 25 min : " + pomodoro.getVinteCincoMin());
                             System.out.println("fez uma pausa de 5 e mudou para descansocurto");
-                            getTempoDescanso(pomodoro);
-                            System.out.println("iniciou pomodoro descanso");
+                            if (result.get() == ButtonType.OK) {
+                                getTempoDescanso(pomodoro);
+                                System.out.println("iniciou pomodoro descanso");
+                            }
                         }
                         else{
                             System.out.println("fez uma pausa de 5 e mudou para descansoLONGO");

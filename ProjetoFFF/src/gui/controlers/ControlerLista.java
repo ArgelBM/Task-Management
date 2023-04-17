@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,7 +69,10 @@ public class ControlerLista implements Initializable {
     }
 
     public String getTitulo(){
-        return lista.getText();
+        if(this.lista != null) {
+            return lista.getText();
+        }
+        return " ";
     }
 
     public void setTitulo(String nome){

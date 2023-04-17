@@ -1,19 +1,16 @@
 package negocio;
 
 
-import dados.TaskRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
-import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -66,10 +63,6 @@ public class Fachada {
     public void remover(Usuario usuario) {
         controladorUsuarios.remover(usuario);
     }
-
-//    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-//        controladorUsuarios.atualizar(usuario);
-//    }
 
     public UsuariosRepository getRepositorioUsuarios() {
         return controladorUsuarios.getRepositorio();
@@ -148,18 +141,6 @@ public class Fachada {
     public void desmarcarComoImportante(Task task) {
         controladorTasks.desmarcarComoImportante(task);
     }
-
-//    public void getTempoPomodoro() {
-//        controladorPomodoro.getTempoPomodoro();
-//    }
-
-//    public void getTempoDescanso() {
-//        controladorPomodoro.getTempoDescanso();
-//    }
-
-//    public void getTempoDescansoLongo() {
-//        controladorPomodoro.getTempoDescansoLongo();
-//    }
 
     public void iniciarPomodoro() {
         controladorPomodoro.iniciarPomodoro();

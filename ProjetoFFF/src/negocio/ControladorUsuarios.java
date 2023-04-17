@@ -1,10 +1,7 @@
 package negocio;
 
+import dados.SaveUsersLogin;
 import dados.UsuariosRepository;
-import exceptions.ArgumentoInvalidoException;
-import exceptions.ElementoJaExisteException;
-import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.io.Serializable;
@@ -13,12 +10,13 @@ import java.util.NoSuchElementException;
 
 public class ControladorUsuarios implements Serializable {
 
-
+    private SaveUsersLogin usersLogin;
     private UsuariosRepository repositorio;
     private static ControladorUsuarios instance;
 
     public ControladorUsuarios(){
         this.repositorio = new UsuariosRepository("usuarios.dat");
+        this.usersLogin = new SaveUsersLogin("Save.dat");
     }
 
     public static ControladorUsuarios getInstance(){
@@ -28,9 +26,19 @@ public class ControladorUsuarios implements Serializable {
         return instance;
     }
 
+    public SaveUsersLogin getUsersLogin() {
+        return usersLogin;
+    }
+
     public void fazerLogin(String login, String senha, boolean marcada) throws NullPointerException, IllegalArgumentException {
         if (login == null || senha == null) {
             throw new NullPointerException("Login ou senha inválidos");
+        }
+        if(!marcada){
+            usersLogin.setUltimoUsuario(new Usuario("",null, 0, "",""));
+        }
+        if (marcada){
+            usersLogin.setUltimoUsuario(repositorio.fazerLogin(login,senha,marcada));
         }
         ControladorTasks.getInstance().setUsuarioAtivo(repositorio.fazerLogin(login, senha, marcada));
     }

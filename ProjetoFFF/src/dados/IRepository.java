@@ -1,5 +1,9 @@
 package dados;
-import exceptions.*;
+
+import exceptions.ArgumentoInvalidoException;
+import exceptions.AtualizacaoFalhouException;
+import exceptions.ElementoJaExisteException;
+import exceptions.ElementoNaoEncontradoException;
 
 import java.util.List;
 
