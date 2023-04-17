@@ -93,10 +93,15 @@ public class ControlerCadastro implements Initializable {
             System.out.println("conta criada");
             ControlerInicial.getInstance().carregarTelaLogin();
         }
-        catch (Exception a){
-            erro.setText("*Erro ao criar conta");
+        catch (NullPointerException a){
+            erro.setText("Os campos estão vazios");
             System.out.println("erro");
             System.out.println(a);
+        }
+        catch (IllegalArgumentException b){
+            erro.setText("Esse usuário já existe");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -126,10 +131,5 @@ public class ControlerCadastro implements Initializable {
             }
         });
     }
-
-//    void volta() throws IOException {
-//        ControlerInicial.getInstance().carregarTelaLogin();
-//
-//    }
 
 }
