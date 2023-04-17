@@ -34,8 +34,9 @@ public class Fachada {
 
 
     //Usuario
-    public void fazerLogin(String login, String senha) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-        controladorUsuarios.fazerLogin(login, senha);
+    public void fazerLogin(String login, String senha, boolean marcada) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+        controladorUsuarios.fazerLogin(login, senha, marcada);
+        System.out.println("fachada");
     }
 
     public List<Usuario> listarPorTodos() {
@@ -58,7 +59,7 @@ public class Fachada {
 //        controladorUsuarios.atualizar(usuario);
 //    }
 
-    public UsuariosRepository getRepositorio() {
+    public UsuariosRepository getRepositorioUsuarios() {
         return controladorUsuarios.getRepositorio();
     }
 

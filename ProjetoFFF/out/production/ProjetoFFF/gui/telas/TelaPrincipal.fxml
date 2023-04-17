@@ -3,10 +3,8 @@
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
@@ -23,7 +21,7 @@
    <left>
       <Pane style="-fx-background-color: #CFCFCF;" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefWidth="270.0">
+            <HBox alignment="CENTER" prefWidth="270.0">
                <children>
                   <AnchorPane HBox.hgrow="ALWAYS">
                      <children>
@@ -45,27 +43,6 @@
                                        <font>
                                           <Font size="11.0" />
                                        </font>
-                                       <graphic>
-                                          <MaterialIconView fill="#636363" glyphName="UNFOLD_MORE" />
-                                       </graphic>
-                                       <contextMenu>
-                                          <ContextMenu fx:id="cm" style="-fx-background-color: #FFFFFF;">
-                                            <items>
-                                              <MenuItem mnemonicParsing="false" onAction="#telaConfiguracao" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;" text="Configurações">
-                                                   <graphic>
-                                                      <MaterialIconView glyphName="SETTINGS" size="15" />
-                                                   </graphic>
-                                                </MenuItem>
-                                            </items>
-                                          </ContextMenu>
-                                       </contextMenu>
-                                       <tooltip>
-                                          <Tooltip style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Abre as configurações">
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Tooltip>
-                                       </tooltip>
                                     </Label>
                                  </children>
                               </VBox>
@@ -76,6 +53,18 @@
                         </HBox>
                      </children>
                   </AnchorPane>
+                  <Button mnemonicParsing="false" onAction="#telaConfiguracao" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <MaterialIconView glyphName="SETTINGS" size="20" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip style="-fx-background-color: #FFFFFF; -fx-text-fill: black;" text="Abre as configurações">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
                </children>
             </HBox>
             <TextField layoutX="13.0" layoutY="36.0" prefHeight="27.0" prefWidth="239.0" promptText="Search" style="-fx-border-width: 0 0 2 0; -fx-border-color: #727272; -fx-background-color: #F1F1F1; -fx-background-radius: 5px; -fx-border-radius: 5px;" />
@@ -94,7 +83,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaEmbreve" prefWidth="262.0" style="-fx-background-color: transparent;" text="Em breve" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaEmbreve" prefWidth="262.0" style="-fx-background-color: transparent;" text="Em Breve" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#5297ff" glyphName="EVENT_NOTE" size="15" />
                      </graphic>
@@ -110,7 +99,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaFiltro" prefWidth="262.0" style="-fx-background-color: transparent;" text="Filtros" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaFiltros" prefWidth="262.0" style="-fx-background-color: transparent;" text="Filtros" textFill="#181818">
                      <graphic>
                         <MaterialIconView fill="#ff9a14" glyphName="FILTER_LIST" size="15" />
                      </graphic>
@@ -126,9 +115,9 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#sair" prefWidth="262.0" style="-fx-background-color: transparent;" text="Sair" textFill="#181818">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#telaTarefas" prefWidth="262.0" style="-fx-background-color: transparent;" text="Tarefas" textFill="#181818">
                      <graphic>
-                        <MaterialIconView fill="#687681" glyphName="EXIT_TO_APP" size="15" />
+                        <MaterialIconView fill="BLUEVIOLET" glyphName="DESCRIPTION" size="15" />
                      </graphic>
                      <font>
                         <Font size="14.0" />
@@ -139,7 +128,7 @@
                   <Insets left="5.0" top="10.0" />
                </padding></VBox>
             <Separator layoutX="3.0" layoutY="334.0" prefWidth="262.0" style="-fx-background-color: #C1C1C1;" />
-            <ListView layoutY="346.0" prefHeight="279.0" prefWidth="262.0" style="-fx-background-color: #CFCFCF;" />
+            <ListView layoutY="346.0" prefHeight="279.0" prefWidth="269.0" style="-fx-background-color: #CFCFCF;" />
             <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="624.0" prefHeight="25.0" prefWidth="262.0" spacing="50.0">
                <children>
                   <MaterialIconView fill="#181818" glyphName="ADD" size="25" />

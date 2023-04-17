@@ -52,7 +52,7 @@
                         <Insets left="80.0" top="50.0" />
                      </padding>
                   </HBox>
-                  <CheckBox mnemonicParsing="false" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
+                  <CheckBox fx:id="checkBox" mnemonicParsing="false" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
                      <padding>
                         <Insets left="83.0" top="20.0" />
                      </padding>

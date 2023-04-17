@@ -26,11 +26,11 @@ public class ControladorUsuarios implements Serializable {
         return instance;
     }
 
-    public void fazerLogin(String login, String senha) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void fazerLogin(String login, String senha, boolean marcada) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
         if (login == null || senha == null) {
             throw new ArgumentoInvalidoException("Login ou senha inválidos");
         }
-        ControladorTasks.getInstance().setUsuarioAtivo(repositorio.fazerLogin(login, senha));
+        ControladorTasks.getInstance().setUsuarioAtivo(repositorio.fazerLogin(login, senha, marcada));
     }
 
     public List<Usuario> listarPorTodos() {
