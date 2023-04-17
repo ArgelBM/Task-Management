@@ -70,7 +70,10 @@ public class ControlerLista implements Initializable {
     }
 
     public String getTitulo(){
-        return lista.getText();
+        if(this.lista != null) {
+            return lista.getText();
+        }
+        return " ";
     }
 
     public void setTitulo(String nome){

@@ -39,7 +39,10 @@ public class ControlerListaGenerica implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setTitulo(getTitulo());
+        ControlerLista controlerLista = ControlerLista.getInstance();
+        String titulo = controlerLista.getTitulo();
+        setTitulo(titulo);
+        System.out.println(getTitulo());
         iniciarTarefas();
         carregarTarefasConcluidas();
 
