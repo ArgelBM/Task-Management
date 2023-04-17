@@ -1,6 +1,7 @@
 package dados;
 
-import exceptions.*;
+import exceptions.ElementoJaExisteException;
+import exceptions.ElementoNaoEncontradoException;
 import negocio.ControladorUsuarios;
 import negocio.beans.Task;
 

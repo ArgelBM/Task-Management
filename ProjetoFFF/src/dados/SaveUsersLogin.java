@@ -1,6 +1,7 @@
 package dados;
 
 import negocio.beans.Usuario;
+
 import java.io.Serializable;
 
 

@@ -12,18 +12,12 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
-import negocio.ControladorTasks;
 import negocio.Fachada;
 import negocio.beans.Task;
 
-
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import static java.awt.event.FocusEvent.*;
 
 public class ControlerModificarTarefa implements Initializable {
 

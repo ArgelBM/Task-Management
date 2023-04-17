@@ -2,7 +2,6 @@ package negocio;
 
 import dados.TaskRepository;
 import exceptions.ArgumentoInvalidoException;
-import exceptions.DeletarFalhouException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Task;

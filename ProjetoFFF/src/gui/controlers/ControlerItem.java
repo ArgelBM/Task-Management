@@ -2,14 +2,12 @@ package gui.controlers;
 
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import exceptions.ElementoNaoEncontradoException;
-import gui.ScreamControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
-import negocio.ControladorTasks;
 import negocio.Fachada;
 import negocio.beans.Task;
 
