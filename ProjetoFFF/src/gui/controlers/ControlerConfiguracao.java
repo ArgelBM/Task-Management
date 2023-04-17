@@ -6,15 +6,13 @@ import gui.ScreamControl;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControlerConfiguracao implements Initializable {
@@ -48,12 +46,23 @@ public class ControlerConfiguracao implements Initializable {
     private Label nomeDeUsuario;
 
     @FXML
-    void excluirConta(ActionEvent event) {
+    void excluirConta(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("EXCLUIR CONTA");
+        alert.setContentText("DESEJA DELETAR SUA CONTA?");
+        Optional<ButtonType> result = alert.showAndWait();
 
-        try {
+        if(result.isEmpty()){
+            System.out.println("Alerta fechado");
+        } else if(result.get() == ButtonType.OK){
+            try {
             ControladorUsuarios.getInstance().remover(ControladorTasks.getInstance().getUsuarioAtivo());
         } catch (Exception a) {
-            a.getStackTrace();
+            a.printStackTrace();
+        }
+            ScreamControl.getInstance().telaLogin();
+        }else if(result.get() == ButtonType.CANCEL){
+            System.out.println("Nunca!");
         }
     }
 

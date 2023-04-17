@@ -43,7 +43,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0" spacing="13.0">
                            <children>
-                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Usuário" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                              <TextField fx:id="login" prefHeight="25.0" prefWidth="150.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                               <PasswordField fx:id="senha" prefHeight="25.0" prefWidth="150.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </VBox>
@@ -52,7 +52,7 @@
                         <Insets left="80.0" top="50.0" />
                      </padding>
                   </HBox>
-                  <CheckBox mnemonicParsing="false" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
+                  <CheckBox fx:id="checkBox" mnemonicParsing="false" prefWidth="350.0" text="Lembre de mim?" textFill="BLUEVIOLET">
                      <padding>
                         <Insets left="83.0" top="20.0" />
                      </padding>
@@ -71,7 +71,7 @@
                   </Button>
                   <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="350.0">
                      <children>
-                        <Hyperlink text="Esqueceu a senha?">
+                        <Hyperlink onAction="#esqueceuSenha" text="Esqueceu a senha?">
                            <padding>
                               <Insets left="20.0" />
                            </padding>
