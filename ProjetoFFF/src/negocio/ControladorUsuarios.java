@@ -1,10 +1,6 @@
 package negocio;
 
 import dados.UsuariosRepository;
-import exceptions.ArgumentoInvalidoException;
-import exceptions.ElementoJaExisteException;
-import exceptions.ElementoNaoEncontradoException;
-import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.io.Serializable;

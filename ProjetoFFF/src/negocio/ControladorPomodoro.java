@@ -1,7 +1,6 @@
 package negocio;
 
 import alerta.AlertaSonoro;
-import dados.IRepository;
 import dados.PomodoroRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
