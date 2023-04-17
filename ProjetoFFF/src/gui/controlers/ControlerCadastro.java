@@ -88,7 +88,6 @@ public class ControlerCadastro implements Initializable {
         try {
             Fachada.getInstance().adicionar(new Usuario( userName.getText(), dataDeNascimento.getValue(),
                     123, login.getText() + email.getValue(), senha.getText()));
-            System.out.println("conta criada");
             ControlerInicial.getInstance().carregarTelaLogin();
         }
         catch (NullPointerException a){

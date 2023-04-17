@@ -141,18 +141,18 @@ public class ControlerRelatorios implements Initializable {
             series.getData().add(new XYChart.Data<>("Novembro", Fachada.getInstance().contarTarefasConcluidasNoMes(11)));
             series.getData().add(new XYChart.Data<>("Dezembro", Fachada.getInstance().contarTarefasConcluidasNoMes(12)));
         } else{
-            series.getData().add(new XYChart.Data<>("Janeiro", Fachada.getInstance().contarTarefasConcluidasNoMes(1)));
-            series.getData().add(new XYChart.Data<>("Fevereiro", Fachada.getInstance().contarTarefasConcluidasNoMes(2)));
-            series.getData().add(new XYChart.Data<>("Março", Fachada.getInstance().contarTarefasConcluidasNoMes(3)));
-            series.getData().add(new XYChart.Data<>("Abril", Fachada.getInstance().contarTarefasConcluidasNoMes(4)));
-            series.getData().add(new XYChart.Data<>("Maio", Fachada.getInstance().contarTarefasConcluidasNoMes(5)));
-            series.getData().add(new XYChart.Data<>("Maio", Fachada.getInstance().contarTarefasConcluidasNoMes(6)));
-            series.getData().add(new XYChart.Data<>("Julho", Fachada.getInstance().contarTarefasConcluidasNoMes(7)));
-            series.getData().add(new XYChart.Data<>("Agosto", Fachada.getInstance().contarTarefasConcluidasNoMes(8)));
-            series.getData().add(new XYChart.Data<>("Setembro", Fachada.getInstance().contarTarefasConcluidasNoMes(9)));
-            series.getData().add(new XYChart.Data<>("Outubro", Fachada.getInstance().contarTarefasConcluidasNoMes(10)));
-            series.getData().add(new XYChart.Data<>("Novembro", Fachada.getInstance().contarTarefasConcluidasNoMes(11)));
-            series.getData().add(new XYChart.Data<>("Dezembro", Fachada.getInstance().contarTarefasConcluidasNoMes(12)));
+            series.getData().add(new XYChart.Data<>("Janeiro", Fachada.getInstance().contarPomodorosConcluidasNoMes(1)));
+            series.getData().add(new XYChart.Data<>("Fevereiro", Fachada.getInstance().contarPomodorosConcluidasNoMes(2)));
+            series.getData().add(new XYChart.Data<>("Março", Fachada.getInstance().contarPomodorosConcluidasNoMes(3)));
+            series.getData().add(new XYChart.Data<>("Abril", Fachada.getInstance().contarPomodorosConcluidasNoMes(4)));
+            series.getData().add(new XYChart.Data<>("Maio", Fachada.getInstance().contarPomodorosConcluidasNoMes(5)));
+            series.getData().add(new XYChart.Data<>("Maio", Fachada.getInstance().contarPomodorosConcluidasNoMes(6)));
+            series.getData().add(new XYChart.Data<>("Julho", Fachada.getInstance().contarPomodorosConcluidasNoMes(7)));
+            series.getData().add(new XYChart.Data<>("Agosto", Fachada.getInstance().contarPomodorosConcluidasNoMes(8)));
+            series.getData().add(new XYChart.Data<>("Setembro", Fachada.getInstance().contarPomodorosConcluidasNoMes(9)));
+            series.getData().add(new XYChart.Data<>("Outubro", Fachada.getInstance().contarPomodorosConcluidasNoMes(10)));
+            series.getData().add(new XYChart.Data<>("Novembro", Fachada.getInstance().contarPomodorosConcluidasNoMes(11)));
+            series.getData().add(new XYChart.Data<>("Dezembro", Fachada.getInstance().contarPomodorosConcluidasNoMes(12)));
         }
         chart.getData().add(series);
     }

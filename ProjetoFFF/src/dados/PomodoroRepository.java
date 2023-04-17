@@ -78,4 +78,11 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     public void salvar(){
         RepositorioFileUtil.salvarArquivo(pomodoros, this.fileName);
     }
+
+    public int contarPomodorosConcluidasNoMes(int mes) {
+        return (int) pomodoros.stream()
+                .filter(t -> mes == t.getTempoInicial().getMonthValue())
+                .count();
+    }
+
 }

@@ -1,10 +1,12 @@
 package negocio;
 
 
+import dados.PomodoroRepository;
 import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
 
@@ -159,5 +161,37 @@ public class Fachada {
 
     public int getSegundos(){
         return controladorPomodoro.segundos;
+    }
+
+    public void addPomodoro(Pomodoro pomodoro) throws ArgumentoInvalidoException, ElementoJaExisteException {
+        controladorPomodoro.addPomodoro(pomodoro);
+    }
+
+    public PomodoroRepository getRepositorio() {
+        return controladorPomodoro.getRepositorio();
+    }
+
+    public void getTempoPomodoro(Pomodoro pomodoro) {
+        controladorPomodoro.getTempoPomodoro(pomodoro);
+    }
+
+    public void getTempoDescanso(Pomodoro pomodoro) {
+        controladorPomodoro.getTempoDescanso(pomodoro);
+    }
+
+    public void getTempoDescansoLongo(Pomodoro pomodoro) {
+        controladorPomodoro.getTempoDescansoLongo(pomodoro);
+    }
+
+    public void pause(int minutos) {
+        controladorPomodoro.pause(minutos);
+    }
+
+    public void resume(int minutos) {
+        controladorPomodoro.resume(minutos);
+    }
+
+    public int contarPomodorosConcluidasNoMes(int mes) {
+        return controladorPomodoro.contarPomodorosConcluidasNoMes(mes);
     }
 }

@@ -63,7 +63,7 @@ public class Pomodoro implements Serializable {
         tempoInicial = LocalDateTime.now();
     }
 
-
-
-
+    public LocalDateTime getTempoInicial() {
+        return tempoInicial;
+    }
 }
