@@ -2,7 +2,6 @@ package gui.controlers;
 
 import gui.Main;
 import gui.ScreamControl;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

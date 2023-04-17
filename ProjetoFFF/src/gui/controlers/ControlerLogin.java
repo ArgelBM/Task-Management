@@ -3,17 +3,12 @@ package gui.controlers;
 import gui.Main;
 import gui.ScreamControl;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import negocio.ControladorUsuarios;
 import negocio.Fachada;
 
@@ -52,29 +47,37 @@ public class ControlerLogin implements Initializable {
             }
         });
 
-        System.out.println(Fachada.getInstance().getRepositorioUsuarios().lembreDeMim);
+
         if  (Fachada.getInstance().getRepositorioUsuarios().lembreDeMim){
             checkBox.setSelected(true);
             login.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getLogin());
             senha.setText(Fachada.getInstance().getRepositorioUsuarios().getUltimoUsuario().getSenha());
         }
+        try {
+            if (ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario() != null &&
+                    !checkBox.isSelected()){
+                checkBox.setSelected(true);
+                login.setText(ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario().getLogin());
+                senha.setText(ControladorUsuarios.getInstance().getUsersLogin().getUltimoUsuario().getSenha());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     @FXML
     void fazerLogin() {
         String usuario = login.getText();
-        System.out.println(usuario);
         String key = senha.getText();
         boolean b = checkBox.isSelected();
-        System.out.println(b);
         try {
             Fachada.getInstance().fazerLogin(usuario, key, b);
             ScreamControl.getInstance().telaPrincipal();
         }
         catch (Exception a ){
             testador.setText("*usuario ou senha errados");
-            System.out.println("erro ao fazer login");
-            System.out.println(a);
         }
     }
 
