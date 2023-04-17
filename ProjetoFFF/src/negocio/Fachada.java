@@ -10,6 +10,9 @@ import exceptions.ElementoNaoEncontradoException;
 import negocio.beans.Pomodoro;
 import negocio.beans.Task;
 import negocio.beans.Usuario;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -146,24 +149,24 @@ public class Fachada {
         controladorTasks.desmarcarComoImportante(task);
     }
 
-    public void getTempoPomodoro() {
-        controladorPomodoro.getTempoPomodoro();
+//    public void getTempoPomodoro() {
+//        controladorPomodoro.getTempoPomodoro();
+//    }
+
+//    public void getTempoDescanso() {
+//        controladorPomodoro.getTempoDescanso();
+//    }
+
+//    public void getTempoDescansoLongo() {
+//        controladorPomodoro.getTempoDescansoLongo();
+//    }
+
+    public void iniciarPomodoro() {
+        controladorPomodoro.iniciarPomodoro();
     }
 
-    public void getTempoDescanso() {
-        controladorPomodoro.getTempoDescanso();
-    }
-
-    public void getTempoDescansoLongo() {
-        controladorPomodoro.getTempoDescansoLongo();
-    }
-
-    public void iniciarPomodoro(Pomodoro pomodoro) {
-        controladorPomodoro.iniciarPomodoro(pomodoro);
-    }
-
-    public void pare() {
-        controladorPomodoro.pare();
+    public void pare(int minutos) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        controladorPomodoro.pare(minutos);
     }
 
     public boolean getAtivo(){

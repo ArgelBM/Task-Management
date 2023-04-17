@@ -27,6 +27,7 @@ public class ControladorTasks{
         return instance;
     }
 
+
     public TaskRepository getRepositorio() {
         return usuarioAtivo.getTask();
     }
@@ -80,8 +81,8 @@ public class ControladorTasks{
         usuarioAtivo.getTask().desmarcaComoImportante(task);
     }
 
-    public Task procurarPorNome(String nome) throws ElementoNaoEncontradoException {
-        return usuarioAtivo.getTask().listarPorNome(nome);
+    public Task procurarPorNome(String nome){
+        return usuarioAtivo.getTask().litarPorNomeDaTaskA(nome);
     }
 
     public int contarTarefasConcluidasNoMes(int mes) {

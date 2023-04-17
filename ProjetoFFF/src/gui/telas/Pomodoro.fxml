@@ -67,7 +67,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
                         <CheckBox mnemonicParsing="false" text="Iniciar sem tarefas?" textFill="WHITE" />
                      </children>
                   </VBox>

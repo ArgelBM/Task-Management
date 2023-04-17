@@ -2,6 +2,7 @@ package dados;
 
 import exceptions.*;
 import negocio.beans.Pomodoro;
+import negocio.beans.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     }
     @Override
     public List<Pomodoro> listarTodos() {
-        return null;
+        return pomodoros;
     }
 
     @Override
@@ -38,6 +39,7 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     @Override
     public void adicionar(Pomodoro item) throws ElementoJaExisteException, ArgumentoInvalidoException {
         this.pomodoros.add(item);
+        salvar();
     }
 
     @Override
@@ -48,5 +50,18 @@ public class PomodoroRepository implements IRepository<Pomodoro>{
     @Override
     public void remover(Pomodoro item) {
 
+    }
+
+    public Pomodoro pomodoroBuscarPorTask(Task task){
+        for (Pomodoro pomodoro : pomodoros){
+            if (pomodoro.getTask().equals(task)){
+                return pomodoro;
+            }
+        }
+        return null;
+    }
+
+    public void salvar(){
+        RepositorioFileUtil.salvarArquivo(pomodoros, this.fileName);
     }
 }
