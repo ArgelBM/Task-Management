@@ -33,9 +33,9 @@ public class UsuariosRepository implements IRepository<Usuario> {
         }
     }
 
-    public Usuario fazerLogin(String login, String senha, boolean marcado) throws ArgumentoInvalidoException {
+    public Usuario fazerLogin(String login, String senha, boolean marcado) throws NullPointerException, IllegalArgumentException {
         if (login == null || senha == null) {
-            throw new ArgumentoInvalidoException("Credenciais inválidas");
+            throw new NullPointerException("Credenciais inválidas");
         }
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
@@ -51,7 +51,7 @@ public class UsuariosRepository implements IRepository<Usuario> {
                 return usuario;
             }
         }
-        throw new ArgumentoInvalidoException("Usuario ou senha incorretos");
+        throw new IllegalArgumentException("Usuario ou senha incorretos");
     }
 
     @Override
@@ -60,36 +60,36 @@ public class UsuariosRepository implements IRepository<Usuario> {
     }
 
     @Override
-    public Usuario listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Usuario listarPorId(int id) throws IllegalArgumentException {
             for (Usuario usuario : usuarios) {
                 if (usuario.getId() == id) {
                     return usuario;
                 }
             }
-            throw new ArgumentoInvalidoException("Credenciais inválidas");
+            throw new IllegalArgumentException("Credenciais inválidas");
         }
 
     @Override
-    public Usuario listarPorNome(String nome) throws ElementoNaoEncontradoException {
+    public Usuario listarPorNome(String nome) throws NoSuchElementException {
         Optional<Usuario> usuariosEncontrados = usuarios.stream()
                 .filter(u -> nome.equalsIgnoreCase(u.getNomeUsuario()))
                 .findAny();
         if (usuariosEncontrados.isPresent()) {
             return usuariosEncontrados.get();
         } else {
-            throw new ElementoNaoEncontradoException(usuariosEncontrados);
+            throw new NoSuchElementException("Não existem usuários");
         }
     }
 
     @Override
-    public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Usuario usuario) throws NullPointerException, IllegalArgumentException {
         if (usuario == null || usuario.getSenha().equals("") || usuario.getLogin().equals("") || usuario.getNomeUsuario().equals("") ||
         usuario.getDataNascimento() == null ) {
-            throw new ArgumentoInvalidoException("Usuário não pode ser nulo");
+            throw new NullPointerException();
         }
         for(Usuario a : usuarios){
             if (a.getLogin().equals(usuario.getLogin()) && a.getSenha().equals(usuario.getSenha())){
-                throw new ElementoJaExisteException("Usuário já existe");
+                throw new IllegalArgumentException();
             }
         }
         usuarios.add(usuario);
@@ -98,7 +98,10 @@ public class UsuariosRepository implements IRepository<Usuario> {
 
 
     @Override
-    public void mudarNome(Usuario usuario, String nome) throws ElementoNaoEncontradoException {
+    public void mudarNome(Usuario usuario, String nome) throws IllegalArgumentException {
+        if (usuario == null || nome == null || nome.isEmpty()) {
+            throw new IllegalArgumentException("Argumentos inválidos");
+        }
         usuario.setNomeUsuario(nome);
         salvar();
     }
@@ -119,14 +122,14 @@ public class UsuariosRepository implements IRepository<Usuario> {
         RepositorioFileUtil.salvarArquivo(usuarios, this.fileName);
     }
 
-    public Usuario procurarPorLogin(String nome) throws ElementoNaoEncontradoException {
+    public Usuario procurarPorLogin(String nome) throws NoSuchElementException {
         Optional<Usuario> usuariosEncontrados = usuarios.stream()
                 .filter(u -> nome.equalsIgnoreCase(u.getLogin()))
                 .findAny();
         if (usuariosEncontrados.isPresent()) {
             return usuariosEncontrados.get();
         } else {
-            throw new ElementoNaoEncontradoException(usuariosEncontrados);
+            throw new NoSuchElementException("Usuário não encontrado.");
         }
     }
 

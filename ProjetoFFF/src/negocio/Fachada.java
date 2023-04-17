@@ -15,6 +15,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 public class Fachada {
@@ -38,7 +39,7 @@ public class Fachada {
 
 
     //Usuario
-    public void fazerLogin(String login, String senha, boolean marcada) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void fazerLogin(String login, String senha, boolean marcada) throws NullPointerException, IllegalArgumentException {
         controladorUsuarios.fazerLogin(login, senha, marcada);
         System.out.println("fachada");
     }
@@ -47,15 +48,15 @@ public class Fachada {
         return controladorUsuarios.listarPorTodos();
     }
 
-    public Usuario listarPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public Usuario listarPorId(int id) throws IllegalArgumentException {
         return controladorUsuarios.listarPorId(id);
     }
 
-    public Usuario procuraPorLogin(String nome) throws ElementoNaoEncontradoException {
+    public Usuario procuraPorLogin(String nome) throws NoSuchElementException {
         return controladorUsuarios.procuraPorLogin(nome);
     }
 
-    public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Usuario usuario) throws NullPointerException, IllegalArgumentException {
         controladorUsuarios.adicionar(usuario);
     }
 

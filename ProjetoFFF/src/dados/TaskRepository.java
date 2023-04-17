@@ -37,16 +37,16 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void adicionar(Task item) throws ElementoJaExisteException, ArgumentoInvalidoException {
+    public void adicionar(Task item) throws ElementoJaExisteException,IllegalArgumentException {
         if ((item == null)){
-            throw new ArgumentoInvalidoException(null);
+            throw new IllegalArgumentException("tarefa não pode ser nula!");
         }
         if(item.getNome() == null || item.getNome().trim().isEmpty()){
-            throw new ArgumentoInvalidoException(item);
+            throw new IllegalArgumentException("O nome da tarefa é invalido!");
         }
         for(Task a: listasDeTask){
             if(a.getNome().equals(item.getNome())){
-                throw new ArgumentoInvalidoException(item);
+                throw new IllegalArgumentException("Essa tarefa já existe na lista!");
             }
         }
         listasDeTask.add(item);
@@ -65,7 +65,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public Task listarPorId(int id) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public Task listarPorId(int id) {
         return null;
     }
 
@@ -82,9 +82,9 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
     @Override
-    public void mudarNome(Task task, String novoNome) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public void mudarNome(Task task, String novoNome) throws ElementoNaoEncontradoException, NullPointerException {
         if(task == null){
-            throw new ArgumentoInvalidoException(task);
+            throw new NullPointerException("Tarefa não pod ser nula!");
         }
         String nome = task.getNome();
         Optional<Task> tarefa = listasDeTask.stream()
@@ -100,7 +100,7 @@ public class TaskRepository implements IRepository<Task>, Serializable {
     }
 
 
-    public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException, ArgumentoInvalidoException {
+    public List<Task> listarPorFiltro(String cor, String prioridade, String status) throws ElementoNaoEncontradoException,IllegalArgumentException {
         List<Task> tasksFiltradas = new ArrayList<>();
         for(Task n: listasDeTask){
             if(n.getClassificacao().getCorDaTask().equals(cor) && n.getClassificacao().getPrioridadeDaTask().equals(prioridade)

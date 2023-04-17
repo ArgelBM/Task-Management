@@ -4,10 +4,12 @@ import dados.UsuariosRepository;
 import exceptions.ArgumentoInvalidoException;
 import exceptions.ElementoJaExisteException;
 import exceptions.ElementoNaoEncontradoException;
+import negocio.beans.Task;
 import negocio.beans.Usuario;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ControladorUsuarios implements Serializable {
 
@@ -26,9 +28,9 @@ public class ControladorUsuarios implements Serializable {
         return instance;
     }
 
-    public void fazerLogin(String login, String senha, boolean marcada) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public void fazerLogin(String login, String senha, boolean marcada) throws NullPointerException, IllegalArgumentException {
         if (login == null || senha == null) {
-            throw new ArgumentoInvalidoException("Login ou senha inválidos");
+            throw new NullPointerException("Login ou senha inválidos");
         }
         ControladorTasks.getInstance().setUsuarioAtivo(repositorio.fazerLogin(login, senha, marcada));
     }
@@ -37,55 +39,24 @@ public class ControladorUsuarios implements Serializable {
         return repositorio.listarTodos();
     }
 
-    public Usuario listarPorId(int id) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
+    public Usuario listarPorId(int id) throws IllegalArgumentException {
         if (id < 0) {
-            throw new ArgumentoInvalidoException("ID inválido");
+            throw new IllegalArgumentException("ID inválido");
         }
         return repositorio.listarPorId(id);
     }
 
-    public void adicionar(Usuario usuario) throws ElementoJaExisteException, ArgumentoInvalidoException {
-        if (usuario == null) {
-            throw new ArgumentoInvalidoException("Usuário inválido");
-        }
-        else if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty() || usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
-            throw new ArgumentoInvalidoException("Login inválido ou senha invalidos");
-        }
-        else {
-            repositorio.adicionar(usuario);
-        }
+    public void adicionar(Usuario usuario) throws NullPointerException, IllegalArgumentException  {
+        repositorio.adicionar(usuario);
     }
 
     public void remover(Usuario usuario) {
         repositorio.remover(usuario);
     }
 
-    public Usuario procuraPorLogin(String nome) throws ElementoNaoEncontradoException {
+    public Usuario procuraPorLogin(String nome) throws NoSuchElementException{
         return repositorio.procurarPorLogin(nome);
     }
-
-//    Tem que ajeitar o mudarNome de UsuariosRepository, ele ta pegando o de TaskRepo, porque o
-//    de UsuariosRepository esta vazio.
-
-//    public void atualizar(Usuario usuario) throws ArgumentoInvalidoException, ElementoNaoEncontradoException {
-//        if (usuario == null) {
-//            throw new ArgumentoInvalidoException("Usuário inválido");
-//        }
-//        if (usuario.getNomeUsuario() == null || usuario.getNomeUsuario().trim().isEmpty()) {
-//            throw new ArgumentoInvalidoException("Nome de usuário inválido");
-//        }
-//        if (usuario.getDataNascimento() == null) {
-//            throw new ArgumentoInvalidoException("Data de nascimento inválida");
-//        }
-//        if (usuario.getLogin() == null || usuario.getLogin().trim().isEmpty()) {
-//            throw new ArgumentoInvalidoException("Login inválido");
-//        }
-//        if (usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
-//            throw new ArgumentoInvalidoException("Senha inválida");
-//        }
-//        repositorio.mudarNome(usuario);
-//    }
-
 
     public UsuariosRepository getRepositorio() {
         return repositorio;

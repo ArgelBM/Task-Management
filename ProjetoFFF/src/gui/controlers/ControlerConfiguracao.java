@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import negocio.ControladorTasks;
 import negocio.ControladorUsuarios;
+import negocio.Fachada;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,10 +20,10 @@ public class ControlerConfiguracao implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nome.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
-        data.setValue(ControladorTasks.getInstance().getUsuarioAtivo().getDataNascimento());
-        nomeDeUsuario.setText(ControladorTasks.getInstance().getUsuarioAtivo().getNomeUsuario());
-        login.setText(ControladorTasks.getInstance().getUsuarioAtivo().getLogin());
+        nome.setText(Fachada.getInstance().getUsuarioAtivo().getNomeUsuario());
+        data.setValue(Fachada.getInstance().getUsuarioAtivo().getDataNascimento());
+        nomeDeUsuario.setText(Fachada.getInstance().getUsuarioAtivo().getNomeUsuario());
+        login.setText(Fachada.getInstance().getUsuarioAtivo().getLogin());
 
 
     }
@@ -66,11 +67,11 @@ public class ControlerConfiguracao implements Initializable {
     void salvarMudancas(ActionEvent event) {
 
         try {
-            if (confirmacaoDaSenha.getText().equals(ControladorTasks.getInstance().getUsuarioAtivo().getSenha())) {
+            if (confirmacaoDaSenha.getText().equals(Fachada.getInstance().getUsuarioAtivo().getSenha())) {
 
-                ControladorTasks.getInstance().getUsuarioAtivo().setDataNascimento(data.getValue());
-                ControladorTasks.getInstance().getUsuarioAtivo().setNomeUsuario(nome.getText());
-                ControladorUsuarios.getInstance().salvarMudancas();
+                Fachada.getInstance().getUsuarioAtivo().setDataNascimento(data.getValue());
+                Fachada.getInstance().getUsuarioAtivo().setNomeUsuario(nome.getText());
+               Fachada.getInstance().salvarMudancas();
 
                 ScreamControl.getInstance().telaPrincipal();
 
