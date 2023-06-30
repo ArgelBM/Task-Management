@@ -60,7 +60,7 @@
 No terminal, clone o projeto:
 
 ```  
-git clone https://github.com/Ventoooo/Atividade-em-grupo.git  
+git@github.com:ArgelBM/Task-Management.git
 ```  
 **Certique-se as bibliotecas de icones estão ativas, configure seu Javafx no projeto e execute o Main.java**
 
